@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--colocar nombre a la pestaña-->
+        <title>inicio sesión</title> 
+        <!--colocar icono a la pestaña-->
+        <link rel="icon" href="photos/imagenes_NekoBeans/icon_logo/icon_nekobeans.png">
+        <!--llamar a boostrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+        </svg>
+        <link rel="stylesheet" href="css/stiloPag.css">
+        </head>
+<body>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--narvar--------------------------------------------------------------------------->
+<nav class="navbar navbar-expand-sm border-bottom border-body" style="background-color: #ffffff;">
+  <div class="container-fluid"> 
+    <!-- Parte izquierda de la barra de navegación -->
+    <div>
+      <a class="navbar-brand">
+        <img src="photos/imagenes_NekoBeans/icon_logo/logo_nekobeans.png" alt="icon" width="40" height="40">
+        <!--fuente letra  --- tamañoletra-->
+        <span class="fw-bold mb-0 h6">NekoBeads</span>
+
+              <!-- Botón de la 3 Llineas -->
+        <button class="navbar-toggler position-absolute end-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      </a>
+    </div>
+    <!-- Parte central y derecha de la barra de navegación -->
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <ul class="navbar-nav mb-2 mb-sm-0">
+        <!--cambiar fuente-->
+        <li class="fw-bold mb-0 h7 "> 
+          <a class="nav-link"  href="inicio.html">inicio</a>
+        </li>
+        <!--cambiar fuente-->
+        <li class="fw-bold mb-0 h7"> 
+          <a class="nav-link" href="articulos.html">Articulos</a>
+        </li>
+        <!--cambiar fuente-->
+        <li class="fw-bold mb-0 h7"> 
+          <a class="nav-link" href="inicio.html#ayuda">Ayuda</a>
+        </li>
+        <!--cambiar fuente-->
+        <li class="fw-bold mb-0 h7"> 
+          <a class="nav-link" href="inicio.html#crear">Crear</a>
+        </li>
+      </ul>
+      
+      <!-- Iconos del carrito y del usuario a la derecha -->
+      <div class="ms-auto d-flex align-items-center">
+        <div class="d-flex align-items-center">
+          <a class="nav-link me-3" href="carrito.html"><!-- icono de compra-->
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-bag-heart" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1M8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</nav>
+
+<!--bienvenida-------------------------------------------------------------------------------->
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center"> <!-- Alinea al centro en todos los dispositivos -->
+          <div class="espacio-titulos-centro fw-bold ">
+              <h2>Hola Bienvenid@!</h2>
+              <h1>al inicio de sesión de</h1>
+              <img src="photos/imagenes_NekoBeans/icon_logo/logo_gif.gif" alt="gif_logo" style="max-width: 80%;" > <!-- Modificado el texto -->
+              <h1>Nos alegra verte de nuevo!</h1>
+          </div>
+      </div>
+      <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center"> <!-- Alinea al centro en todos los dispositivos -->
+          <form>
+              <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Dirección de correo electrónico</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                  <div id="emailHelp" class="form-text">Nunca compartiremos tu correo electrónico con nadie más.</div>
+              </div>
+              <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" required>
+              </div>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+                  <button type="submit" class="btn btn-primary me-md-2">Iniciar sesión</button>
+                  <a href="registrar_usuario.html" class="btn btn-secondary">Registrarse</a>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+  <!--javascrip-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

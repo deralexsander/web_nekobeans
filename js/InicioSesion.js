@@ -37,12 +37,7 @@ var hayErrores = false;
     }
 
     
-    // Puedes agregar más validaciones aquí según tus requisitos, como la longitud de la contraseña, el formato del correo electrónico, etc.
    
-
-    
-
-
     return !hayErrores; // Si todas las validaciones son exitosas, devuelve true para enviar el formulario
 }
 
@@ -206,3 +201,69 @@ function validarRegistros() {
 return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un error
 
 }
+
+
+
+function validacionCrear () {
+
+    var nombrePlantilla = document.getElementById("nombrePlantilla").value;
+    var foto = document.getElementById("foto").value;
+    var coloresPlantillas = document.getElementById("coloresPlantillas").value;
+    
+
+
+    var nombrePlantillaError = document.getElementById("nombrePlantillaError");
+    var fotoError = document.getElementById("fotoError");
+    var coloresPlantillasError = document.getElementById("coloresPlantillasError");
+    
+    
+
+    
+
+    document.getElementById("nombrePlantilla").addEventListener("input", 
+    function() {
+        document.getElementById("nombrePlantillaError").textContent = "";
+    });
+    document.getElementById("foto").addEventListener("input", 
+    function() {
+        document.getElementById("fotoError").textContent = "";
+    });
+    document.getElementById("coloresPlantillas").addEventListener("input", 
+    function() {
+        document.getElementById("coloresPlantillasError").textContent = "";
+    });
+
+    
+var hayErrores =false;
+
+    if (nombrePlantilla.trim() === "") {
+        nombrePlantillaError.textContent = "Por favor, ingrese el nombre de la plantilla.";
+        hayErrores = true;
+    } else {
+        nombrePlantillaError.textContent = "";
+    }
+
+    if (foto.trim() === "") {
+        fotoError.textContent = "Por favor, ingrese su archivo.";
+        hayErrores = true;
+    } else {
+        fotoError.textContent = "";
+    }
+
+    if (coloresPlantillas.trim() === "") {
+        coloresPlantillasError.textContent = "Por favor, ingrese su plantilla.";
+        hayErrores = true;
+    } else {
+        coloresPlantillasError.textContent = "";
+    }
+    
+    
+
+
+return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un error
+
+
+
+}
+
+

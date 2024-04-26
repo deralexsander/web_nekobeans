@@ -64,44 +64,69 @@
     </div>
   </nav>
 
-    <!-- Contenido principal -->
-<div class="container-fluid mt-4 ">
-  <div class="row">
-      <div class="col-md-6 col-sm-12 d-flex align-items-center"> <!-- Alinea al centro en todos los dispositivos -->
-        <div class="espacio-titulos-centro fw-bolder">
-            <h2>¿Quieres construir algo increíble?</h2>
-            <div>
-            <h4 class="fw-bold">Comparte tus ideas con nosotros y trabajemos juntos para hacerlas realidad, ya sea de una pequeña estrella hasta una gran pulsera.</h4>
+  <!-- Contenido principal -->
+  <div class="container-fluid mt-4 ">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 d-flex align-items-center">
+            <!-- Alinea al centro en todos los dispositivos -->
+            <div class="espacio-titulos-centro fw-bolder">
+                <h2>¿Quieres construir algo increíble?</h2>
+                <div>
+                    <h4 class="fw-bold">Comparte tus ideas con nosotros y trabajemos juntos para hacerlas realidad, ya sea de una pequeña estrella hasta una gran pulsera.</h4>
+                </div>
+                <img class="tamanologos" src="photos/imagenes_NekoBeans/icon_logo/logo_crear.png" alt="icon">
+                <!-- Modificado el texto -->
+                <h6 style="color: red;">ADVERTENCIA!</h6>
+                <h4>Porfa, evitemos palabras feas o ofensivas, y también cualquier imagen que no sea adecuada.</h4>
             </div>
-            <img class="tamanologos" src="photos/imagenes_NekoBeans/icon_logo/logo_crear.png" alt="icon" > <!-- Modificado el texto -->
-            <h6 style="color: red;">ADVERTENCIA!</h6>
-            <h4>Porfa, evitemos palabras feas o ofensivas, y también cualquier imagen que no sea adecuada.</h4>
         </div>
-      </div>
 
-      <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center "> <!-- Alinea al centro en todos los dispositivos -->
-        <form>
-          <div class="mb-3">
-              <label for="nombre" class="form-label">Nombre de tu plantilla</label>
-              <input type="text" class="form-control" id="nombre" required>
-          </div>
-          <div class="mb-3">
-              <label for="descripcion" class="form-label">Descripción/detalle</label>
-              <textarea class="form-control" id="descripcion" rows="3"></textarea>
-          </div>
-          <div class="mb-3">
-              <label for="colores" class="form-label">Colores que tiene tu plantilla</label>
-              <input type="text" class="form-control" id="colores" required>
-          </div>
-          <div class="mb-3">
-              <label for="foto" class="form-label">Adjuntar foto de platilla</label>
-              <input class="form-control" type="file" id="foto" required>
-          </div>
-          <button type="submit" class="btn btn-primary">Enviar</button>
-      </form>
-      </div>
+        <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center ">
+            <form class="w-75"> <!-- para que ocupe todo el ancho -->
+              <h4 class="espacio-titulo-inicio fw-bold">coloque sus datos aqui.</h4>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre de tu plantilla</label>
+                    <input type="text" class="form-control" id="nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="foto" class="form-label">Adjuntar foto de platilla</label>
+                    <input class="form-control" type="file" id="foto" required>
+                </div>
+                <div class="mb-3">
+                  <label for="descripcion" class="form-label">Descripción/detalle</label>
+                  <div class="form-floating">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">esto es opcional</label>
+                  </div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="colores" class="form-label">Como se puede usar?</label>
+                </div>
+                
+                <div class="input-group mb-3">
+                  <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio2" id="btnradio2_1" autocomplete="off" required>
+                    <label class="btn btn-outline-primary" for="btnradio2_1">Colgante</label>
+                    <input type="radio" class="btn-check" name="btnradio2" id="btnradio2_2" autocomplete="off" required>
+                    <label class="btn btn-outline-primary" for="btnradio2_2">Broche</label>
+                    <input type="radio" class="btn-check" name="btnradio2" id="btnradio2_3" autocomplete="off" required>
+                    <label class="btn btn-outline-primary" for="btnradio2_3">los dos</label>
+                  </div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="colores" class="form-label">categoria de la plantilla</label>
+                  <input type="text" class="form-control" id="colores" required>
+                </div>
+                
+                
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </div>
   </div>
-</div>
+
 
 
 

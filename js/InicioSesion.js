@@ -119,11 +119,12 @@ y establecer su contenido de texto (textContent) en una cadena vacía. En otras 
     } else {
         apellidoError.textContent = "";
     }
-
-   
-
+    
     if (rut.trim() === "") {
         rutError.textContent = "Por favor, ingrese su RUT.";
+        hayErrores = true;
+    } else if (isNaN(rut)) { // Si el RUT tiene letras
+        rutError.textContent = "Por favor, ingresa solo números.";
         hayErrores = true;
     } else if (rut.length < 10) { // Si el RUT tiene menos de 10 caracteres
         rutError.textContent = "El RUT debe tener al menos 10 caracteres.";
@@ -135,6 +136,7 @@ y establecer su contenido de texto (textContent) en una cadena vacía. En otras 
         rutError.textContent = ""; // Borrar el mensaje de error si la longitud es correcta
     }
 
+    
     if (colores.trim() === "") {
         coloresError.textContent = "Por favor, ingrese el color que desea escojer.";
         hayErrores = true;

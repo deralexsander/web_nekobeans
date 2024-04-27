@@ -216,9 +216,6 @@ function validacionCrear () {
     var fotoError = document.getElementById("fotoError");
     var coloresPlantillasError = document.getElementById("coloresPlantillasError");
     
-    
-
-    
 
     document.getElementById("nombrePlantilla").addEventListener("input", 
     function() {
@@ -236,6 +233,14 @@ function validacionCrear () {
     
 var hayErrores =false;
 
+
+    var btnRadioSeleccionado = document.querySelector('input[name="btnradio2"]:checked');
+    if (!btnRadioSeleccionado) {
+        seleccionError.textContent = "Por favor, seleccione una opción para cómo se puede usar la plantilla.";
+    } else {
+        seleccionError.textContent = "";
+    }
+
     if (nombrePlantilla.trim() === "") {
         nombrePlantillaError.textContent = "Por favor, ingrese el nombre de la plantilla.";
         hayErrores = true;
@@ -251,7 +256,7 @@ var hayErrores =false;
     }
 
     if (coloresPlantillas.trim() === "") {
-        coloresPlantillasError.textContent = "Por favor, ingrese su plantilla.";
+        coloresPlantillasError.textContent = "Por favor, ingrese su categoria.";
         hayErrores = true;
     } else {
         coloresPlantillasError.textContent = "";
@@ -261,9 +266,4 @@ var hayErrores =false;
 
 
 return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un error
-
-
-
 }
-
-

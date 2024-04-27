@@ -49,17 +49,17 @@ var hayErrores = false;
 
 function validarTrabajaConNosotros() {
     var nombre = document.getElementById("nombre").value;
-    var apellido = document.getElementById("apellido").value;
+    
     var rut = document.getElementById("rut").value;
-    var colores = document.getElementById("colores").value;
-    var edad = document.getElementById("edad").value;
+    
+   
     
 
     var nombreError = document.getElementById("nombreError");
-    var apellidoError = document.getElementById("apellidoError");
+    
     var rutError = document.getElementById("rutError");
-    var coloresError = document.getElementById("coloresError");
-    var edadError = document.getElementById("edadError");
+    
+    
 /*
 document.getElementById("passwordError"): 
 Esta parte del código obtiene el elemento HTML que tiene el ID "passwordError". Este elemento probablemente es un mensaje de error asociado al 
@@ -77,25 +77,13 @@ y establecer su contenido de texto (textContent) en una cadena vacía. En otras 
         document.getElementById("nombreError").textContent = "";
     });
     
-    document.getElementById("apellido").addEventListener("input", 
-    function() {
-        document.getElementById("apellidoError").textContent = "";
-    });
+    
     
     document.getElementById("rut").addEventListener("input", 
     function() {
         document.getElementById("rutError").textContent = "";
     });
     
-    document.getElementById("colores").addEventListener("input", 
-    function() {
-        document.getElementById("coloresError").textContent = "";
-    });
-    
-    document.getElementById("edad").addEventListener("input", 
-    function() {
-        document.getElementById("edadError").textContent = "";
-    });
     
    
 
@@ -108,12 +96,7 @@ y establecer su contenido de texto (textContent) en una cadena vacía. En otras 
         nombreError.textContent = "";
     }
 
-    if (apellido.trim() === "") {
-        apellidoError.textContent = "Por favor, ingrese su apellido.";
-        hayErrores = true;
-    } else {
-        apellidoError.textContent = "";
-    }
+    
     
     if (rut.trim() === "") {
         rutError.textContent = "Por favor, ingrese su RUT.";
@@ -132,19 +115,9 @@ y establecer su contenido de texto (textContent) en una cadena vacía. En otras 
     }
 
     
-    if (colores.trim() === "") {
-        coloresError.textContent = "Por favor, ingrese el color que desea escojer.";
-        hayErrores = true;
-    } else {
-        coloresError.textContent = "";
-    }
+    
 
-    if (edad.trim() === "") {
-        edadError.textContent = "Por favor, ingrese su edad.";
-        hayErrores = true;
-    } else {
-        edadError.textContent = "";
-    }
+  
     
     return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un error
 }
@@ -267,3 +240,8 @@ var hayErrores =false;
 
 return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un error
 }
+
+
+
+
+

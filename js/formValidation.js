@@ -49,16 +49,22 @@ var hayErrores = false;
 
 function validarTrabajaConNosotros() {
     var nombre = document.getElementById("nombre").value;
-    
+    var apellido = document.getElementById("apellido").value;
     var rut = document.getElementById("rut").value;
-    
-   
+    var carnet = document.getElementById("carnet").value;
+    var fecha = document.getElementById("fecha").value;
     
 
     var nombreError = document.getElementById("nombreError");
-    
+    var apellidoError = document.getElementById("apellidoError");
     var rutError = document.getElementById("rutError");
+    var carnetError = document.getElementById("carnetError");
+    var fechaError = document.getElementById("fechaError");
+
     
+    
+    
+    // Verificar si la fecha está en el formato dd-mm-yyyy
     
 /*
 document.getElementById("passwordError"): 
@@ -77,25 +83,38 @@ y establecer su contenido de texto (textContent) en una cadena vacía. En otras 
         document.getElementById("nombreError").textContent = "";
     });
     
+    document.getElementById("carnet").addEventListener("input", 
+    function() {
+        document.getElementById("carnetError").textContent = "";
+    });
     
+    document.getElementById("fecha").addEventListener("input", 
+    function() {
+        document.getElementById("fechaError").textContent = "";
+    });
     
     document.getElementById("rut").addEventListener("input", 
     function() {
         document.getElementById("rutError").textContent = "";
     });
     
+    document.getElementById("apellido").addEventListener("input", 
+    function() {
+        document.getElementById("apellidoError").textContent = "";
+    });
     
    
 
     var hayErrores = false;
 
     if (nombre.trim() === "") {
-        nombreError.textContent = "Por favor, ingrese su nombre.";
+        nombreError.textContent = "Por favor, ingrese su nombres.";
         hayErrores = true;
     } else {
         nombreError.textContent = "";
     }
 
+    
     
     
     if (rut.trim() === "") {
@@ -114,9 +133,27 @@ y establecer su contenido de texto (textContent) en una cadena vacía. En otras 
         rutError.textContent = ""; // Borrar el mensaje de error si la longitud es correcta
     }
 
+    if (apellido.trim() === "") {
+        apellidoError.textContent = "Por favor, ingrese sus apellidos";
+        hayErrores = true;
+    } else {
+        apellidoError.textContent = "";
+    }
     
+    if (carnet.trim() === "") {
+        carnetError.textContent = "Por favor, ingrese su foto de carnet.";
+        hayErrores = true;
+    } else {
+        carnetError.textContent = "";
+    }
+    if (!/^\d{2}-\d{2}-\d{4}$/.test(fecha)) {
+        fechaError.textContent = "Por favor, ingrese su fecha de nacimiento";
+        hayErrores = true;
+    } else {
+        fechaError.textContent = "";
+        
     
-
+}
   
     
     return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un error

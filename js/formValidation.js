@@ -50,10 +50,10 @@ function validarTrabajaConNosotros() {
     var nombre = document.getElementById("nombre").value;
     var apellido1 = document.getElementById("apellido1").value;
     var apellido2 = document.getElementById("apellido2").value;
-    var rutInput = document.getElementById("rut");
     var carnet = document.getElementById("carnet").value;
     var fecha = document.getElementById("fecha").value;
 
+    var rutInput = document.getElementById("rut");
     var nombreError = document.getElementById("nombreError");
     var apellido1Error = document.getElementById("apellido1Error");
     var apellido2Error = document.getElementById("apellido2Error");

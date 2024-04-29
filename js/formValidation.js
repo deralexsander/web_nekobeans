@@ -45,119 +45,114 @@ var hayErrores = false;
 
 
 // Verificar la longitud de la contraseña
-
-
+    
 function validarTrabajaConNosotros() {
     var nombre = document.getElementById("nombre").value;
-    var apellido = document.getElementById("apellido").value;
-    var rut = document.getElementById("rut").value;
+    var apellido1 = document.getElementById("apellido1").value;
+    var apellido2 = document.getElementById("apellido2").value;
+    var rutInput = document.getElementById("rut");
     var carnet = document.getElementById("carnet").value;
     var fecha = document.getElementById("fecha").value;
-    
 
     var nombreError = document.getElementById("nombreError");
-    var apellidoError = document.getElementById("apellidoError");
+    var apellido1Error = document.getElementById("apellido1Error");
+    var apellido2Error = document.getElementById("apellido2Error");
     var rutError = document.getElementById("rutError");
     var carnetError = document.getElementById("carnetError");
     var fechaError = document.getElementById("fechaError");
 
+        // Verificar si la fecha está en el formato dd-mm-yyyy
     
-    
-    
-    // Verificar si la fecha está en el formato dd-mm-yyyy
-    
-/*
-document.getElementById("passwordError"): 
-Esta parte del código obtiene el elemento HTML que tiene el ID "passwordError". Este elemento probablemente es un mensaje de error asociado al 
-campo de contraseña en un formulario.
-.addEventListener("input", function(){ ... }): 
-Esta línea agrega un event listener al elemento obtenido en el paso anterior. Este event listener está configurado para escuchar el evento "input",
- que se activa cada vez que se ingresa texto en el campo asociado. Cuando se dispara este evento, se ejecuta la función anónima definida dentro de los corchetes.
-function(){ document.getElementById("passwordError").textContent = ""; }: 
-Esta es la función anónima que se ejecuta cuando se dispara el evento "input". Lo que hace esta función es seleccionar nuevamente el elemento con el ID "passwordError" 
-y establecer su contenido de texto (textContent) en una cadena vacía. En otras palabras, borra el contenido de texto del elemento "passwordError".
+        /*
+        document.getElementById("passwordError"): 
+        Esta parte del código obtiene el elemento HTML que tiene el ID "passwordError". Este elemento probablemente es un mensaje de error asociado al 
+        campo de contraseña en un formulario.
+        .addEventListener("input", function(){ ... }): 
+        Esta línea agrega un event listener al elemento obtenido en el paso anterior. Este event listener está configurado para escuchar el evento "input",
+        que se activa cada vez que se ingresa texto en el campo asociado. Cuando se dispara este evento, se ejecuta la función anónima definida dentro de los corchetes.
+        function(){ document.getElementById("passwordError").textContent = ""; }: 
+        Esta es la función anónima que se ejecuta cuando se dispara el evento "input". Lo que hace esta función es seleccionar nuevamente el elemento con el ID "passwordError" 
+        y establecer su contenido de texto (textContent) en una cadena vacía. En otras palabras, borra el contenido de texto del elemento "passwordError".
 
-*/
-    document.getElementById("nombre").addEventListener("input", 
-    function() {
-        document.getElementById("nombreError").textContent = "";
+        */
+
+    document.getElementById("nombre").addEventListener("input", function() {
+        nombreError.textContent = "";
     });
-    
-    document.getElementById("carnet").addEventListener("input", 
-    function() {
-        document.getElementById("carnetError").textContent = "";
+
+    document.getElementById("carnet").addEventListener("input", function() {
+        carnetError.textContent = "";
     });
-    
-    document.getElementById("fecha").addEventListener("input", 
-    function() {
-        document.getElementById("fechaError").textContent = "";
+
+    document.getElementById("fecha").addEventListener("input", function() {
+        fechaError.textContent = "";
     });
-    
-    document.getElementById("rut").addEventListener("input", 
-    function() {
-        document.getElementById("rutError").textContent = "";
+
+    document.getElementById("rut").addEventListener("input", function() {
+        rutError.textContent = "";
+        var rut = rutInput.value;
+        rut = rut.replace(/\D/g, ''); // Eliminar cualquier caracter que no sea un número
+        if (rut.length > 1) {
+            rut = rut.substring(0, rut.length - 1) + '-' + rut.charAt(rut.length - 1);
+        }
+        rutInput.value = rut;
+
+        // Validar longitud del RUT y mostrar mensaje de error si es necesario
+        if (rut.length < 10) {
+            rutError.textContent = "El RUT debe tener al menos 10 caracteres.";
+            hayErrores = true;
+        } else if (rut.length > 10) {
+            rutError.textContent = "El RUT no puede tener más de 10 caracteres.";
+            hayErrores = true;
+        }
     });
-    
-    document.getElementById("apellido").addEventListener("input", 
-    function() {
-        document.getElementById("apellidoError").textContent = "";
+
+    document.getElementById("apellido1").addEventListener("input", function() {
+        apellido1Error.textContent = "";
     });
-    
-   
+
+    document.getElementById("apellido2").addEventListener("input", function() {
+        apellido2Error.textContent = "";
+    });
 
     var hayErrores = false;
 
     if (nombre.trim() === "") {
-        nombreError.textContent = "Por favor, ingrese su nombres.";
+        nombreError.textContent = "Por favor, ingrese su nombre.";
         hayErrores = true;
-    } else {
-        nombreError.textContent = "";
     }
 
-    
-    
-    
-    if (rut.trim() === "") {
+    if (apellido1.trim() === "") {
+        apellido1Error.textContent = "Por favor, ingrese su apellido paterno";
+        hayErrores = true;
+    }
+
+    if (apellido2.trim() === "") {
+        apellido2Error.textContent = "Por favor, ingrese su apellido materno";
+        hayErrores = true;
+    }
+
+    if (rutInput.value.trim() === "") {
         rutError.textContent = "Por favor, ingrese su RUT.";
         hayErrores = true;
-    } else if (isNaN(rut)) { // Si el RUT tiene letras
-        rutError.textContent = "Por favor, ingresa solo números.";
-        hayErrores = true;
-    } else if (rut.length < 10) { // Si el RUT tiene menos de 10 caracteres
-        rutError.textContent = "El RUT debe tener al menos 10 caracteres.";
-        hayErrores = true;
-    } else if (rut.length > 10) { // Si el RUT tiene más de 10 caracteres
-        rutError.textContent = "El RUT no puede tener más de 10 caracteres.";
-        hayErrores = true;
     } else {
-        rutError.textContent = ""; // Borrar el mensaje de error si la longitud es correcta
+        var rut = rutInput.value.replace(/\D/g, '');
     }
 
-    if (apellido.trim() === "") {
-        apellidoError.textContent = "Por favor, ingrese sus apellidos";
-        hayErrores = true;
-    } else {
-        apellidoError.textContent = "";
-    }
-    
     if (carnet.trim() === "") {
         carnetError.textContent = "Por favor, ingrese su foto de carnet.";
         hayErrores = true;
-    } else {
-        carnetError.textContent = "";
     }
-    if (!/^\d{2}-\d{2}-\d{4}$/.test(fecha)) {
+
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(fecha)) {
         fechaError.textContent = "Por favor, ingrese su fecha de nacimiento";
         hayErrores = true;
-    } else {
-        fechaError.textContent = "";
-        
-    
-}
-  
-    
+    }
+
     return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un error
 }
+
+
 
 function validarRegistros() {
 

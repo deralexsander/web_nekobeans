@@ -82,8 +82,8 @@
 
 /*tarjetas*/
 .tamanocarta{
-  width: 20rem;
-  height: 20rem;
+  width: 300px;
+  height: 300px;
   border-radius: 35px;
 
 }
@@ -101,7 +101,7 @@
   background-color: #ffffff;
   }
 
-  .card:hover .descripcion {
+  .card:shover .descripcion {
   display: block;
   }
   

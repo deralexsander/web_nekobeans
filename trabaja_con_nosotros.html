@@ -17,21 +17,32 @@
 <!--  -->
 <script type="text/javascript">
   $(document).ready(function(){
-      // Función para cargar los datos desde la API al hacer clic en el botón
+      // Variable para almacenar la región seleccionada
+      var selectedRegion;
+      
+      // Función para cargar las regiones desde la API al hacer clic en el botón
       $("#categoriasSelect").click(function(){
-          $.get("https://my-json-server.typicode.com/marcmoragam/API/db",
-          function(data){
-              // Limpiamos el contenido previo del formulario de selección
+          // Guardar la región seleccionada actualmente
+          selectedRegion = $("#categoriasSelect").val();
+          
+          // Realizar una solicitud GET para obtener las regiones
+          $.get("https://my-json-server.typicode.com/marcmoragam/API/db", function(data){
+              // Limpiar el contenido previo del select
               $("#categoriasSelect").empty();
-              // Iteramos sobre los datos y creamos opciones de selección
-              $.each(data.regiones, function(i,item){
-                  $("#categoriasSelect").append("<option value='" + item.region + "'>" + item.region + "</option>");
+              // Agregar una opción predeterminada
+              $("#categoriasSelect").append("<option value=''>Seleccione una región</option>");
+              // Iterar sobre las regiones y crear opciones de selección
+              $.each(data.regiones, function(i, region){
+                  $("#categoriasSelect").append("<option value='" + region.region + "'>" + region.region + "</option>");
               });
+          })
+          .done(function() {
+              // Restaurar la región seleccionada después de cargar los datos
+              $("#categoriasSelect").val(selectedRegion);
           });
       });
   });
-</script>
-
+  </script>
 
 </head>
 
@@ -144,13 +155,10 @@
           </div>
 
           <!-- lo haremos con una API -->
-          <div class="mb-3">
-            <label for="regiones1">Seleccione su región:</label>
-            <select id="categoriasSelect" class="form-select">
-              <option value="">Seleccione una región</option>
-            </select>
-          </div>
-        
+          <label for="regiones1">Seleccione su región:</label>
+<select id="categoriasSelect" class="form-select">
+    <option value="">Seleccione una región</option>
+</select>
           
           <!-- 4 -->
           <div class="mb-3">

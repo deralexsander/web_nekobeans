@@ -82,8 +82,8 @@
 
 /*tarjetas*/
 .tamanocarta{
-  width: 20rem;
-  height: 20rem;
+  width: 300px;
+  height: 300px;
   border-radius: 35px;
 
 }
@@ -99,41 +99,20 @@
 
 .card {
   background-color: #ffffff;
-  }
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Agregamos la sombra a la transición */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añadimos una sombra suave */
+}
 
-  .card:hover .descripcion {
-  display: block;
-  }
-  
-  .descripcion {
-  display: none;
-  position: absolute;
-  top: 0%;
-  left: 0;
-  background-color: rgba(255, 255, 255, 1.0);
-  color: #000;
-  padding: 5px;
-  width: 100%; /* Cubre toda la tarjeta horizontalmente */
-  height: 100%; /* Cubre toda la tarjeta verticalmente */
-  box-sizing: border-box;
-  z-index: 1;
-  }
-  
-  /* Estilos para los botones */
-  .descripcion .text-center {
-  position: absolute;
-  bottom: 20px; /* Ajusta la distancia desde la parte inferior */
-  left: 0;
-  width: 100%;
-  }
-  
-  .descripcion h5 {
-  margin-top: 0;
-  }
-  
-  .descripcion p {
-  margin-bottom: 0;
-  }
+.card:hover {
+  transform: translateY(-5px); /* Movemos la tarjeta hacia arriba 5px cuando el cursor está sobre ella */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Incrementamos ligeramente la sombra cuando está en hover */
+}
+
+.descripcion {
+  /* Aquí irían las propiedades de estilos para la descripción si las tienes */
+}
+
+
 
   /*Giuly estuvo aquí */
 

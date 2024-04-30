@@ -19,14 +19,14 @@
 <script type="text/javascript">
   $(document).ready(function(){
       // Función para cargar los datos desde la API al hacer clic en el botón
-      $("categoriasSelect").click(function(){
-          $.get("https://www.themealdb.com/api/json/v1/1/categories.php",
+      $("#categoriasSelect").click(function(){
+          $.get("https://my-json-server.typicode.com/marcmoragam/API/db",
           function(data){
               // Limpiamos el contenido previo del formulario de selección
               $("#categoriasSelect").empty();
               // Iteramos sobre los datos y creamos opciones de selección
-              $.each(data.categories, function(i,item){
-                  $("#categoriasSelect").append("<option value='" + item.idCategory + "'>" + item.strCategory + "</option>");
+              $.each(data.regiones, function(i,item){
+                  $("#categoriasSelect").append("<option value='" + item.region + "'>" + item.region + "</option>");
               });
           });
       });

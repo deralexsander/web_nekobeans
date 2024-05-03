@@ -101,14 +101,14 @@
   <!-- modal ---------------------------------------------------------------------------------------------------------------------------->
 
   <!-- modal tarjeta1 -->
-  <div class="modal fade modal-lg" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal fade modal-xl" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Descripcion</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body justify-content-center">
           <h5 class="card-title">Ajolote</h5>
           <p> si son tan lindas estas cosas AAA.</p>
           <h5 class="card-title">Colores</h5>
@@ -137,7 +137,8 @@
     </div>
   </div>
 
-  <div class="modal fade" id="exampleModalToggle1.1" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+
+  <div class="modal fade modal-lg" id="exampleModalToggle1.1" aria-hidden="true" aria-labelledby="exampleModalToggleLabel1" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -145,12 +146,32 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="">
-            <div class="color mb-2" style="background-color: #1eccd8;"></div>
-            <div class="color mb-2" style="background-color: #2918c0;"></div>
-            <div class="color mb-2" style="background-color: #000000;"></div>
-            <img src="photos/imagenes_NekoBeans/icon_logo/animacion cambio de color.gif" alt="">
+          <div class="titulos-centro">
+            <h3 class="fw-bold">¿No te gusta el color?</h3>
+            <img style="max-width: 100%;" src="photos/imagenes_NekoBeans/icon_logo/animacion cambio de color.gif" alt="">
+            <h5 class="fw-bold espacio-titulo-inicio">Aquí puedes cambiar el color del producto que desees a tus colores favoritos.</h5>
+            <h6>precione uno de los colores deseados para poder cambiarlo de color</h6>
           </div>
+          <div class="d-flex justify-content-between">
+            <h6>color producto</h6>
+            <h6>color deseado</h6>
+          </div>
+          <div class=" d-flex justify-content-between">
+            <div class="color_modificacion mb-2" style="background-color: #1eccd8;"></div>
+            <h5>cambiar color a:</h5>
+            <div class="color_modificacion mb-2" style="background-color: #1eccd8;"></div>
+          </div>
+          <div class=" d-flex justify-content-between">
+            <div class="color_modificacion mb-2" style="background-color: #3a1ed8;"></div>
+            <h5>cambiar color a:</h5>
+            <div class="color_modificacion mb-2" style="background-color: #3a1ed8;"></div>
+          </div>
+          <div class=" d-flex justify-content-between">
+            <div class="color_modificacion mb-2" style="background-color: #000000;"></div>
+            <h5>cambiar color a:</h5>
+            <div class="color_modificacion mb-2" style="background-color: #000000;"></div>
+          </div>
+          
         </div>
         <div class="modal-footer">
           <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Volver</button>
@@ -1105,20 +1126,10 @@
     <!-- Tarjeta no encontro producto -->
     <div class="col-xl-3 col-lg-4 col-md-6 mb-4 d-flex justify-content-center">
       <div class="card" style="background-color: #ffffff;">
-        <img src="photos/imagenes_NekoBeans/producto_no_encontrado/trabajando para usted.jpg" class="card-img-top" alt="...">
+        <img src="photos/imagenes_NekoBeans/producto_no_encontrado/video_ajustado_producto_no_encontrado.gif" class="card-img-top" alt="...">
         <div class="card-body">
           <h4 class="card-title">trabajando para usted</h4>
           <p class="card-text">$ ... CLP</p>
-        </div>
-        <div class="descripcion textoaparece text-center">
-          <div class="d-flex justify-content-center align-items-center">
-            <div class="image-container">
-              <img src="photos/imagenes_NekoBeans/producto_no_encontrado/video_ajustado_producto_no_encontrado.gif" alt="no_encotrado" width="250" height="250">
-            </div>
-          </div>
-          <div class="fw-bold">
-            <h5>no pudimos encontrar el producto / el producto no está listo</h5>
-          </div>
         </div>
       </div>
     </div>

@@ -52,6 +52,8 @@ function validarTrabajaConNosotros() {
     var apellido2 = document.getElementById("apellido2").value;
     var carnet = document.getElementById("carnet").value;
     var fecha = document.getElementById("fecha").value;
+    var categoriasSelect = document.getElementById("categoriasSelect").value;
+    
 
     var rutInput = document.getElementById("rut");
     var nombreError = document.getElementById("nombreError");
@@ -60,7 +62,7 @@ function validarTrabajaConNosotros() {
     var rutError = document.getElementById("rutError");
     var carnetError = document.getElementById("carnetError");
     var fechaError = document.getElementById("fechaError");
-
+    var categoriasSelectError = document.getElementById("categoriasSelectError");
         // Verificar si la fecha está en el formato dd-mm-yyyy
     
         /*
@@ -76,12 +78,21 @@ function validarTrabajaConNosotros() {
 
         */
 
+        document.getElementById("categoriasSelect").addEventListener("input", function() {
+            categoriasSelectError.textContent = "";
+        });
+
+
     document.getElementById("nombre").addEventListener("input", function() {
         nombreError.textContent = "";
     });
 
     document.getElementById("carnet").addEventListener("input", function() {
         carnetError.textContent = "";
+    });
+
+    document.getElementById("categoriasSelect").addEventListener("input", function() {
+        categoriasSelectError.textContent = "";
     });
 
     document.getElementById("fecha").addEventListener("input", function() {
@@ -146,6 +157,11 @@ function validarTrabajaConNosotros() {
 
     if (!/^\d{4}-\d{2}-\d{2}$/.test(fecha)) {
         fechaError.textContent = "Por favor, ingrese su fecha de nacimiento";
+        hayErrores = true;
+    }
+
+    if (categoriasSelect.trim() === "") {
+        categoriasSelectError.textContent = "Por favor, seleccione una región.";
         hayErrores = true;
     }
 

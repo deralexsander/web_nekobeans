@@ -113,6 +113,20 @@
 }
 
 
+/*Estilo de imágenes de relleno en vistas */
+.contenedor-imagen {
+  position: fixed;
+  bottom: 20px; 
+  right: 20px;
+  max-width: 300px;
+}
+
+.imagen {
+  max-width: 100%;
+  height: auto;
+}
+
+
 
   /*Giuly estuvo aquí */
 

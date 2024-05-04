@@ -224,60 +224,70 @@ return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un
 }
 
 
-function validacionCrear() {
+
+function validacionCrear () {
 
     var nombrePlantilla = document.getElementById("nombrePlantilla").value;
     var foto = document.getElementById("foto").value;
     var coloresPlantillas = document.getElementById("coloresPlantillas").value;
+    
+
 
     var nombrePlantillaError = document.getElementById("nombrePlantillaError");
     var fotoError = document.getElementById("fotoError");
     var coloresPlantillasError = document.getElementById("coloresPlantillasError");
+    
 
-    // Agregar event listener para los botones de radio
-    var btnRadios = document.querySelectorAll('input[name="btnradio2"]');
-    btnRadios.forEach(function(radio) {
-        radio.addEventListener("change", function() {
-            document.getElementById("seleccionError").textContent = "";
-        });
+    document.getElementById("nombrePlantilla").addEventListener("input", 
+    function() {
+        document.getElementById("nombrePlantillaError").textContent = "";
     });
-
-    document.getElementById("nombrePlantilla").addEventListener("input", function() {
-        nombrePlantillaError.textContent = "";
+    document.getElementById("foto").addEventListener("input", 
+    function() {
+        document.getElementById("fotoError").textContent = "";
     });
-    document.getElementById("foto").addEventListener("input", function() {
-        fotoError.textContent = "";
-    });
-    document.getElementById("coloresPlantillas").addEventListener("input", function() {
-        coloresPlantillasError.textContent = "";
+    document.getElementById("coloresPlantillas").addEventListener("input", 
+    function() {
+        document.getElementById("coloresPlantillasError").textContent = "";
     });
 
-    var hayErrores = false;
+    
+var hayErrores =false;
+
 
     var btnRadioSeleccionado = document.querySelector('input[name="btnradio2"]:checked');
     if (!btnRadioSeleccionado) {
-        document.getElementById("seleccionError").textContent = "Por favor, seleccione una opción para cómo se puede usar la plantilla.";
+        seleccionError.textContent = "Por favor, seleccione una opción para cómo se puede usar la plantilla.";
+    } else {
+        seleccionError.textContent = "";
     }
 
     if (nombrePlantilla.trim() === "") {
         nombrePlantillaError.textContent = "Por favor, ingrese el nombre de la plantilla.";
         hayErrores = true;
+    } else {
+        nombrePlantillaError.textContent = "";
     }
 
     if (foto.trim() === "") {
         fotoError.textContent = "Por favor, ingrese su archivo.";
         hayErrores = true;
+    } else {
+        fotoError.textContent = "";
     }
 
     if (coloresPlantillas.trim() === "") {
         coloresPlantillasError.textContent = "Por favor, ingrese su categoria.";
         hayErrores = true;
+    } else {
+        coloresPlantillasError.textContent = "";
     }
+    
+    
 
-    return !hayErrores;
+
+return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un error
 }
-
-
 
 
 

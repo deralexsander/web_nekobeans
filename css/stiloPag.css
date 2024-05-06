@@ -10,6 +10,13 @@
   padding: 40px 10px 0px;
 }
 
+.espacio-textos {
+  max-width: 940px;
+  padding: 10px 0 0px;
+  font-weight: bold;
+}
+
+
 .tamanologos{
   margin-top: 40px;
   max-width: 50%;
@@ -117,11 +124,23 @@
 }
 
 .imagen {
+  max-width: auto;
+  height: auto;
+}
+
+.imagen-modal {
   max-width: 100%;
   height: auto;
 }
 
+.form-control-lg {
+  width: 40px; /* Ajusta este valor según tu preferencia */
+}
 
+.center-input {
+  display: flex;
+  align-items: center;
+}
 
   /*Giuly estuvo aquí */
 

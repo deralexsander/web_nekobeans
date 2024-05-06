@@ -4,8 +4,6 @@ function validarInicioSesion() {
 
     var emailError = document.getElementById("emailError");
     var passwordError = document.getElementById("passwordError");
-
-    
     
     document.getElementById("email").addEventListener("input",
 function() {

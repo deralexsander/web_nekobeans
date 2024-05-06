@@ -291,32 +291,20 @@ return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un
 
 
 
-
 function soloNumeros(event) {
     // Obtiene el código de la tecla presionada
     var codigoTecla = event.keyCode ? event.keyCode : event.which;
-
-    if (valorCampo.length === 1 && valorCampo.indexOf('-') === -1) {
-        
-
-
-return true;
-}
-
 
     // Permite las teclas de control como "Enter" y "Backspace"
     if (codigoTecla == 8 || codigoTecla == 13) {
       return true;
     }
 
-    // Verifica si el código de la tecla corresponde a un número
-    if (codigoTecla < 48 || codigoTecla > 57) {
+    // Verifica si el código de la tecla corresponde a un número o al guion ("-")
+    if ((codigoTecla < 48 || codigoTecla > 57) && codigoTecla !== 45) {
       event.preventDefault(); // Detiene la acción predeterminada (ingresar el carácter)
       return false;
     }
 
-
-
-
     return true;
-  }
+}

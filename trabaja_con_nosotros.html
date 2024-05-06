@@ -151,7 +151,8 @@
           <!-- 3 -->
           <div class="mb-3">
             <label for="rut" class="form-label">rut</label>
-            <input type="text" class="form-control" id="rut" name="rut">
+            <input type="text" class="form-control" id="rut" name="rut" onkeypress="return soloNumeros(event)">
+
             <div id="rutError" class="text-danger"></div>
           </div>
 

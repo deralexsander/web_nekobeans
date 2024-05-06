@@ -53,8 +53,7 @@ function validarTrabajaConNosotros() {
     var carnet = document.getElementById("carnet").value;
     var fecha = document.getElementById("fecha").value;
     var categoriasSelect = document.getElementById("categoriasSelect").value;
-    
-
+  
     var rutInput = document.getElementById("rut");
     var nombreError = document.getElementById("nombreError");
     var apellido1Error = document.getElementById("apellido1Error");
@@ -63,6 +62,10 @@ function validarTrabajaConNosotros() {
     var carnetError = document.getElementById("carnetError");
     var fechaError = document.getElementById("fechaError");
     var categoriasSelectError = document.getElementById("categoriasSelectError");
+
+
+
+   
         // Verificar si la fecha está en el formato dd-mm-yyyy
     
         /*
@@ -101,21 +104,10 @@ function validarTrabajaConNosotros() {
 
     document.getElementById("rut").addEventListener("input", function() {
         rutError.textContent = "";
-        var rut = rutInput.value;
-        rut = rut.replace(/\D/g, ''); // Eliminar cualquier caracter que no sea un número
-        if (rut.length > 1) {
-            rut = rut.substring(0, rut.length - 1) + '-' + rut.charAt(rut.length - 1);
-        }
-        rutInput.value = rut;
+        
 
         // Validar longitud del RUT y mostrar mensaje de error si es necesario
-        if (rut.length < 10) {
-            rutError.textContent = "El RUT debe tener al menos 10 caracteres.";
-            hayErrores = true;
-        } else if (rut.length > 10) {
-            rutError.textContent = "El RUT no puede tener más de 10 caracteres.";
-            hayErrores = true;
-        }
+        
     });
 
     document.getElementById("apellido1").addEventListener("input", function() {
@@ -143,11 +135,18 @@ function validarTrabajaConNosotros() {
         hayErrores = true;
     }
 
+    
+    var rut = rutInput.value.replace(/\D/g, '');
+    var rut = rutInput.value;
     if (rutInput.value.trim() === "") {
         rutError.textContent = "Por favor, ingrese su RUT.";
         hayErrores = true;
-    } else {
-        var rut = rutInput.value.replace(/\D/g, '');
+    } else if (rut.length < 10) {
+        rutError.textContent = "El RUT debe tener al menos 10 caracteres.";
+        hayErrores = true;
+    } else if (rut.length > 10) {
+        rutError.textContent = "El RUT no puede tener más de 10 caracteres.";
+        hayErrores = true;
     }
 
     if (carnet.trim() === "") {
@@ -293,3 +292,31 @@ return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un
 
 
 
+function soloNumeros(event) {
+    // Obtiene el código de la tecla presionada
+    var codigoTecla = event.keyCode ? event.keyCode : event.which;
+
+    if (valorCampo.length === 1 && valorCampo.indexOf('-') === -1) {
+        
+
+
+return true;
+}
+
+
+    // Permite las teclas de control como "Enter" y "Backspace"
+    if (codigoTecla == 8 || codigoTecla == 13) {
+      return true;
+    }
+
+    // Verifica si el código de la tecla corresponde a un número
+    if (codigoTecla < 48 || codigoTecla > 57) {
+      event.preventDefault(); // Detiene la acción predeterminada (ingresar el carácter)
+      return false;
+    }
+
+
+
+
+    return true;
+  }

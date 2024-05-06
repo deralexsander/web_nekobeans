@@ -106,11 +106,11 @@
 
       <!-- Tarjeta 1 -->
       <div class="col-xl-3 col-lg-4 col-md-6 mb-4 d-flex justify-content-center">
-          <div class="card" style="background-color: #ffffff;">
+          <div class="card" style="background-color: #A7E9AF;">
               <img src="photos/productos/ajolote_azul.jpeg" class="card-img-top" alt="foto_producto">
               <div class="card-body">
                 <h5 class="card-title">Ajolote</h5>
-                <button class="btn btn-primary btn-md float-end" data-bs-target="#modal-tarjeta-1" data-bs-toggle="modal">Comprar</button>
+                <button style="background-color: #EEF9BF;" class="btn btn-md float-end col" data-bs-target="#modal-tarjeta-1" data-bs-toggle="modal">Comprar</button>
                 <p class="card-text">$2.464</p>
               </div>
           </div>
@@ -121,21 +121,18 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="modal-tarjeta-1">Descripcion</h1>
+            <h1 class="modal-title fs-5 fw-bold" id="modal-tarjeta-1">Descripción de Artículo</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body justify-content-center">
-            <h5 class="card-title">Ajolote</h5>
-            <p> Un adorable colgante para los fans de los ajolotes ^^.</p>
+            <h3 class="card-title fw-bold">Ajolote</h3>
+            <h4> Un adorable colgante para los fans de los ajolotes ^^.</h4>
             <h5 class="card-title">Colores</h5>
             <div class="colores">
                 <input type="color" class="form-control form-control-color" value="#1eccd8" title="Elija su color">
                 <input type="color" class="form-control form-control-color" value="#2918c0" title="Elija su color">
                 <input type="color" class="form-control form-control-color" value="#000000" title="Elija su color">
-                <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover">
-                  Popover on right
-                </button>
-                <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
+                <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Presione uno de los colores para poder cambiarlo al color deseado.">
                   <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
                     <path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z"/>
                     <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94"/>
@@ -144,18 +141,21 @@
                 
             </div>
             <h5 class="card-title">Modo de Uso</h5>
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="btnradio1" id="btnradio1_1" autocomplete="off" checked>
-                <label class="btn btn-outline-primary" for="btnradio1_1">Colgante</label>
-            </div>
+            <button type="button" class="btn btn-secondary" disabled>Colgante</button>
+            <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Este producto solo puede ser usado como colgante.">
+              <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
+                <path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z"/>
+                <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94"/>
+              </svg></button>
+            </span>
             <h5 class="card-title">Creador: @Mr_Miau_Miau</h5>
             <h5 class="card-title">Categoría: Animal</h5>
             <div class="text-center mt-2">
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-primary">Agregar al carrito</button>
-            <button type="button" class="btn btn-outline-primary">Comprar</button>
+            <button type="button" class="btn btn-outline-primary btn-lg">Agregar al carrito</button>
+            <button type="button" class="btn btn-outline-primary btn-lg">Comprar</button>
           </div>
         </div>
       </div>
@@ -1127,7 +1127,7 @@
 </div>
 
 
-  <!-- Pie de Página -------------------------------------------->
+    <!-- Pie de Página -------------------------------------------->
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <div class="col-md-4 d-flex align-items-center">
         <a href="#" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
@@ -1152,9 +1152,12 @@
 
 
 
-</div>
 
-<!--javascrip-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!--javascrip-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+      const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+      const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    </script>
 </body>
 </html>

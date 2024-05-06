@@ -98,18 +98,13 @@
 }
 
 .card {
-  background-color: #ffffff;
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Agregamos la sombra a la transición */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añadimos una sombra suave */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Añadimos una sombra suave */
 }
 
 .card:hover {
   transform: translateY(-5px); /* Movemos la tarjeta hacia arriba 5px cuando el cursor está sobre ella */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Incrementamos ligeramente la sombra cuando está en hover */
-}
-
-.descripcion {
-  /* Aquí irían las propiedades de estilos para la descripción si las tienes */
 }
 
 

@@ -307,27 +307,12 @@ function soloNumeros(event) {
     return true;
 }
 
-function aumentar() {
-    var CantidadError = document.getElementById("CantidadError");
-    CantidadError.textContent = "";
 
-    var value = parseInt(document.getElementById('counter').value, 10);
-    value = isNaN(value) ? 0 : value;
-    if (value < 3) {
-        value++;
-        document.getElementById('counter').value = value;
-    } else {
-        CantidadError.textContent = "No puedes llevar más de 3 unidades.";
+function validarCantidad(input) {
+    var valor = input.value;
+    var patron = /^[1-3]$/;
+
+    if (!patron.test(valor)) {
+        input.value = valor.replace(/[^1-3]/g, "");
     }
 }
-
-function disminuir() {
-    var value = parseInt(document.getElementById('counter').value, 10);
-    value = isNaN(value) ? 0 : value;
-    value = value > 1 ? value - 1 : 1;
-    document.getElementById('counter').value = value;
-
-    var CantidadError = document.getElementById("CantidadError");
-    CantidadError.textContent = ""; // Limpiar el mensaje de error cuando se disminuye la cantidad
-}
-

@@ -3,5 +3,9 @@
   <!--fw-bold escritura normal-->
 
   <!-- git -->
+  <!-- git config --global user.emal "correo" -->
   <!-- git config --global user.name nombre -->
-  <!-- git config --global user.emal 'correo' -->
+
+  <!-- git alexsander -->
+  <!-- git config --global user.emal "cnia.munoz@duocuc.cl" -->
+  <!-- git config --global user.name "deralexander" -->

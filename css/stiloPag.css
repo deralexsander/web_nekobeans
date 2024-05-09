@@ -29,9 +29,13 @@
 }
 
 .colortextolink{
-  color: #000000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.colorletrastarjetas{
+  color: #EEF9BF;
+  font-weight: bold;
 }
 
 .colores {
@@ -59,7 +63,7 @@
 }
 
 .deslizandocondegradado{
-  animation: moveWithDegrade 2s cubic-bezier(0.42, 0, 0.58, 1) 1; /* 4s indica la duración de la animación */
+  animation: moveWithDegrade 2s cubic-bezier(0.42, 0, 0.58, 1) 1;
 }
 @keyframes moveWithDegrade {
   0%   { 

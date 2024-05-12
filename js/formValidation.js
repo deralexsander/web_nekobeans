@@ -316,3 +316,23 @@ function validarCantidad(input) {
         input.value = valor.replace(/[^1-3]/g, "");
     }
 }
+
+
+function decrementarCantidad(elemento) {
+    var inputCantidad = elemento.parentNode.querySelector('input[type="text"]');
+    var cantidadActual = parseInt(inputCantidad.value);
+    if (cantidadActual > 1) {
+        inputCantidad.value = cantidadActual - 1;
+    }
+}
+
+function incrementarCantidad(elemento) {
+    var inputCantidad = elemento.parentNode.querySelector('input[type="text"]');
+    var cantidadActual = parseInt(inputCantidad.value);
+    if (cantidadActual < 3) {
+        inputCantidad.value = cantidadActual + 1;
+    }
+}
+
+
+

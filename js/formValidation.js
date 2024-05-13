@@ -142,8 +142,8 @@ function validarTrabajaConNosotros() {
     } else if (rut.length < 10) {
         rutError.textContent = "El RUT debe tener al menos 10 caracteres.";
         hayErrores = true;
-    } else if (rut.length > 10) {
-        rutError.textContent = "El RUT no puede tener más de 10 caracteres.";
+    } else if (rut.length > 12) {
+        rutError.textContent = "El RUT no puede tener más de 12 caracteres.";
         hayErrores = true;
     }
 

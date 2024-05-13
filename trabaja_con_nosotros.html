@@ -126,17 +126,17 @@
       </div>
       <!-- validacion -->
       <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center ">
-        <form class="w-75" onsubmit="return validarTrabajaConNosotros()"> <!-- para que ocupe todo el ancho -->
-          <h4 class="espacio-titulo-inicio fw-bold">coloque sus datos aqui.</h4>
+        <form class="w-75" onsubmit="return validarTrabajaConNosotros()" enctype="multipart/form-data" method="post"> <!-- para que ocupe todo el ancho -->
+          <h4 class="espacio-titulo-inicio fw-bold">Ingrese sus datos aquí.</h4>
           <!-- 1 -->
           <div class="mb-3">
-            <label for="nombre" class="form-label">nombres</label>
+            <label for="nombre" class="form-label">Nombres</label>
             <input type="text" class="form-control" id="nombre" name="nombre">
             <div id="nombreError" class="text-danger"></div>
           </div>
           <!-- 2 -->
           <div class="mb-3">
-            <label for="apellido" class="form-label">apellidos</label>
+            <label for="apellido" class="form-label">Apellidos</label>
             <div class="row">
               <div class="col">
                 <input type="text" class="form-control" id="apellido1" aria-label="primer apellido">
@@ -150,7 +150,7 @@
           </div>
           <!-- 3 -->
           <div class="mb-3">
-            <label for="rut" class="form-label">rut</label>
+            <label for="rut" class="form-label">Rut</label>
             <input type="text" class="form-control" id="rut" name="rut" onkeypress="return soloNumeros(event)">
 
             <div id="rutError" class="text-danger"></div>
@@ -165,7 +165,7 @@
 <div id="categoriasSelectError" class="text-danger"></div>
           <!-- 4 -->
           <div class="mb-3">
-            <label for="fecha">Selecciona una fecha:</label>
+            <label for="fecha">Seleccione su fecha de nacimiento:</label>
             <input class="form-control" type="date" id="fecha" name="fecha">
             <div id="fechaError" class="text-danger"></div>
           </div>

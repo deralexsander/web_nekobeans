@@ -104,7 +104,7 @@ function validarTrabajaConNosotros() {
         rutError.textContent = "";
         
 
-        // Validar longitud del RUT y mostrar mensaje de error si es necesario
+    // Validar longitud del RUT y mostrar mensaje de error si es necesario
         
     });
 

@@ -45,11 +45,10 @@
   }
   
   .color {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 40px;
   border-radius: 5px;
-  border: 1px solid #000;
-  margin-right: 5px;
+  margin-right: 15px;
   }
 /*animaciones efectos*/
 
@@ -138,7 +137,7 @@
 }
 
 .form-control-lg {
-  width: 60px; /* Ajusta este valor según tu preferencia */
+  width: 20px; /* Ajusta este valor según tu preferencia */
 }
 
 .center-input {

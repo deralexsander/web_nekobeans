@@ -141,12 +141,22 @@
                     <h4 class="espacio-textos"> Un adorable colgante para los fans de los ajolotes ^^.</h4>
                     <h4 class="card-title fw-bold">Colores</h4>
                     <div class="colores">
-                      <input type="color" class="form-control form-control-color" value="#1eccd8"
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#1eccd8"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#2918c0"
+                        <span class="color-numero">Color 1</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#2918c0"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#000000"
+                        <span class="color-numero">Color 2</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#000000"
                         title="Elija su color">
+                        <span class="color-numero">Color 3</span>
+                      </div>
+
                       <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
                         data-bs-content="Presione uno de los colores para poder cambiarlo al color deseado.">
                         <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -157,12 +167,11 @@
                               d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
                           </svg></button>
                       </span>
-
                     </div>
                     <h5 class="card-title espacio-textos">Modo de Uso</h5>
                     <button type="button" class="btn btn-secondary" disabled>Colgante</button>
                     <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                      data-bs-content="Este producto solo puede ser usado como colgante.">
+                      data-bs-content="Este producto solo puede ser usado como colgante." data-bs-dismiss="hola">
                       <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                           fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
                           <path
@@ -175,13 +184,19 @@
                     <h4 class="card-title espacio-textos">Categoría: Animal</h4>
                     <h4 class="card-title espacio-textos">Cantidad</h4>
                     <div class="d-flex mt-2">
-                        <button type="button" class="btn btn-secondary" onclick="decrementarCantidad(this)">-</button>
-                      <input id="counter" class="form-control form-control-lg text-center" type="text" pattern="[1-3]"
-                        maxlength="1" oninput="validarCantidad(this)" value="1">
-                        <button type="button" class="btn btn-secondary" onclick="incrementarCantidad(this)">+</button>
+                        <button type="button" class="btn" onclick="decrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                          <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                          <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                        </svg></button>
+                      <input id="counter" class="form-control-plaintext form-control-lg text-center" type="text" pattern="[1-3]"
+                        maxlength="1" oninput="validarCantidad(this)" value="1" disabled>
+                        <button type="button" class="btn" onclick="incrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                          <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                        </svg></button>
                       <!-- Aquí se encuentra el botón de ayuda -->
                       <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                        data-bs-content="Solo puedes llevar 3 unidades por producto.">
+                        data-bs-content="Solo puedes llevar 3 unidades maximo por producto.">
                         <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                             fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
                             <path
@@ -270,10 +285,17 @@
                     <h4 class="espacio-textos">Para los que les gusta la hoja verde.</h4>
                     <h4 class="card-title fw-bold">Colores</h4>
                     <div class="colores">
-                      <input type="color" class="form-control form-control-color" value="#26b812"
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#26b812"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#000000"
+                        <span class="color-numero">Color 1</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color " value="#000000"
                         title="Elija su color">
+                        <span class="color-numero">Color 2</span>
+                      </div>
+
                       <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
                         data-bs-content="Presione uno de los colores para poder cambiarlo al color deseado.">
                         <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -309,22 +331,28 @@
                     <h4 class="card-title espacio-textos">Categoría: Galaxia</h4>
                     <h4 class="card-title espacio-textos">Cantidad</h4>
                     <div class="d-flex mt-2">
-                        <button type="button" class="btn btn-secondary" onclick="decrementarCantidad(this)">-</button>
-                        <input id="counter" class="form-control form-control-lg text-center" type="text" pattern="[1-3]"
-                          maxlength="1" oninput="validarCantidad(this)" value="1">
-                          <button type="button" class="btn btn-secondary" onclick="incrementarCantidad(this)">+</button>
-                        <!-- Aquí se encuentra el botón de ayuda -->
-                        <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                          data-bs-content="Solo puedes llevar 3 unidades por producto.">
-                          <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                              fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
-                              <path
-                                d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
-                              <path
-                                d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
-                            </svg></button>
-                        </span>
-                      </div>
+                      <button type="button" class="btn" onclick="decrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                      </svg></button>
+                    <input id="counter" class="form-control-plaintext form-control-lg text-center" type="text" pattern="[1-3]"
+                      maxlength="1" oninput="validarCantidad(this)" value="1" disabled>
+                      <button type="button" class="btn" onclick="incrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                      </svg></button>
+                    <!-- Aquí se encuentra el botón de ayuda -->
+                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                      data-bs-content="Solo puedes llevar 3 unidades maximo por producto.">
+                      <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                          fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
+                          <path
+                            d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
+                          <path
+                            d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
+                        </svg></button>
+                    </span>
+                  </div>
                   </div>
                 </div>
 
@@ -404,10 +432,17 @@
                     <h4 class="espacio-textos">Para nuestros fans del terror.</h4>
                     <h4 class="card-title fw-bold">Colores</h4>
                     <div class="colores">
-                      <input type="color" class="form-control form-control-color" value="#ffffff"
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#ffffff"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#000000"
+                        <span class="color-numero">Color 1</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#000000"
                         title="Elija su color">
+                        <span class="color-numero">Color 2</span>
+                      </div>
+
                       <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
                         data-bs-content="Presione uno de los colores para poder cambiarlo al color deseado.">
                         <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -443,19 +478,28 @@
                     <h4 class="card-title espacio-textos">Categoría: Creppy</h4>
                     <h4 class="card-title espacio-textos">Cantidad</h4>
                     <div class="d-flex mt-2">
-                      <input id="counter2" class="form-control form-control-lg text-center " type="text" pattern="[1-3]"
-                        maxlength="1" oninput="validarCantidad(this)" value="1">
-                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                        data-bs-content="Solo puedes llevar 3 unidades por producto.">
-                        <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                            fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
-                            <path
-                              d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
-                            <path
-                              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
-                          </svg></button>
-                      </span>
-                    </div>
+                      <button type="button" class="btn" onclick="decrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                      </svg></button>
+                    <input id="counter" class="form-control-plaintext form-control-lg text-center" type="text" pattern="[1-3]"
+                      maxlength="1" oninput="validarCantidad(this)" value="1" disabled>
+                      <button type="button" class="btn" onclick="incrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                      </svg></button>
+                    <!-- Aquí se encuentra el botón de ayuda -->
+                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                      data-bs-content="Solo puedes llevar 3 unidades maximo por producto.">
+                      <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                          fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
+                          <path
+                            d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
+                          <path
+                            d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
+                        </svg></button>
+                    </span>
+                  </div>
                   </div>
                 </div>
 
@@ -535,14 +579,26 @@
                     <h4 class="espacio-textos">Para los amantes del terror y el amor.</h4>
                     <h4 class="card-title fw-bold">Colores</h4>
                     <div class="colores">
-                      <input type="color" class="form-control form-control-color" value="#f718eb"
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#f718eb"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#d61e1e"
+                        <span class="color-numero">Color 1</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#d61e1e"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#ffffff"
+                        <span class="color-numero">Color 2</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#ffffff"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#000000"
+                        <span class="color-numero">Color 3</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#000000"
                         title="Elija su color">
+                        <span class="color-numero">Color 4</span>
+                      </div>
                       <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
                         data-bs-content="Presione uno de los colores para poder cambiarlo al color deseado.">
                         <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -579,19 +635,28 @@
                     <h4 class="card-title espacio-textos">Categoría: Creppy</h4>
                     <h4 class="card-title espacio-textos">Cantidad</h4>
                     <div class="d-flex mt-2">
-                      <input id="counter2" class="form-control form-control-lg text-center " type="text" pattern="[1-3]"
-                        maxlength="1" oninput="validarCantidad(this)" value="1">
-                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                        data-bs-content="Solo puedes llevar 3 unidades por producto.">
-                        <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                            fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
-                            <path
-                              d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
-                            <path
-                              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
-                          </svg></button>
-                      </span>
-                    </div>
+                      <button type="button" class="btn" onclick="decrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                      </svg></button>
+                    <input id="counter" class="form-control-plaintext form-control-lg text-center" type="text" pattern="[1-3]"
+                      maxlength="1" oninput="validarCantidad(this)" value="1" disabled>
+                      <button type="button" class="btn" onclick="incrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                      </svg></button>
+                    <!-- Aquí se encuentra el botón de ayuda -->
+                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                      data-bs-content="Solo puedes llevar 3 unidades maximo por producto.">
+                      <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                          fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
+                          <path
+                            d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
+                          <path
+                            d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
+                        </svg></button>
+                    </span>
+                  </div>
                   </div>
                 </div>
 
@@ -671,10 +736,16 @@
                     <h4 class="espacio-textos">Tierno y escalofriante.</h4>
                     <h4 class="card-title fw-bold">Colores</h4>
                     <div class="colores">
-                      <input type="color" class="form-control form-control-color" value="#d61e1e"
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#d61e1e"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#209104"
+                        <span class="color-numero">Color 1</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#209104"
                         title="Elija su color">
+                        <span class="color-numero">Color 2</span>
+                      </div>
                       <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
                         data-bs-content="Presione uno de los colores para poder cambiarlo al color deseado.">
                         <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -710,19 +781,28 @@
                     <h4 class="card-title espacio-textos">Categoría: Creppy</h4>
                     <h4 class="card-title espacio-textos">Cantidad</h4>
                     <div class="d-flex mt-2">
-                      <input id="counter2" class="form-control form-control-lg text-center " type="text" pattern="[1-3]"
-                        maxlength="1" oninput="validarCantidad(this)" value="1">
-                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                        data-bs-content="Solo puedes llevar 3 unidades por producto.">
-                        <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                            fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
-                            <path
-                              d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
-                            <path
-                              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
-                          </svg></button>
-                      </span>
-                    </div>
+                      <button type="button" class="btn" onclick="decrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                      </svg></button>
+                    <input id="counter" class="form-control-plaintext form-control-lg text-center" type="text" pattern="[1-3]"
+                      maxlength="1" oninput="validarCantidad(this)" value="1" disabled>
+                      <button type="button" class="btn" onclick="incrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                      </svg></button>
+                    <!-- Aquí se encuentra el botón de ayuda -->
+                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                      data-bs-content="Solo puedes llevar 3 unidades maximo por producto.">
+                      <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                          fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
+                          <path
+                            d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
+                          <path
+                            d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
+                        </svg></button>
+                    </span>
+                  </div>
                   </div>
                 </div>
 
@@ -802,12 +882,21 @@
                     <h4 class="espacio-textos">Para los amantes de videojuegos clásicos.</h4>
                     <h4 class="card-title fw-bold">Colores</h4>
                     <div class="colores">
-                      <input type="color" class="form-control form-control-color" value="#cf0d0d"
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#cf0d0d"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#000000"
+                        <span class="color-numero">Color 1</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#000000"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#ffffff"
+                        <span class="color-numero">Color 2</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#ffffff"
                         title="Elija su color">
+                        <span class="color-numero">Color 3</span>
+                      </div>
                       <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
                         data-bs-content="Presione uno de los colores para poder cambiarlo al color deseado.">
                         <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -843,19 +932,28 @@
                     <h4 class="card-title espacio-textos">Categoría: Videojuegos</h4>
                     <h4 class="card-title espacio-textos">Cantidad</h4>
                     <div class="d-flex mt-2">
-                      <input id="counter2" class="form-control form-control-lg text-center " type="text" pattern="[1-3]"
-                        maxlength="1" oninput="validarCantidad(this)" value="1">
-                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                        data-bs-content="Solo puedes llevar 3 unidades por producto.">
-                        <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                            fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
-                            <path
-                              d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
-                            <path
-                              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
-                          </svg></button>
-                      </span>
-                    </div>
+                      <button type="button" class="btn" onclick="decrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                      </svg></button>
+                    <input id="counter" class="form-control-plaintext form-control-lg text-center" type="text" pattern="[1-3]"
+                      maxlength="1" oninput="validarCantidad(this)" value="1" disabled>
+                      <button type="button" class="btn" onclick="incrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                      </svg></button>
+                    <!-- Aquí se encuentra el botón de ayuda -->
+                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                      data-bs-content="Solo puedes llevar 3 unidades maximo por producto.">
+                      <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                          fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
+                          <path
+                            d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
+                          <path
+                            d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
+                        </svg></button>
+                    </span>
+                  </div>
                   </div>
                 </div>
 
@@ -935,12 +1033,21 @@
                     <h4 class="espacio-textos">Para los amantes de videojuegos clásicos.</h4>
                     <h4 class="card-title fw-bold">Colores</h4>
                     <div class="colores">
-                      <input type="color" class="form-control form-control-color" value="#69cf2e"
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#69cf2e"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#000000"
+                        <span class="color-numero">Color 1</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#000000"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#ffffff"
+                        <span class="color-numero">Color 2</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#ffffff"
                         title="Elija su color">
+                        <span class="color-numero">Color 3</span>
+                      </div>
                       <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
                         data-bs-content="Presione uno de los colores para poder cambiarlo al color deseado.">
                         <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -977,19 +1084,28 @@
                     <h4 class="card-title espacio-textos">Categoría: Videojuegos</h4>
                     <h4 class="card-title espacio-textos">Cantidad</h4>
                     <div class="d-flex mt-2">
-                      <input id="counter2" class="form-control form-control-lg text-center " type="text" pattern="[1-3]"
-                        maxlength="1" oninput="validarCantidad(this)" value="1">
-                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                        data-bs-content="Solo puedes llevar 3 unidades por producto.">
-                        <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                            fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
-                            <path
-                              d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
-                            <path
-                              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
-                          </svg></button>
-                      </span>
-                    </div>
+                      <button type="button" class="btn" onclick="decrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                      </svg></button>
+                    <input id="counter" class="form-control-plaintext form-control-lg text-center" type="text" pattern="[1-3]"
+                      maxlength="1" oninput="validarCantidad(this)" value="1" disabled>
+                      <button type="button" class="btn" onclick="incrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                      </svg></button>
+                    <!-- Aquí se encuentra el botón de ayuda -->
+                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                      data-bs-content="Solo puedes llevar 3 unidades maximo por producto.">
+                      <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                          fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
+                          <path
+                            d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
+                          <path
+                            d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
+                        </svg></button>
+                    </span>
+                  </div>
                   </div>
                 </div>
 
@@ -1069,14 +1185,26 @@
                     <h4 class="espacio-textos">Para los amantes de videojuegos clásicos.</h4>
                     <h4 class="card-title fw-bold">Colores</h4>
                     <div class="colores">
-                      <input type="color" class="form-control form-control-color" value="#69cf2e"
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#69cf2e"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#000000"
+                        <span class="color-numero">Color 1</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#000000"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#ffffff"
+                        <span class="color-numero">Color 2</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#ffffff"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#ff51e2"
+                        <span class="color-numero">Color 3</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#ff51e2"
                         title="Elija su color">
+                        <span class="color-numero">Color 4</span>
+                      </div>
                       <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
                         data-bs-content="Presione uno de los colores para poder cambiarlo al color deseado.">
                         <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -1112,19 +1240,28 @@
                     <h4 class="card-title espacio-textos">Categoría: Kawaii</h4>
                     <h4 class="card-title espacio-textos">Cantidad</h4>
                     <div class="d-flex mt-2">
-                      <input id="counter2" class="form-control form-control-lg text-center " type="text" pattern="[1-3]"
-                        maxlength="1" oninput="validarCantidad(this)" value="1">
-                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                        data-bs-content="Solo puedes llevar 3 unidades por producto.">
-                        <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                            fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
-                            <path
-                              d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
-                            <path
-                              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
-                          </svg></button>
-                      </span>
-                    </div>
+                      <button type="button" class="btn" onclick="decrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                      </svg></button>
+                    <input id="counter" class="form-control-plaintext form-control-lg text-center" type="text" pattern="[1-3]"
+                      maxlength="1" oninput="validarCantidad(this)" value="1" disabled>
+                      <button type="button" class="btn" onclick="incrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                      </svg></button>
+                    <!-- Aquí se encuentra el botón de ayuda -->
+                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                      data-bs-content="Solo puedes llevar 3 unidades maximo por producto.">
+                      <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                          fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
+                          <path
+                            d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
+                          <path
+                            d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
+                        </svg></button>
+                    </span>
+                  </div>
                   </div>
                 </div>
 
@@ -1204,10 +1341,16 @@
                     <h4 class="espacio-textos">Una bella lagartija para quienes amen a los reptiles.</h4>
                     <h4 class="card-title fw-bold">Colores</h4>
                     <div class="colores">
-                      <input type="color" class="form-control form-control-color" value="#ff4040"
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#ff4040"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#50c7f7"
+                        <span class="color-numero">Color 1</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#50c7f7"
                         title="Elija su color">
+                        <span class="color-numero">Color 2</span>
+                      </div>
                       <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
                         data-bs-content="Presione uno de los colores para poder cambiarlo al color deseado.">
                         <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -1236,19 +1379,28 @@
                     <h4 class="card-title espacio-textos">Categoría: Animal</h4>
                     <h4 class="card-title espacio-textos">Cantidad</h4>
                     <div class="d-flex mt-2">
-                      <input id="counter2" class="form-control form-control-lg text-center " type="text" pattern="[1-3]"
-                        maxlength="1" oninput="validarCantidad(this)" value="1">
-                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                        data-bs-content="Solo puedes llevar 3 unidades por producto.">
-                        <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                            fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
-                            <path
-                              d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
-                            <path
-                              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
-                          </svg></button>
-                      </span>
-                    </div>
+                      <button type="button" class="btn" onclick="decrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                      </svg></button>
+                    <input id="counter" class="form-control-plaintext form-control-lg text-center" type="text" pattern="[1-3]"
+                      maxlength="1" oninput="validarCantidad(this)" value="1" disabled>
+                      <button type="button" class="btn" onclick="incrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                      </svg></button>
+                    <!-- Aquí se encuentra el botón de ayuda -->
+                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                      data-bs-content="Solo puedes llevar 3 unidades maximo por producto.">
+                      <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                          fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
+                          <path
+                            d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
+                          <path
+                            d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
+                        </svg></button>
+                    </span>
+                  </div>
                   </div>
                 </div>
 
@@ -1328,10 +1480,16 @@
                     <h4 class="espacio-textos">Una patita de gato para nuestros gato-lovers!</h4>
                     <h4 class="card-title fw-bold">Colores</h4>
                     <div class="colores">
-                      <input type="color" class="form-control form-control-color" value="#5599ff"
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#5599ff"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#000000"
+                        <span class="color-numero">Color 1</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#000000"
                         title="Elija su color">
+                        <span class="color-numero">Color 2</span>
+                      </div>
                       <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
                         data-bs-content="Presione uno de los colores para poder cambiarlo al color deseado.">
                         <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -1367,19 +1525,28 @@
                     <h4 class="card-title espacio-textos">Categoría: Patitas</h4>
                     <h4 class="card-title espacio-textos">Cantidad</h4>
                     <div class="d-flex mt-2">
-                      <input id="counter2" class="form-control form-control-lg text-center " type="text" pattern="[1-3]"
-                        maxlength="1" oninput="validarCantidad(this)" value="1">
-                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                        data-bs-content="Solo puedes llevar 3 unidades por producto.">
-                        <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                            fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
-                            <path
-                              d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
-                            <path
-                              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
-                          </svg></button>
-                      </span>
-                    </div>
+                      <button type="button" class="btn" onclick="decrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                      </svg></button>
+                    <input id="counter" class="form-control-plaintext form-control-lg text-center" type="text" pattern="[1-3]"
+                      maxlength="1" oninput="validarCantidad(this)" value="1" disabled>
+                      <button type="button" class="btn" onclick="incrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                      </svg></button>
+                    <!-- Aquí se encuentra el botón de ayuda -->
+                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                      data-bs-content="Solo puedes llevar 3 unidades maximo por producto.">
+                      <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                          fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
+                          <path
+                            d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
+                          <path
+                            d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
+                        </svg></button>
+                    </span>
+                  </div>
                   </div>
                 </div>
 
@@ -1459,8 +1626,12 @@
                     <h4 class="espacio-textos">Estrella especial para brilles como una.</h4>
                     <h4 class="card-title fw-bold">Colores</h4>
                     <div class="colores">
-                      <input type="color" class="form-control form-control-color" value="#5599ff"
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#5599ff"
                         title="Elija su color">
+                        <span class="color-numero">Color 1</span>
+                      </div>
+
                       <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
                         data-bs-content="Presione uno de los colores para poder cambiarlo al color deseado.">
                         <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -1489,19 +1660,28 @@
                     <h4 class="card-title espacio-textos">Categoría: Estrellas</h4>
                     <h4 class="card-title espacio-textos">Cantidad</h4>
                     <div class="d-flex mt-2">
-                      <input id="counter2" class="form-control form-control-lg text-center " type="text" pattern="[1-3]"
-                        maxlength="1" oninput="validarCantidad(this)" value="1">
-                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                        data-bs-content="Solo puedes llevar 3 unidades por producto.">
-                        <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                            fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
-                            <path
-                              d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
-                            <path
-                              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
-                          </svg></button>
-                      </span>
-                    </div>
+                      <button type="button" class="btn" onclick="decrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                      </svg></button>
+                    <input id="counter" class="form-control-plaintext form-control-lg text-center" type="text" pattern="[1-3]"
+                      maxlength="1" oninput="validarCantidad(this)" value="1" disabled>
+                      <button type="button" class="btn" onclick="incrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                      </svg></button>
+                    <!-- Aquí se encuentra el botón de ayuda -->
+                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                      data-bs-content="Solo puedes llevar 3 unidades maximo por producto.">
+                      <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                          fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
+                          <path
+                            d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
+                          <path
+                            d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
+                        </svg></button>
+                    </span>
+                  </div>
                   </div>
                 </div>
 
@@ -1581,12 +1761,22 @@
                     <h4 class="espacio-textos">Estrella de 5 puntas con temática minion.</h4>
                     <h4 class="card-title fw-bold">Colores</h4>
                     <div class="colores">
-                      <input type="color" class="form-control form-control-color" value="#5599ff"
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#5599ff"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#000000"
+                        <span class="color-numero">Color 1</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#000000"
                         title="Elija su color">
-                      <input type="color" class="form-control form-control-color" value="#fff132"
+                        <span class="color-numero">Color 2</span>
+                      </div>
+                      <div>
+                        <input type="color" class="form-control form-control-color color" value="#fff132"
                         title="Elija su color">
+                        <span class="color-numero">Color 3</span>
+                      </div>
+
                       <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
                         data-bs-content="Presione uno de los colores para poder cambiarlo al color deseado.">
                         <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -1615,31 +1805,40 @@
                     <h4 class="card-title espacio-textos">Categoría: Estrellas</h4>
                     <h4 class="card-title espacio-textos">Cantidad</h4>
                     <div class="d-flex mt-2">
-                      <input id="counter2" class="form-control form-control-lg text-center " type="text" pattern="[1-3]"
-                        maxlength="1" oninput="validarCantidad(this)" value="1">
-                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                        data-bs-content="Solo puedes llevar 3 unidades por producto.">
-                        <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                            fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
-                            <path
-                              d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
-                            <path
-                              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
-                          </svg></button>
-                      </span>
-                    </div>
+                      <button type="button" class="btn" onclick="decrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                      </svg></button>
+                    <input id="counter" class="form-control-plaintext form-control-lg text-center" type="text" pattern="[1-3]"
+                      maxlength="1" oninput="validarCantidad(this)" value="1" disabled>
+                      <button type="button" class="btn" onclick="incrementarCantidad(this)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                      </svg></button>
+                    <!-- Aquí se encuentra el botón de ayuda -->
+                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                      data-bs-content="Solo puedes llevar 3 unidades maximo por producto.">
+                      <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                          fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
+                          <path
+                            d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
+                          <path
+                            d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
+                        </svg></button>
+                    </span>
+                  </div>
                   </div>
                 </div>
 
                 <div class="col-lg-6 col-md-12">
                   <!-- carrusel -->
-                  <div id="carrousel_11" class="carousel slide justify-content-center" data-bs-ride="carousel">
+                  <div id="carrousel_12" class="carousel slide justify-content-center" data-bs-ride="carousel">
                     <div class="carousel-indicators">
-                      <button type="button" data-bs-target="#carrousel_11" data-bs-slide-to="0" class="active"
+                      <button type="button" data-bs-target="#carrousel_12" data-bs-slide-to="0" class="active"
                         aria-current="true" aria-label="Slide 1"></button>
-                      <button type="button" data-bs-target="#carrousel_11" data-bs-slide-to="1"
+                      <button type="button" data-bs-target="#carrousel_12" data-bs-slide-to="1"
                         aria-label="Slide 2"></button>
-                      <button type="button" data-bs-target="#carrousel_11" data-bs-slide-to="2"
+                      <button type="button" data-bs-target="#carrousel_12" data-bs-slide-to="2"
                         aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
@@ -1656,12 +1855,12 @@
                           alt="foto_ayuda">
                       </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carrousel_11"
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carrousel_12"
                       data-bs-slide="prev">
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carrousel_11"
+                    <button class="carousel-control-next" type="button" data-bs-target="#carrousel_12"
                       data-bs-slide="next">
                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Next</span>

@@ -18,11 +18,6 @@
   <script src="js/formValidation.js"></script>
 </head>
 
-<!-- SCRIPT -->
-
-
-<!-- SCRIPT -->
-
 <body>
 
   <script>
@@ -66,47 +61,46 @@
     </div>
   </div>
   <!--narvar--------------------------------------------------------------------------->
-  <nav class="navbar navbar-expand-md border-bottom border-body" style="background-color: #ffffff;">
+  <nav class="navbar navbar-expand-md border-bottom border-body fixed-top efecanrvar">
     <div class="container-fluid">
       <!-- Parte izquierda de la barra de navegación -->
-      <div>
-        <a class="navbar-brand">
-          <img src="photos/imagenes_NekoBeans/icon_logo/logo_nekobeans.png" alt="icon" width="40" height="40">
-          <!--fuente letra  --- tamañoletra-->
-          <span class="fw-bold mb-0 h6">NekoBeads</span>
-
-          <!-- Botón de la 3 Llineas -->
-          <button class="navbar-toggler position-absolute end-0" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+      <div class="d-flex align-items-center">
+        <a class="navbar-brand d-flex align-items-center" href="inicio.html">
+          <img src="photos/imagenes_NekoBeans/icon_logo/logo.png" alt="icon" width="40" height="40">
+          <span class="fw-bold mb-0 h6 ms-2">NekoBeads</span>
         </a>
       </div>
+      <!-- Botón de las 3 Líneas -->
+      <button class="navbar-toggler btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <!-- Parte central y derecha de la barra de navegación -->
-      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <div class="collapse navbar-collapse container-fluid" id="navbarNav">
         <ul class="navbar-nav mb-2 mb-sm-0">
-          <!--cambiar fuente-->
-          <li class="fw-bold mb-0 h7 ">
-            <a class="nav-link" href="inicio.html">Inicio</a>
+          <!-- cambiar fuente -->
+          <li class="nav-item">
+            <a class="nav-link colortextnarvar" href="inicio.html">Inicio</a>
           </li>
-          <!--cambiar fuente-->
-          <li class="fw-bold mb-0 h7">
-            <a class="nav-link" href="articulos.html">Artículos</a>
+          <!-- cambiar fuente -->
+          <li class="nav-item">
+            <a class="nav-link colortextnarvar" href="productos.html">Productos</a>
           </li>
-          <!--cambiar fuente-->
-          <li class="fw-bold mb-0 h7">
-            <a class="nav-link" href="inicio.html#ayuda">Ayuda</a>
-          </li>
-          <!--cambiar fuente-->
-          <li class="fw-bold mb-0 h7">
-            <a class="nav-link" href="inicio.html#crear">Crear</a>
+          <!-- cambiar fuente -->
+          <li class="nav-item">
+            <a class="nav-link colortextnarvarapartado" href="inicio.html#ayuda">Ayuda</a>
           </li>
         </ul>
-
+  
         <!-- Iconos del carrito y del usuario a la derecha -->
         <div class="ms-auto d-flex align-items-center">
           <div class="d-flex align-items-center">
-            <a class="nav-link me-3" href="carrito.html"><!-- icono de compra-->
+            <a class="nav-link me-4" href="inicio.html#crear">
+              <button class="btnlogin">crear</button>
+            </a>
+          </div>
+          <div class="d-flex align-items-center">
+            <a class="nav-link me-3" href="carrito.html">
               <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-bag-heart"
                 viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -115,7 +109,6 @@
             </a>
           </div>
         </div>
-
       </div>
     </div>
   </nav>
@@ -123,7 +116,7 @@
   <!--bienvenida-------------------------------------------------------------------------------->
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
+      <div class="col-md-6 col-sm-12 d-flex justify-content-center espacio-titulo-inicio-centro">
         <!-- Alinea al centro en todos los dispositivos -->
         <div class="espacio-titulos-centro fw-bold ">
           <h2>Hola Bienvenid@!</h2>
@@ -167,13 +160,6 @@
 
     </div>
   </div>
-  <!--  -->
-
-
-
-
-
-
 
   <!--javascrip-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

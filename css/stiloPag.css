@@ -1,13 +1,30 @@
-/*---- general--------------------------------------------------------------------------------------------------------*/
-
-.espacio-titulo-inicio {
-  max-width: 940px;
-  padding: 40px 0 40px;
+.efecanrvar {
+  background-color: white;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); 
+  background-color: rgba(255, 255, 255, 0.8);
 }
+
+
+.espacio-titulo-inicio-centro {
+  padding: 135px 10px 100px;
+  text-align: center;
+}
+
+.espacio-titulo-inicio-izquierda {
+  padding: 135px 10px 100px;
+  text-align: left; 
+}
+
+.espacio-titulo-inicio-derecha {
+  padding: 30px 30px 100px;
+  text-align: right; 
+}
+
 
 .espacio-titulos {
   max-width: 940px;
-  padding: 40px 10px 0px;
+  padding: 60px 10px 0px;
 }
 
 .espacio-textos {
@@ -31,6 +48,21 @@
 .colortextolink{
   text-decoration: none;
   cursor: pointer;
+}
+
+.colorselecnarvar{
+  color: #75B79E;
+  font-weight: bold;
+}
+
+.colortextnarvar{
+  color: #6A8CAF;
+  font-weight: bold;
+}
+
+.colortextnarvarapartado{
+  color: #75B79E;
+  font-weight: bold;
 }
 
 .colorletrastarjetas{
@@ -75,6 +107,45 @@
   }
 }
 
+.btnlogin {
+  padding: 1em 1em;
+  border: none;
+  border-radius: 1px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #6A8CAF;
+  transition: all 1000ms;
+  font-size: 12px;
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid #6A8CAF;
+}
+
+.btnlogin:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+  outline: 1px solid #75B79E;
+  box-shadow: 4px 5px 17px -4px #75B79E;
+}
+
+.btnlogin::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #75B79E;
+  transform: skewX(45deg);
+  z-index: -1;
+  transition: width 1000ms;
+}
+
+.btnlogin:hover::before {
+  width: 200%;
+}
 
 /*---- inicio----------------------------------------------------------------------------------------------------*/
 .tamanoimg{

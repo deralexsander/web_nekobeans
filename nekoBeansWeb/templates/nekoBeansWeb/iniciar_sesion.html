@@ -1,0 +1,76 @@
+{% extends 'nekoBeansWeb/narvar_footer.html' %}
+{% load static %}
+
+{% block nombrePag %}
+<title>inicio sesión</title>
+{% endblock %}
+
+{% block contenido %}
+ <!--bienvenida-------------------------------------------------------------------------------->
+ <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-sm-12 d-flex justify-content-center espacio-titulo-inicio-centro">
+      <!-- Alinea al centro en todos los dispositivos -->
+      <div class="espacio-titulos-centro fw-bold ">
+        <h2>Hola Bienvenid@!</h2>
+        <h1>al inicio de sesión de</h1>
+        <img src="{% static 'nekoBeansWeb/photos/imagenes_NekoBeans/icon_logo/logo_gif.gif'%}" alt="gif_logo" style="max-width: 80%;">
+        <!-- Modificado el texto -->
+        <h1>Nos alegra verte de nuevo!</h1>
+      </div>
+    </div>
+
+
+    <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
+      <!-- Alinea al centro en todos los dispositivos -->
+      <form class="w-75" onsubmit="return validarInicioSesion()" method="post">
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo Electr&oacute;nico</label>
+          <input type="email" class="form-control" id="email" name="email">
+          <div id="emailError" class="text-danger"></div>
+          
+          <div id="emailHelp" class="form-text">Nunca compartiremos tu correo electrónico con nadie más.</div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <div class="input-group">
+            <input type="password" class="form-control" id="password" name="password">
+            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+              </svg>
+            </button>
+          </div>
+          <div id="passwordError" class="text-danger"></div>
+        </div>          
+        <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+          <button type="submit" class="btn btn-primary me-md-2">Iniciar sesión</button>
+          <a href="{% url 'registrar_usuario'%}" class="btn btn-secondary">Registrarse</a>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const passwordInput = document.getElementById("password");
+    const togglePasswordButton = document.getElementById("togglePassword");
+  
+    togglePasswordButton.addEventListener("mousedown", function() {
+      passwordInput.type = "text";
+    });
+  
+    togglePasswordButton.addEventListener("mouseup", function() {
+      passwordInput.type = "password";
+    });
+  
+    // Manejar el caso en que el mouse se mueva fuera del botón mientras está presionado
+    togglePasswordButton.addEventListener("mouseout", function() {
+      passwordInput.type = "password";
+    });
+  });
+  </script>
+{% endblock %}

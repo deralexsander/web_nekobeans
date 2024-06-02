@@ -1,0 +1,177 @@
+{% extends 'nekoBeansWeb/narvar_footer.html' %}
+{% load static %}
+
+{% block nombrePag %}
+<title>NekoBeads</title>
+{% endblock %}
+
+{% block contenido %}
+
+<!--bienvenida-------------------------------------------------------------------------------->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="espacio-titulo-inicio-centro fw-bold">
+        <div style="width: 100vw; height: 60vw; max-width: 1100px; max-height: 200px; background-image: linear-gradient(to right, #EEF9BF, #A7E9AF); border-radius: 20px; position: absolute; z-index: -1; top: 20%; left: 50%; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;">
+          <h1 style="margin-top: 20px;">¡llegó <img src="{% static 'nekoBeansWeb/photos/imagenes_NekoBeans/icon_logo/nombre.png'%}" alt="icon" style="max-width: 35%;"> Online!</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <!-- Sección de título -------------------------------------------------------------------------------->
+  <div class="container-fluid ">
+    <div class="row">
+      <div class="col-12 espacio-titulos">
+        <h2 class="textoaparece" style="font-weight: bold;">Lo último. <span style="font-weight: normal;">Échale un
+            vistazo a lo más nuevo.</span></h2>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- carrusel-------------------------------------------------------------------------------->
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators ">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner ">
+      <div class=" carousel-item active"> <!-- carousel-item active -->
+        <!--agregar imagen--> <!--clase de tamaño-->
+        <a href=""></a>
+        <img src="{% static 'nekoBeansWeb/photos/imagenes_NekoBeans/carrusel/carrusel_catalogo.png'%}" class="tamanoimg " alt="foto_catalogo">
+      </div>
+      <div class="carousel-item">
+        <!--agregar imagen--> <!--clase de tamaño-->
+        <img src="{% static 'nekoBeansWeb/photos/imagenes_NekoBeans/carrusel/carrusel_crear.png'%}" class="tamanoimg" alt="foto_crear">
+      </div>
+      <div class="carousel-item">
+        <!--agregar imagen--> <!--clase de tamaño-->
+        <img src="{% static 'nekoBeansWeb/photos/imagenes_NekoBeans/carrusel/carrusel_ayuda.png'%}" class="tamanoimg" alt="foto_ayuda">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Sección "ayuda" -------------------------------------------------------------------------------->
+  <a name="ayuda"></a>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 espacio-titulos">
+        <h2 style="font-weight: bold;">Te ayudamos. <span style="font-weight: normal;">Cuando, como y donde quieras.</span></h2>
+      </div>
+      <div class="color_rectangulo">
+        <div class="container">
+          <div class="row">
+            <!-- tarjeta 1 -->
+            <div class="col-lg-4 col-md-6 mb-5 d-flex justify-content-center">
+              <a class="colortextolink" href="problemas_pedido.html">
+                <div class="card tamanocarta"
+                  style="background-image: url('{% static 'nekoBeansWeb/photos/imagenes_NekoBeans/tarjetas/tarjeta-problemas.png' %}'); background-size: cover; background-position: center;">
+                  <div class="card-body">
+                    <h4 class="card-title colorletrastarjetas">¿Tienes problemas con tu pedido?</h4>
+                    <h5 class="card-text colorletrastarjetas">Encuentra soluciones y ayuda aquí.</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- tarjeta 2 -->
+            <div class="col-lg-4 col-md-6 mb-5 d-flex justify-content-center">
+              <a class="colortextolink" href="servicio_pedido.html">
+                <div class="card tamanocarta"
+                  style="background-image: url('{% static 'nekoBeansWeb/photos/imagenes_NekoBeans/tarjetas/tarjeta-reparar.png' %}'); background-size: cover; background-position: center;">
+                  <div class="card-body">
+                    <h4 class="card-title colorletrastarjetas">¿Necesitas reparar algún artículo?</h4>
+                    <h5 class="card-text colorletrastarjetas">Descubre nuestro servicio de reparación.</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- tarjeta 3 -->
+            <div class="col-lg-4 col-md-6 mb-5 d-flex justify-content-center">
+              <a class="colortextolink" href="comentarios.html">
+                <div class="card tamanocarta"
+                  style="background-image: url('{% static 'nekoBeansWeb/photos/imagenes_NekoBeans/tarjetas/tarjeta-contactanos.png' %}'); background-size: cover; background-position: center;">
+                  <div class="card-body">
+                    <h4 class="card-title colorletrastarjetas">¿Tienes alguna pregunta o comentario?</h4>
+                    <h5 class="card-text colorletrastarjetas">¡Contáctanos aquí!.</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Sección "crea" -------------------------------------------------------------------------------->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 espacio-titulos">
+        <h2 style="font-weight: bold;">Crear. <span style="font-weight: normal;">Ayúdanos con tus grandiosas ideas.</span></h2>
+      </div>
+      <div class="color_rectangulo">
+        <a name="crear"></a>
+        <div class="container">
+          <div class="row">
+            <!-- tarjeta 1 -->
+            <div class="col-lg-4 col-md-6 mb-5 d-flex justify-content-center">
+              <a class="colortextolink" href="crear.html">
+                <div class="card tamanocarta"
+                  style="background-image: url('{% static 'nekoBeansWeb/photos/imagenes_NekoBeans/tarjetas/tarjeta-crear.png' %}'); background-size: cover; background-position: center;">
+                  <div class="card-body">
+                    <h4 class="card-title colorletrastarjetas">¿Quieres construir algo increíble?</h4>
+                    <h5 class="card-text colorletrastarjetas">Compartenos tus ideas para poder hacerlas!</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- tarjeta 2 -->
+            <div class="col-lg-4 col-md-6 mb-5 d-flex justify-content-center">
+              <a class="colortextolink" href="trabaja_con_nosotros.html">
+                <div class="card tamanocarta"
+                  style="background-image: url('{% static 'nekoBeansWeb/photos/imagenes_NekoBeans/tarjetas/tarjeta-trabajar.png' %}'); background-size: cover; background-position: center;">
+                  <div class="card-body">
+                    <h4 class="card-title colorletrastarjetas">¿Quieres formar parte de nuestro equipo?</h4>
+                    <h5 class="card-text colorletrastarjetas">Descubre cómo puedes trabajar con nosotros.</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- tarjeta 3 -->
+            <div class="col-lg-4 col-md-6 mb-5 d-flex justify-content-center">
+              <a class="colortextolink" href="como_funciona.html">
+                <div class="card tamanocarta"
+                  style="background-image: url('{% static 'nekoBeansWeb/photos/imagenes_NekoBeans/tarjetas/tarjeta-funcionamiento.png' %}'); background-size: cover; background-position: center;">
+                  <div class="card-body">
+                    <h4 class="card-title colorletrastarjetas">¿Quieres saber cómo funcionan nuestros servicios?</h4>
+                    <h5 class="card-text colorletrastarjetas">Obtén más información aquí.</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  {% endblock %}

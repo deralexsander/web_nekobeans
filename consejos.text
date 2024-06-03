@@ -7,5 +7,10 @@
   <!-- git config --global user.name nombre -->
 
   <!-- git alexsander -->
-  <!-- git config --global user.emal "cnia.munoz@duocuc.cl" -->
-  <!-- git config --global user.name "deralexander" -->
+  git config --global user.email "nia.munoz@duocuc.cl" 
+  git config --global user.name "deralexander" 
+
+
+    <!-- git -->
+  git config --global user.email "giu.castillo@duocuc.cl" 
+  git config --global user.name "__miu.ky" 

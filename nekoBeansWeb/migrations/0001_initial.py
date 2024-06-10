@@ -39,10 +39,26 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='Usuario',
+            name='Cliente',
             fields=[
                 ('rut', models.CharField(max_length=10, primary_key=True, serialize=False)),
                 ('nombre', models.CharField(max_length=20)),
+                ('apellido_paterno', models.CharField(max_length=20)),
+                ('apellido_materno', models.CharField(max_length=20)),
+                ('fecha_nacimiento', models.DateField()),
+                ('telefono', models.CharField(max_length=45)),
+                ('email', models.EmailField(blank=True, max_length=100, null=True, unique=True)),
+                ('direccion', models.CharField(blank=True, max_length=50, null=True)),
+                ('id_genero', models.ForeignKey(db_column='idGenero', on_delete=django.db.models.deletion.CASCADE, to='nekoBeansWeb.genero')),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Usuario',
+            fields=[
+                ('rut', models.CharField(max_length=10, primary_key=True, serialize=False)),
+                ('nickname', models.CharField(max_length=20)),
+                ('contrasena_user', models.CharField(max_length=15)),
+                ('nombre', models.CharField(max_length=20)),                
                 ('apellido_paterno', models.CharField(max_length=20)),
                 ('apellido_materno', models.CharField(max_length=20)),
                 ('fecha_nacimiento', models.DateField()),

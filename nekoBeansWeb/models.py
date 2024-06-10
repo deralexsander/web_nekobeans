@@ -6,13 +6,48 @@ class Genero(models.Model):
 
     def __str__(self):
         return self.genero
-
-class Usuario(models.Model):
+    
+#USUARIOS
+class Cliente(models.Model):
     rut = models.CharField(primary_key=True, max_length=10)
     nombre = models.CharField(max_length=20)
     apellido_paterno = models.CharField(max_length=20)
     apellido_materno = models.CharField(max_length=20)
     fecha_nacimiento = models.DateField(blank=False, null=False)
+    id_genero = models.ForeignKey(Genero, on_delete=models.CASCADE, db_column='idGenero')
+    telefono = models.CharField(max_length=45)
+    email = models.EmailField(unique=True, max_length=100, blank=True, null=True)
+    direccion = models.CharField(max_length=50, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.nombre} {self.apellido_paterno}"
+    
+class Usuario(models.Model):
+    rut = models.CharField(primary_key=True, max_length=10)
+    nickname = models.CharField(max_length=15)
+    contrasena_user = models.CharField(max_length=20)
+    nombre = models.CharField(max_length=20)
+    apellido_paterno = models.CharField(max_length=20)
+    apellido_materno = models.CharField(max_length=20)
+    fecha_nacimiento = models.DateField(blank=False, null=False)
+    id_genero = models.ForeignKey(Genero, on_delete=models.CASCADE, db_column='idGenero')
+    telefono = models.CharField(max_length=45)
+    email = models.EmailField(unique=True, max_length=100, blank=True, null=True)
+    direccion = models.CharField(max_length=50, blank=True, null=True)
+    user_verificado = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.nombre} {self.apellido_paterno}"
+    
+class Colaborador(models.Model):
+    rut = models.CharField(primary_key=True, max_length=10)
+    nickname = models.CharField(max_length=15)
+    contrasena_user = models.CharField(max_length=20)
+    nombre = models.CharField(max_length=20)
+    apellido_paterno = models.CharField(max_length=20)
+    apellido_materno = models.CharField(max_length=20)
+    fecha_nacimiento = models.DateField(blank=False, null=False)
+    image_cedula = models.CharField(max_length=20) #MODIFICAR UWU
     id_genero = models.ForeignKey(Genero, on_delete=models.CASCADE, db_column='idGenero')
     telefono = models.CharField(max_length=45)
     email = models.EmailField(unique=True, max_length=100, blank=True, null=True)

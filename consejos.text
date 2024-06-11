@@ -14,3 +14,6 @@
     <!-- git -->
   git config --global user.email "giu.castillo@duocuc.cl" 
   git config --global user.name "__miu.ky" 
+
+<!-- Correr servidor -->
+  pip install django-admin-interface

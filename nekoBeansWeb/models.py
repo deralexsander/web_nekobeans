@@ -47,7 +47,7 @@ class Colaborador(models.Model):
     apellido_paterno = models.CharField(max_length=20)
     apellido_materno = models.CharField(max_length=20)
     fecha_nacimiento = models.DateField(blank=False, null=False)
-    image_cedula = models.CharField(max_length=20) #MODIFICAR UWU
+    image_cedula = models.ImageField(upload_to='cedulas/') # Cambiado a ImageField
     id_genero = models.ForeignKey(Genero, on_delete=models.CASCADE, db_column='idGenero')
     telefono = models.CharField(max_length=45)
     email = models.EmailField(unique=True, max_length=100, blank=True, null=True)
@@ -66,11 +66,12 @@ class ModoUso(models.Model):
 class Producto(models.Model):
     titulo = models.CharField(max_length=20)
     descripcion = models.CharField(max_length=20)
-    precio = models.CharField(primary_key=True, max_length=10)
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
     id_ModoUso = models.ForeignKey(ModoUso, on_delete=models.CASCADE, db_column='idModoUso')
     colores = models.CharField(max_length=20)
     creador = models.CharField(max_length=20)
     categoria = models.CharField(max_length=20)
+    imagen = models.ImageField(upload_to="productos", null=True)
 
     def __str__(self):
-        return self.Producto
+        return self.titulo

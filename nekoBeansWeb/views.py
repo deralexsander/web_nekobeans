@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Producto
 
 def inicio(request):
     return render(request, 'nekoBeansWeb/inicio.html')
@@ -22,7 +23,11 @@ def problemas_pedido(request):
     return render(request, 'nekoBeansWeb/problemas_pedido.html')
 
 def productos(request):
-    return render(request, 'nekoBeansWeb/productos.html')
+    productos = Producto.objects.all()  # Usa 'Producto' con mayúscula
+    data = {
+        'productos': productos
+    }
+    return render(request, 'nekoBeansWeb/productos.html', data)
 
 def registrar_usuario(request):
     return render(request, 'nekoBeansWeb/registrar_usuario.html')

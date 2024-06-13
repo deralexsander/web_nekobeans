@@ -65,13 +65,16 @@ class ModoUso(models.Model):
 
 class Producto(models.Model):
     titulo = models.CharField(max_length=20)
-    descripcion = models.CharField(max_length=20)
+    descripcion = models.CharField(max_length=100)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     id_ModoUso = models.ForeignKey(ModoUso, on_delete=models.CASCADE, db_column='idModoUso')
-    colores = models.CharField(max_length=20)
+    colores = models.CharField(max_length=200)  # Aumenta la longitud del campo para acomodar múltiples colores
     creador = models.CharField(max_length=20)
     categoria = models.CharField(max_length=20)
     imagen = models.ImageField(upload_to="productos", null=True)
 
     def __str__(self):
         return self.titulo
+
+    def obtener_colores(self):
+        return self.colores.split(',')  # Devuelve una lista de colores separados por comas

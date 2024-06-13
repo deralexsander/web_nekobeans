@@ -10,9 +10,9 @@
   <div class="container-fluid ">
     <div class="row">
 
-      <div class="col-md-7 col-sm-12 d-flex espacio-titulo-inicio-centro">
+      <div class="col-md-7 col-sm-12 d-flex justify-content-center espacio-titulo-inicio-centro">
         <div
-          style="width: 100vw; height: 60vw; max-width: 600px; max-height: 200px; background-image: linear-gradient(to right, #EEF9BF, #A7E9AF); border-radius: 20px; position: absolute; z-index: -1; top: 20%; left: 50%; transform: translate(-93%, -20%); display: flex; justify-content: center;">
+          style=" background-image: linear-gradient(to right, #EEF9BF, #A7E9AF); border-radius: 20px; transform: translate(0%, 0%); display: flex; justify-content: center;">
           <div class="espacio-titulos-centro fw-bold">
             <h1>¡Explora nuestros productos!</h1>
             <h3 class="textoaparece ">Dale un estilo a tu look</h3>
@@ -39,7 +39,7 @@
         <!-- Tarjeta del producto -->
         <div class="col-xl-3 col-lg-4 col-md-6 mb-4 d-flex justify-content-center">
           <div class="card" style="background-color: #A7E9AF;">
-            <img src="{{ p.imagen.url }}" class="card-img-top" alt="foto_producto"> <!-- Asegúrate de usar p.imagen.url -->
+            <img src="{{ p.imagen.url }}" class="imagen" alt="foto_producto"> 
             <div class="card-body">
               <h5 class="card-title espacio-textos">{{ p.titulo | capfirst }}</h5>
               <button style="background-color: #EEF9BF;" class="btn btn-md float-end col"
@@ -62,16 +62,22 @@
                   <div class="col-lg-6 col-md-12">
                     <div class="modal-body justify-content-center">
                       <h3 class="card-title fw-bold">{{ p.titulo | capfirst }}</h3>
-                      <h4 class="espacio-textos">{{ p.descripcion | capfirst }}</h4>
+                      <div class="justify-content">
+                        <div class="row">
+                          <h4 class="espacio-textos">{{ p.descripcion | capfirst }}</h4>
+                        </div>
+                        
+                      </div>
+                      
                       <h4 class="card-title fw-bold">Colores</h4>
                       <div class="colores">
-                        {% for color in p.colores %}
+                        {% for color in p.obtener_colores %}
                         <div>
-                          <input type="color" class="form-control form-control-color color" value="{{ color }}"
-                            title="Elija su color">
-                          <span class="color-numero">Color {{ forloop.counter }}</span>
+                          <input type="color" class="form-control form-control-color color" value="{{ color }}" title="Elija su color">
+                          <span class="color-numero">color {{ forloop.counter }}</span> <!-- Usa forloop.counter para mostrar el número de color -->
                         </div>
                         {% endfor %}
+                        
 
                         <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
                           data-bs-content="Presione uno de los colores para poder cambiarlo al color deseado.">
@@ -87,13 +93,16 @@
                         </span>
                       </div>
                       <h5 class="card-title espacio-textos">Modo de Uso</h5>
-                      <div class="btn-group mt-2" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check" name="btnradioAlien" id="btnradio1" autocomplete="off" checked>
-                        <label class="btn btn-outline-primary" for="btnradio1">Colgante</label>
 
-                        <input type="radio" class="btn-check" name="btnradioAline" id="btnradio2" autocomplete="off" disabled>
-                        <label class="btn btn-outline-primary" for="btnradio2">Broche</label>
-                      </div>
+                      <div class="btn-group mt-2" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="btnradioModoUso" id="btnradioColgante" autocomplete="off" {% if p.id_ModoUso == 'colgante' %} checked {% endif %} {% if p.id_ModoUso == 'broche' %} disabled {% endif %}>
+                        <label class="btn btn-outline-primary" for="btnradioColgante">Colgante</label>
+                    
+                        <input type="radio" class="btn-check" name="btnradioModoUso" id="btnradioBroche" autocomplete="off" {% if p.id_ModoUso == 'broche' %} checked {% endif %} {% if p.id_ModoUso == 'colgante' %} disabled {% endif %}>
+                        <label class="btn btn-outline-primary" for="btnradioBroche">Broche</label>
+                    </div>
+                    
+                    
                       <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
                         data-bs-content="Este producto solo puede ser usado como {{ p.modo_uso }}." data-bs-dismiss="hola">
                         <button type="button" class="btn">
@@ -139,7 +148,6 @@
                             </svg></button>
                         </span>
                       </div>
-                      <button class="btn btn-primary mt-3" onclick="addToCart('{{ p.id }}')">Añadir al carrito</button>
                     </div>
                   </div>
                   <div class="col-lg-6 col-md-12">
@@ -180,6 +188,10 @@
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-lg" data-bs-dismiss="modal">comprar</button>
+                <button type="button" class="btn btn-primary btn-lg">agregar carrito</button>
               </div>
             </div>
           </div>

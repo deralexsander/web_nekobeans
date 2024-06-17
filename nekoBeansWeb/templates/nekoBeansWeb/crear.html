@@ -51,12 +51,10 @@
                 </div>
         
                 <div class="mb-3">
-                    <label for="id_id_ModoUso" class="form-label">Cómo se puede usar?</label>
-                    {{ form.id_ModoUso }}
-                    {% if form.id_ModoUso.errors %}
-                        <div class="text-danger">
-                            {{ form.id_ModoUso.errors }}
-                        </div>
+                    <label for="id_tipo_modo_uso" class="form-label">Modo de Uso</label>
+                    {{ form.tipo_modo_uso }}
+                    {% if form.tipo_modo_uso.errors %}
+                        <div class="text-danger">{{ form.tipo_modo_uso.errors }}</div>
                     {% endif %}
                 </div>
         

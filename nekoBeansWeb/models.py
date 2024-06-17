@@ -26,10 +26,9 @@ class Usuario(models.Model):
         return f"{self.nombre} {self.apellido_paterno}"
     
 tipo_uso = [
-        (1, 'broche'),
-        (2, 'colgante'),
-        (3, 'ambos'),
-
+    (1, 'Broche'),
+    (2, 'Colgante'),
+    (3, 'Ambos'),
 ]
 
 class Producto(models.Model):
@@ -37,7 +36,7 @@ class Producto(models.Model):
     descripcion = models.CharField(max_length=100)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     tipo_modo_uso = models.IntegerField(choices=tipo_uso, default=1)
-    colores = models.CharField(max_length=200)  # Aumenta la longitud del campo para acomodar múltiples colores
+    colores = models.CharField(max_length=200)
     creador = models.CharField(max_length=20)
     categoria = models.CharField(max_length=20)
     imagen = models.ImageField(upload_to="productos", null=True)
@@ -46,7 +45,13 @@ class Producto(models.Model):
         return self.titulo
 
     def obtener_colores(self):
-        return self.colores.split(',')  # Devuelve una lista de colores separados por comas
+        return self.colores.split(',')
+
+    @property
+    def nombre_modo_uso(self):
+        return dict(tipo_uso).get(self.tipo_modo_uso, "Desconocido")
+
+
 
 tipo_consulta = [
         (1, 'Consulta'),

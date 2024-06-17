@@ -24,6 +24,8 @@
     <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
       <!-- Alinea al centro en todos los dispositivos -->
       <form class="w-75" onsubmit="return validarInicioSesion()" method="post">
+        {%csrf_token%}
+        {{form.as_p}}
         <div class="mb-3">
           <label for="email" class="form-label">Correo Electr&oacute;nico</label>
           <input type="email" class="form-control" id="email" name="email">

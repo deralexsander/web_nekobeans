@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template.defaultfilters import floatformat
 from .models import Producto
 from .forms import ContactoForm, PlantillaForm, TrabajaConNosotrosForm, ProductoForm
+from django.contrib.auth.decorators import login_required
 
 
 def inicio(request):
@@ -50,8 +52,13 @@ def inicio_sesion(request):
 def problemas_pedido(request):
     return render(request, 'nekoBeansWeb/problemas_pedido.html')
 
+
 def productos(request):
-    productos = Producto.objects.all() 
+    productos = Producto.objects.all()
+
+    for producto in productos:
+        producto.precio_formateado = floatformat(producto.precio, -2)  # Formatea el precio con dos decimales y separadores de miles si es necesario
+
     data = {
         'productos': productos
     }

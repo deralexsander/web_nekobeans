@@ -7,7 +7,7 @@
 
 {% block contenido %}
   <!-- Contenido principal -->
-  <div class="container-fluid mt-4 ">
+  <div class="container-fluid mt-4">
     <div class="row">
         <div class="col-md-6 col-sm-12 d-flex espacio-titulo-inicio-centro">
             <!-- Alinea al centro en todos los dispositivos -->
@@ -22,8 +22,6 @@
                 <h4>Evitemos palabras feas o ofensivas y también cualquier imagen que no sea adecuada.</h4>
             </div>
         </div>
-
-
 
         <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
             <div class="container mt-4">
@@ -58,10 +56,10 @@
                             </div>
                             <!-- Modo de Uso -->
                             <div class="mb-3">
-                                <label for="id_id_ModoUso" class="form-label">Modo de Uso</label>
-                                {{ form.id_ModoUso }}
-                                {% if form.id_ModoUso.errors %}
-                                    <div class="text-danger">{{ form.id_ModoUso.errors }}</div>
+                                <label for="id_tipo_modo_uso" class="form-label">Modo de Uso</label>
+                                {{ form.tipo_modo_uso }}
+                                {% if form.tipo_modo_uso.errors %}
+                                    <div class="text-danger">{{ form.tipo_modo_uso.errors }}</div>
                                 {% endif %}
                             </div>
                             <!-- Colores -->
@@ -96,16 +94,13 @@
                                     <div class="text-danger">{{ form.imagen.errors }}</div>
                                 {% endif %}
                             </div>
-                            <button type="reset" class="btn btn-primary">cancelar</button>
+                            <button type="reset" class="btn btn-primary">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        
-
-      
     </div>
   </div>
-  {% endblock %}
+{% endblock %}

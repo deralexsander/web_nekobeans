@@ -37,7 +37,7 @@
       <div class="row">
         {% for p in productos %}
         <!-- Tarjeta del producto -->
-        <div class="col-xl-3 col-lg-4 col-md-6 mb-4 d-flex justify-content-center">
+        <div class="col-xl-4 col-lg-4 col-md-6 mb-4 d-flex justify-content-center">
           <div class="card" style="background-color: #A7E9AF;">
             <img src="{{ p.imagen.url }}" class="imagen" alt="foto_producto"> 
             <div class="card-body">
@@ -95,19 +95,15 @@
                       <h5 class="card-title espacio-textos">Modo de Uso</h5>
 
                       <div class="btn-group mt-2" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check" name="btnradioModoUso" id="btnradioColgante-{{ p.id }}"
-                        autocomplete="off" {% if p.tipo_modo_uso == "1" %} checked {% endif %} {% if p.tipo_modo_uso == "2" %} disabled {% endif %}>
-                      <label class="btn btn-outline-primary" for="btnradioColgante-{{ p.id }}">Colgante</label>
-                      
-                      <input type="radio" class="btn-check" name="btnradioModoUso" id="btnradioBroche-{{ p.id }}"
-                        autocomplete="off" {% if p.tipo_modo_uso == "2" %} checked {% endif %} {% if p.tipo_modo_uso == "1" %} disabled {% endif %}>
-                      <label class="btn btn-outline-primary" for="btnradioBroche-{{ p.id }}">Broche</label>
-                      
+                        <input type="radio" class="btn-check" name="btnradioModoUso-{{ p.id }}" id="btnradioBroche-{{ p.id }}" autocomplete="off" {% if p.tipo_modo_uso == 1 %} checked {% endif %} {% if p.tipo_modo_uso == 2 %} disabled {% endif %}>
+                        <label class="btn btn-outline-primary" for="btnradioBroche-{{ p.id }}">Broche</label>
+                        <input type="radio" class="btn-check" name="btnradioModoUso-{{ p.id }}" id="btnradioColgante-{{ p.id }}" autocomplete="off" {% if p.tipo_modo_uso == 2 %} checked {% endif %} {% if p.tipo_modo_uso == 1 %} disabled {% endif %}>
+                        <label class="btn btn-outline-primary" for="btnradioColgante-{{ p.id }}">Colgante</label>
                     </div>
                     
                     
                       <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                        data-bs-content="Este producto solo puede ser usado como {{ p.tipo_modo_uso }}." data-bs-dismiss="hola">
+                        data-bs-content="Este producto solo puede ser usado como {{ p.nombre_modo_uso }}." data-bs-dismiss="hola">
                         <button type="button" class="btn">
                           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                             class="bi bi-question-octagon" viewBox="0.1 0 16 16">

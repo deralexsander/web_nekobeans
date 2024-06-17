@@ -16,4 +16,29 @@
   git config --global user.name "__miu.ky" 
 
 <!-- Correr servidor -->
-  pip install django-admin-interface
+paso 1.-
+  sistema macOS = python3 manage.py runserver
+  windows = python manage.py runserver
+
+  si te da error al querer iniciar el paso 1 instala los dos pasos de abajo
+
+paso 2.-
+  sistema macOS = pip3 install django-admin-interface
+  windows = pip install django-admin-interface
+
+paso3.-
+sistema macOS = pip3 install django
+windows = pip install django
+
+reintentar paso 1 nuevamente.
+
+<!-- como guardar una tabla --!>
+paso 1.-
+
+  sistema macOS = python3 manage.py makemigrations
+  windows = python manage.py makemigrations
+
+paso 2.-
+
+  sistema macOS = python3 manage.py migrate 
+  windows = python manage.py migrate 

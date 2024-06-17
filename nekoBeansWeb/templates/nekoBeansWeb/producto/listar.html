@@ -1,0 +1,49 @@
+{% extends 'nekoBeansWeb/narvar_footer.html' %}
+{% load static %}
+
+{% block nombrePag %}
+<title>Lista de Productos</title>
+{% endblock %}
+
+{% block contenido %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="espacio-titulos">Lista de Productos</h4>
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-sm">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Título</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Modo de Uso</th>
+                            <th scope="col">Colores</th>
+                            <th scope="col">Creador</th>
+                            <th scope="col">Categoría</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for producto in productos %}
+                            <tr>
+                                <td>{{ producto.titulo }}</td>
+                                <td>{{ producto.descripcion }}</td>
+                                <td>{{ producto.precio }}</td>
+                                <td>{{ producto.id_ModoUso.ModoUso }}</td>
+                                <td>{{ producto.colores }}</td>
+                                <td>{{ producto.creador }}</td>
+                                <td>{{ producto.categoria }}</td>
+                                <td>
+                                    <a href="{% url 'modificar_producto' producto.id %}" class="btn btn-sm btn-warning">Modificar</a>
+                                    <a href="{% url 'eliminar_producto' producto.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

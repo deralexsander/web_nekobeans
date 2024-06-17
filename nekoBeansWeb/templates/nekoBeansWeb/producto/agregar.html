@@ -1,0 +1,111 @@
+{% extends 'nekoBeansWeb/narvar_footer.html' %}
+{% load static %}
+
+{% block nombrePag %}
+<title>agregar nuevo producto</title>
+{% endblock %}
+
+{% block contenido %}
+  <!-- Contenido principal -->
+  <div class="container-fluid mt-4 ">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 d-flex espacio-titulo-inicio-centro">
+            <!-- Alinea al centro en todos los dispositivos -->
+            <div class="espacio-titulos fw-bolder">
+                <h2>¿Quieres construir algo increíble?</h2>
+                <div>
+                    <h4 class="fw-bold">Comparte tus ideas con nosotros y trabajemos juntos para hacerlas realidad, ya sea de una pequeña estrella hasta una gran pulsera.</h4>
+                </div>
+                <img class="tamanologos deslizandocondegradado" src="{% static 'nekoBeansWeb/photos/imagenes_NekoBeans/icon_logo/logo_crear.png'%}" alt="icon">
+                <!-- Modificado el texto -->
+                <h5 style="color: red;">ADVERTENCIA!</h5>
+                <h4>Evitemos palabras feas o ofensivas y también cualquier imagen que no sea adecuada.</h4>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
+            <div class="container mt-4">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <h4 class="espacio-titulos">Crear Nuevo Producto</h4>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <!-- Título -->
+                            <div class="mb-3">
+                                <label for="id_titulo" class="form-label">Título</label>
+                                {{ form.titulo }}
+                                {% if form.titulo.errors %}
+                                    <div class="text-danger">{{ form.titulo.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <!-- Descripción -->
+                            <div class="mb-3">
+                                <label for="id_descripcion" class="form-label">Descripción</label>
+                                {{ form.descripcion }}
+                                {% if form.descripcion.errors %}
+                                    <div class="text-danger">{{ form.descripcion.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <!-- Precio -->
+                            <div class="mb-3">
+                                <label for="id_precio" class="form-label">Precio</label>
+                                {{ form.precio }}
+                                {% if form.precio.errors %}
+                                    <div class="text-danger">{{ form.precio.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <!-- Modo de Uso -->
+                            <div class="mb-3">
+                                <label for="id_id_ModoUso" class="form-label">Modo de Uso</label>
+                                {{ form.id_ModoUso }}
+                                {% if form.id_ModoUso.errors %}
+                                    <div class="text-danger">{{ form.id_ModoUso.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <!-- Colores -->
+                            <div class="mb-3">
+                                <label for="id_colores" class="form-label">Colores</label>
+                                {{ form.colores }}
+                                {% if form.colores.errors %}
+                                    <div class="text-danger">{{ form.colores.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <!-- Creador -->
+                            <div class="mb-3">
+                                <label for="id_creador" class="form-label">Creador</label>
+                                {{ form.creador }}
+                                {% if form.creador.errors %}
+                                    <div class="text-danger">{{ form.creador.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <!-- Categoría -->
+                            <div class="mb-3">
+                                <label for="id_categoria" class="form-label">Categoría</label>
+                                {{ form.categoria }}
+                                {% if form.categoria.errors %}
+                                    <div class="text-danger">{{ form.categoria.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <!-- Imagen -->
+                            <div class="mb-3">
+                                <label for="id_imagen" class="form-label">Imagen</label>
+                                {{ form.imagen }}
+                                {% if form.imagen.errors %}
+                                    <div class="text-danger">{{ form.imagen.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <button type="reset" class="btn btn-primary">cancelar</button>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+      
+    </div>
+  </div>
+  {% endblock %}

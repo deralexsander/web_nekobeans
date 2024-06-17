@@ -24,64 +24,51 @@
           <h4>no te hagas pasar por otra persona ni uses datos ajenos! eso no esta nada cool.</h4>
         </div>
       </div>
-      <!-- validacion -->
-      <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center ">
-        <form class="w-75" onsubmit="return validarTrabajaConNosotros()" enctype="multipart/form-data" method="post"> <!-- para que ocupe todo el ancho -->
-          <h4 class="espacio-titulo-inicio fw-bold">Ingrese sus datos aquí.</h4>
-          <!-- 1 -->
-          <div class="mb-3">
-            <label for="nombre" class="form-label">Nombres</label>
-            <input type="text" class="form-control" id="nombre" name="nombre">
-            <div id="nombreError" class="text-danger"></div>
-          </div>
-          <!-- 2 -->
-          <div class="mb-3">
-            <label for="apellido" class="form-label">Apellidos</label>
-            <div class="row">
-              <div class="col">
-                <input type="text" class="form-control" id="apellido1" aria-label="primer apellido">
-                <div id="apellido1Error" class="text-danger"></div>
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" id="apellido2" aria-label="primer apellido">
-                <div id="apellido2Error" class="text-danger"></div>
-              </div>
+
+      <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
+        <form class="w-75" onsubmit="return validarTrabajaConNosotros()" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <h4 class="espacio-titulos fw-bold">Ingrese sus datos aquí.</h4>
+            <!-- Nombre -->
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombres</label>
+                {{ form.nombre }}
+                <div id="nombreError" class="text-danger"></div>
             </div>
-          </div>
-          <!-- 3 -->
-          <div class="mb-3">
-            <label for="rut" class="form-label">Rut</label>
-            <input type="text" class="form-control" id="rut" placeholder="Ej: 11111111-1" name="rut" onkeypress="return soloNumeros(event)">
-
-            <div id="rutError" class="text-danger"></div>
-          </div>
-
-          <!-- lo haremos con una API -->
-          <label for="categoriasSelect">Seleccione su región:</label>
-          <select id="categoriasSelect" class="form-select" name="categoriasSelect">
-            <option value="">Seleccione una región</option>
-            
-          </select>
-<div id="categoriasSelectError" class="text-danger"></div>
-          <!-- 4 -->
-          <div class="mb-3">
-            <label for="fecha">Seleccione su fecha de nacimiento:</label>
-            <input class="form-control" type="date" id="fecha" name="fecha">
-            <div id="fechaError" class="text-danger"></div>
-          </div>
-          
-
-          <!-- 2 -->
-          <div class="mb-3">
-            <label for="carnet" class="form-label">Adjuntar foto de carnet de identidad</label>
-            <input class="form-control" type="file" id="carnet" name="carnet">
-            <div id="carnetError" class="text-danger"></div>
-          </div>
-
-
-          <button type="submit" class="btn btn-primary">Enviar</button>
+            <!-- Apellidos -->
+            <div class="mb-3">
+                <label for="apellidos" class="form-label">Apellidos</label>
+                {{ form.apellidos }}
+                <div id="apellidosError" class="text-danger"></div>
+            </div>
+            <!-- Rut -->
+            <div class="mb-3">
+                <label for="rut" class="form-label">Rut</label>
+                {{ form.rut }}
+                <div id="rutError" class="text-danger"></div>
+            </div>
+            <!-- Región -->
+            <div class="mb-3">
+                <label for="categoriasSelect" class="form-label">Seleccione su región:</label>
+                {{ form.region }}
+                <div id="categoriasSelectError" class="text-danger"></div>
+            </div>
+            <!-- Fecha de Nacimiento -->
+            <div class="mb-3">
+                <label for="fecha" class="form-label">Seleccione su fecha de nacimiento:</label>
+                {{ form.fecha_nacimiento }}
+                <div id="fechaError" class="text-danger"></div>
+            </div>
+            <!-- Carnet -->
+            <div class="mb-3">
+                <label for="carnet" class="form-label">Adjuntar foto de carnet de identidad</label>
+                {{ form.carnet }}
+                <div id="carnetError" class="text-danger"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
-      </div>
+    </div>
+
     </div>
   </div>
 {% endblock %}

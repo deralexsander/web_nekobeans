@@ -25,19 +25,18 @@ class Usuario(models.Model):
     def __str__(self):
         return f"{self.nombre} {self.apellido_paterno}"
     
+tipo_uso = [
+        (1, 'broche'),
+        (2, 'colgante'),
+        (3, 'ambos'),
 
-class ModoUso(models.Model):
-    id_ModoUso = models.AutoField(db_column='idModoUso', primary_key=True)
-    ModoUso = models.CharField(max_length=20, blank=False, null=False)
-
-    def __str__(self):
-        return self.ModoUso
+]
 
 class Producto(models.Model):
     titulo = models.CharField(max_length=20)
     descripcion = models.CharField(max_length=100)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
-    id_ModoUso = models.ForeignKey(ModoUso, on_delete=models.CASCADE, db_column='idModoUso')
+    tipo_modo_uso = models.IntegerField(choices=tipo_uso, default=1)
     colores = models.CharField(max_length=200)  # Aumenta la longitud del campo para acomodar múltiples colores
     creador = models.CharField(max_length=20)
     categoria = models.CharField(max_length=20)
@@ -75,7 +74,7 @@ class Plantilla(models.Model):
     nombrePlantilla = models.CharField(max_length=20)
     imagen = models.ImageField(upload_to="productos", null=True)
     descripcion = models.CharField(max_length=100)
-    id_ModoUso = models.ForeignKey(ModoUso, on_delete=models.CASCADE, db_column='idModoUso')
+    tipo_modo_uso = models.IntegerField(choices=tipo_uso, default=1)
     categoria = models.CharField(max_length=50)
 
     def __str__(self):

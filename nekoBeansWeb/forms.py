@@ -26,7 +26,7 @@ class PlantillaForm(forms.ModelForm):
             'nombrePlantilla': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre '}),
             'imagen': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'descripcion': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Descripción'}),
-            'id_ModoUso': forms.Select(attrs={'class': 'form-select'}),
+            'tipo_modo_uso': forms.Select(attrs={'class': 'form-select'}),
             'categoria': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Categoría'}),
         }
 
@@ -51,7 +51,7 @@ class ProductoForm(forms.ModelForm):
             'titulo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Título'}),
             'descripcion': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Descripción'}),
             'precio': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Precio'}),
-            'id_ModoUso': forms.Select(attrs={'class': 'form-select'}),
+            'tipo_modo_uso': forms.Select(attrs={'class': 'form-select'}),
             'colores': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Colores separados por comas'}),
             'creador': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Creador'}),
             'categoria': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Categoría'}),

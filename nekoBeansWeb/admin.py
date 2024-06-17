@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Genero, Usuario, ModoUso, Producto, contacto, Plantilla, TrabajaConNosotros
+from .models import Genero, Usuario, Producto, contacto, Plantilla, TrabajaConNosotros
 
 
 # Register your models here.
@@ -12,13 +12,10 @@ class GeneroAdmin(admin.ModelAdmin):
 class UsuarioAdmin(admin.ModelAdmin):
     list_display = ('rut', 'nickname', 'nombre', 'apellido_paterno', 'apellido_materno', 'fecha_nacimiento', 'id_genero', 'telefono', 'email', 'direccion', 'user_verificado')
 
-@admin.register(ModoUso)
-class ModoUsoAdmin(admin.ModelAdmin):
-    list_display = ('id_ModoUso', 'ModoUso')
 
 @admin.register(Producto)
 class ProductoAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'descripcion', 'precio', 'id_ModoUso', 'colores', 'creador', 'categoria')
+    list_display = ('titulo', 'descripcion', 'precio', 'tipo_modo_uso', 'colores', 'creador', 'categoria')
 
 @admin.register(contacto)
 class ContactoAdmin(admin.ModelAdmin):
@@ -29,9 +26,9 @@ class ContactoAdmin(admin.ModelAdmin):
 
 @admin.register(Plantilla)
 class PlantillaAdmin(admin.ModelAdmin):
-    list_display = ('nombrePlantilla', 'id_ModoUso', 'categoria')
+    list_display = ('nombrePlantilla', 'tipo_modo_uso', 'categoria')
     search_fields = ('nombrePlantilla', 'categoria')
-    list_filter = ('id_ModoUso', 'categoria')
+    list_filter = ('tipo_modo_uso', 'categoria')
 
 @admin.register(TrabajaConNosotros)
 class TrabajaConNosotrosAdmin(admin.ModelAdmin):

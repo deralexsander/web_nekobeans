@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Genero(models.Model):
     id_genero = models.AutoField(db_column='idGenero', primary_key=True)
@@ -31,6 +32,17 @@ tipo_uso = [
     (3, 'Ambos'),
 ]
 
+class Plantilla(models.Model):
+    nombrePlantilla = models.CharField(max_length=20)
+    imagen = models.ImageField(upload_to="plantillas", null=True)
+    descripcion = models.CharField(max_length=100)
+    tipo_modo_uso = models.IntegerField(choices=tipo_uso, default=1)
+    categoria = models.CharField(max_length=50)
+    creador = models.ForeignKey(User, on_delete=models.CASCADE)  
+
+    def __str__(self):
+        return self.nombrePlantilla
+
 class Producto(models.Model):
     titulo = models.CharField(max_length=20)
     descripcion = models.CharField(max_length=100)
@@ -62,7 +74,7 @@ tipo_consulta = [
 ]
 
 
-class contacto(models.Model):
+class Contacto(models.Model):
     nombre = models.CharField(max_length=20)
     apellidos = models.CharField(max_length=20)
     email = models.EmailField()
@@ -71,19 +83,8 @@ class contacto(models.Model):
     mensaje = models.TextField()
 
     def __str__(self):
-        return self.nombre
+        return f'{self.nombre} {self.apellidos}'
     
-
-
-class Plantilla(models.Model):
-    nombrePlantilla = models.CharField(max_length=20)
-    imagen = models.ImageField(upload_to="productos", null=True)
-    descripcion = models.CharField(max_length=100)
-    tipo_modo_uso = models.IntegerField(choices=tipo_uso, default=1)
-    categoria = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.nombrePlantilla
 
 
 class TrabajaConNosotros(models.Model):
@@ -92,7 +93,8 @@ class TrabajaConNosotros(models.Model):
     rut = models.CharField(max_length=12)
     region = models.CharField(max_length=100)
     fecha_nacimiento = models.DateField()
-    carnet = models.ImageField(upload_to='carnets')
+    carnet = models.ImageField(upload_to='identi_carnet')
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.nombre} {self.apellidos}'

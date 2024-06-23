@@ -1,0 +1,35 @@
+{% extends 'nekoBeansWeb/narvar_footer.html' %}
+{% load static %}
+
+{% block nombrePag %}
+<title>Perfil</title>
+{% endblock %}
+
+{% block contenido %}
+<hr>
+<hr>
+
+<a class="nav-link me-4" href="{% url 'listar_productos'%}">
+    <button class="btnlogin">listar</button>
+</a>
+<a class="nav-link me-4" href="{% url 'logout'%}">
+    <button class="btnlogin">cerrar sesion</button>
+</a>
+<a class="nav-link me-4" href="{% url 'crear_producto'%}">
+    <button class="btnlogin">crear</button>
+</a>
+<a class="nav-link me-4" href="{% url 'listar_plantilla'%}">
+    <button class="btnlogin">listar plantilla</button>
+</a>
+
+{% if user.is_authenticated %}
+    <p>Usuario autenticado: {{ user.username }}</p>
+    {% if user.is_staff %}
+        <p>Usuario es administrador</p>
+    {% else %}
+        <p>Usuario no es administrador</p>
+    {% endif %}
+{% else %}
+    <p>Usuario no autenticado</p>
+{% endif %}
+{% endblock %}

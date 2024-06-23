@@ -1,11 +1,12 @@
 from django import forms
-from .models import contacto, Plantilla, TrabajaConNosotros, Producto
+from .models import Contacto, Plantilla, TrabajaConNosotros, Producto
+from django.contrib.auth.forms import UserCreationForm
 
 
 
-class ContactoForm(forms.ModelForm): 
+class ContactoForm(forms.ModelForm):
     class Meta:
-        model = contacto
+        model = Contacto
         fields = '__all__'
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre'}),
@@ -21,26 +22,26 @@ class ContactoForm(forms.ModelForm):
 class PlantillaForm(forms.ModelForm):
     class Meta:
         model = Plantilla
-        fields = '__all__'
+        fields = ['nombrePlantilla', 'imagen', 'descripcion', 'tipo_modo_uso', 'categoria']
         widgets = {
-            'nombrePlantilla': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre '}),
-            'imagen': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            'descripcion': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Descripción'}),
+            'nombrePlantilla': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre de tu plantilla'}),
+            'imagen': forms.FileInput(attrs={'class': 'form-control'}),
+            'descripcion': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Descripción/detalle de la plantilla (opcional)'}),
             'tipo_modo_uso': forms.Select(attrs={'class': 'form-select'}),
-            'categoria': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Categoría'}),
+            'categoria': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Categoria'}),
         }
 
 class TrabajaConNosotrosForm(forms.ModelForm):
     class Meta:
         model = TrabajaConNosotros
-        fields = '__all__'
+        fields = ['nombre', 'apellidos', 'rut', 'region', 'fecha_nacimiento', 'carnet']
         widgets = {
-            'nombre': forms.TextInput(attrs={'class': 'form-control', 'id': 'nombre'}),
-            'apellidos': forms.TextInput(attrs={'class': 'form-control', 'id': 'apellidos'}),
-            'rut': forms.TextInput(attrs={'class': 'form-control', 'id': 'rut', 'placeholder': 'Ej: 11111111-1'}),
-            'region': forms.Select(attrs={'class': 'form-select', 'id': 'categoriasSelect'}),
-            'fecha_nacimiento': forms.DateInput(attrs={'class': 'form-control', 'type': 'date', 'id': 'fecha'}),
-            'carnet': forms.ClearableFileInput(attrs={'class': 'form-control', 'id': 'carnet'}),
+            'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre'}),
+            'apellidos': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Apellidos'}),
+            'rut': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'RUT'}),
+            'region': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Región'}),
+            'fecha_nacimiento': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'carnet': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
 
 class ProductoForm(forms.ModelForm):
@@ -57,3 +58,6 @@ class ProductoForm(forms.ModelForm):
             'categoria': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Categoría'}),
             'imagen': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
+
+class CustomUserCreationForm(UserCreationForm):
+    pass

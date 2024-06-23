@@ -5,6 +5,13 @@
   background-color: rgba(255, 255, 255, 0.8);
 }
 
+.efecanrvar_admin {
+  background-color: white;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); 
+  background-color: rgba(224, 100, 100, 0.8);
+}
+
 
 .espacio-titulo-inicio-centro {
   padding: 135px 10px 100px;

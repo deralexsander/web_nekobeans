@@ -1,0 +1,65 @@
+{% extends 'nekoBeansWeb/narvar_footer.html' %}
+{% load static %}
+
+{% block nombrePag %}
+<title>Registro</title>
+{% endblock %}
+
+{% block contenido %}
+<!--bienvenida-------------------------------------------------------------------------------->
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center"> <!-- Alinea al centro en todos los dispositivos -->
+          <div class="espacio-titulo-inicio-centro fw-bold ">
+              <h2>Hola Bienvenid@!</h2>
+              <h1>al registro de</h1>
+              <img src="{% static 'nekoBeansWeb/photos/imagenes_NekoBeans/icon_logo/logo_gif.gif'%}" alt="gif_logo" style="max-width: 80%;" > <!-- Modificado el texto -->
+          </div>
+      </div>
+
+
+
+        <!-- registro ---------------------------------------------------------------------------------->
+        <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center"> <!-- Alinea al centro en todos los dispositivos -->
+            <form class="w-75" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="username" class="form-label">username</label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                  </div>
+                </div>
+        
+                <div class="mb-3">
+                    <label for="password1" class="form-label">Contraseña</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="password1" name="password1">
+                        <button class="btn btn-outline-secondary" type="button" id="togglePassword1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="password2" class="form-label">Confirmar Contraseña</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="password2" name="password2">
+                        <button class="btn btn-outline-secondary" type="button" id="togglePassword2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+                  <button type="submit" class="btn btn-primary">registrar</button>
+                </div>
+            </form>
+        </div>
+  </div>
+</div>
+{% endblock %}

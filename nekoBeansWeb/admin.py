@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Genero, Usuario, Producto, contacto, Plantilla, TrabajaConNosotros
+from .models import Genero, Usuario, Producto, Contacto, Plantilla, TrabajaConNosotros
 
 
 # Register your models here.
@@ -17,12 +17,11 @@ class UsuarioAdmin(admin.ModelAdmin):
 class ProductoAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'descripcion', 'precio', 'tipo_modo_uso', 'colores', 'creador', 'categoria')
 
-@admin.register(contacto)
+@admin.register(Contacto)
 class ContactoAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'apellidos', 'email', 'telefono', 'tipo_solicitud')
     search_fields = ('nombre', 'apellidos', 'email', 'telefono')
     list_filter = ('tipo_solicitud',)
-
 
 @admin.register(Plantilla)
 class PlantillaAdmin(admin.ModelAdmin):
@@ -32,5 +31,10 @@ class PlantillaAdmin(admin.ModelAdmin):
 
 @admin.register(TrabajaConNosotros)
 class TrabajaConNosotrosAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'apellidos', 'rut', 'region', 'fecha_nacimiento')
+    list_display = ('nombre', 'apellidos', 'rut', 'region', 'fecha_nacimiento', 'nombre_usuario')
     search_fields = ('nombre', 'apellidos', 'rut', 'region')
+
+    def nombre_usuario(self, obj):
+        return obj.usuario.username
+
+    nombre_usuario.short_description = 'Usuario'

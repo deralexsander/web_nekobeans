@@ -73,7 +73,11 @@
                             <!-- Creador -->
                             <div class="mb-3">
                                 <label for="id_creador" class="form-label">Creador</label>
-                                {{ form.creador }}
+                                {% if form.creador.value %}
+                                    {{ form.creador|attr:"disabled:disabled" }}
+                                {% else %}
+                                    {{ form.creador }}
+                                {% endif %}
                                 {% if form.creador.errors %}
                                     <div class="text-danger">{{ form.creador.errors }}</div>
                                 {% endif %}
@@ -90,11 +94,19 @@
                             <div class="mb-3">
                                 <label for="id_imagen" class="form-label">Imagen</label>
                                 {{ form.imagen }}
+                                {% if form.imagen.value %}
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <a href="{{ form.imagen.value.url }}" download="nombre_de_archivo.jpg" class="btn btn-outline-warning mt-2">Descargar Imagen</a>
+                                </div>
+                                <div class="alert alert-info mt-2">
+                                    Por favor, descargue la imagen y vuelva a introducirla en el campo Seleccionar archivo.
+                                </div>
+                                {% endif %}
                                 {% if form.imagen.errors %}
                                     <div class="text-danger">{{ form.imagen.errors }}</div>
                                 {% endif %}
                             </div>
-                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button type="submit" class="btn btn-success">Enviar</button>
                         </form>
                     </div>
                 </div>

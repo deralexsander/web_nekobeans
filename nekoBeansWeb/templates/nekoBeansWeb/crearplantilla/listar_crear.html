@@ -33,7 +33,7 @@
                             <td>{{ plantilla.categoria }}</td>
                             <td>{{ plantilla.creador.username }}</td>
                             <td>
-                                <a href="{% url 'crear_producto_con_plantilla' plantilla.id %}" class="btn btn-sm btn-danger">agregar</a>
+                                <a href="{% url 'crear_producto_con_plantilla' plantilla.id %}" class="btn btn-sm btn-success">agregar a productos</a>
                                 <a href="{% url 'eliminar_plantilla' plantilla.id %}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar esta plantilla?')">Eliminar</a>
                             </td>
                         </tr>

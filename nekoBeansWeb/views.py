@@ -122,6 +122,10 @@ def trabaja_con_nosotros(request):
 
     return render(request, 'nekoBeansWeb/trabajaconnosotros/trabaja_con_nosotros.html', data)
 
+from django.shortcuts import get_object_or_404, redirect, render
+from .forms import ProductoForm
+from .models import Plantilla
+
 def crear_producto(request, plantilla_id=None):
     plantilla = None
     initial_data = {}
@@ -132,22 +136,21 @@ def crear_producto(request, plantilla_id=None):
             'descripcion': plantilla.descripcion,
             'tipo_modo_uso': plantilla.tipo_modo_uso,
             'categoria': plantilla.categoria,
-            'creador': request.user  # Assuming 'creador' is a ForeignKey to User
-            # Add more fields as needed
+            'creador': plantilla.creador,
+            'imagen': plantilla.imagen  # Asegúrate de que este campo está aquí
         }
 
     if request.method == 'POST':
         formulario = ProductoForm(request.POST, request.FILES)
         if formulario.is_valid():
             producto = formulario.save(commit=False)
-            producto.creador = request.user  # Set the creator of the product
+            producto.creador = request.user
             producto.save()
-
-            # Delete the plantilla after creating the product
+            
             if plantilla:
                 plantilla.delete()
 
-            return redirect('listar_productos')  # Redirect to list of products after creation
+            return redirect('listar_productos')
     else:
         formulario = ProductoForm(initial=initial_data)
 
@@ -156,6 +159,7 @@ def crear_producto(request, plantilla_id=None):
     }
 
     return render(request, 'nekoBeansWeb/producto/agregar.html', data)
+
 
 def listar_productos(request):
     productos = Producto.objects.all() 

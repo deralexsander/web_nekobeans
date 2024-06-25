@@ -1,11 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.defaultfilters import floatformat
-from .models import Producto, Plantilla  
+from .models import Producto, Plantilla, Contacto, TrabajaConNosotros
 from .forms import ContactoForm, PlantillaForm, TrabajaConNosotrosForm, ProductoForm, CustomUserCreationForm
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import Group
 
 
 def inicio(request):
@@ -199,4 +197,28 @@ def eliminar_plantilla(request, id):
     return redirect('listar_plantilla')
 
 
+def lista_comentarios(request):
+    contactos = Contacto.objects.all() 
+    data = {
+        'contactos': contactos
+    }
+    return render(request, 'nekoBeansWeb/comentarios/lista_contacto.html', data)
 
+def eliminar_contacto(request, id):
+    contacto = get_object_or_404(Contacto, id=id)
+    contacto.delete()
+    return redirect('lista_comentarios')
+
+
+def listar_peticiones(request):
+    peticiones = TrabajaConNosotros.objects.all() 
+    data = {
+        'peticiones': peticiones
+    }
+    return render(request, 'nekoBeansWeb/trabajaconnosotros/lista_peticiones.html', data)
+
+
+def eliminar_peticiones(request, id):
+    peticion = get_object_or_404(TrabajaConNosotros, id=id)
+    peticion.delete()
+    return redirect('lista_peticiones')

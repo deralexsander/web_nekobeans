@@ -1,0 +1,51 @@
+{% extends 'nekoBeansWeb/narvar_footer.html' %}
+{% load static %}
+
+{% block nombrePag %}
+<title>Lista de Contactos</title>
+{% endblock %}
+
+{% block contenido %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="espacio-titulos">Lista de Contactos</h4>
+            <div class="table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellidos</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Tipo de Solicitud</th>
+                            <th scope="col">Mensaje</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contacto in contactos %}
+                        <tr>
+                            <td>{{ contacto.nombre }}</td>
+                            <td>{{ contacto.apellidos }}</td>
+                            <td>{{ contacto.email }}</td>
+                            <td>{{ contacto.telefono }}</td>
+                            <td>{{ contacto.get_tipo_solicitud_display }}</td>
+                            <td class="mensaje-column">{{ contacto.mensaje|linebreaksbr }}</td>
+                            <td>
+                                <a href="mailto:{{ contacto.email }}?subject=Respuesta%20a%20tu%20{{ contacto.get_tipo_solicitud_display }}" class="btn btn-sm btn-primary">Responder</a>
+                                <a href="{% url 'eliminar_contacto' contacto.id %}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este mensaje?')">Eliminar</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="7" class="text-center">No hay contactos disponibles.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

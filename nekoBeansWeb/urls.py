@@ -4,13 +4,14 @@ from .views import (
     problemas_pedido, productos, registro, servicio_pedido, 
     trabaja_con_nosotros, crear_producto, listar_productos, 
     modificar_producto, eliminar_producto, perfil, listar_plantilla,
-    eliminar_plantilla
+    eliminar_plantilla, lista_comentarios, eliminar_contacto, listar_peticiones, eliminar_peticiones
 )
 
 urlpatterns = [
     path('inicio/', inicio, name="inicio"),
     path('carrito/', carrito, name="carrito"),
     path('comentarios/', comentarios, name="comentarios"),
+    path('lista-comentarios/', lista_comentarios, name="lista_comentarios"),
     path('como_funciona/', como_funciona, name="como_funciona"),
     path('crear/', crear, name="crear"),
     path('listar-plantilla/', listar_plantilla, name='listar_plantilla'),
@@ -27,4 +28,8 @@ urlpatterns = [
     path('modificar-producto/<int:id>/', modificar_producto, name='modificar_producto'),
     path('eliminar-producto/<int:id>/', eliminar_producto, name='eliminar_producto'),
     path('eliminar-plantilla/<int:id>/', eliminar_plantilla, name='eliminar_plantilla'),
+    path('eliminar-contacto/<int:id>/', eliminar_contacto, name='eliminar_contacto'),
+    path('lista-peticiones/', listar_peticiones, name='lista_peticiones'),
+    path('eliminar-peticiones/<int:id>/', eliminar_peticiones, name='eliminar_peticiones'),
+
 ]

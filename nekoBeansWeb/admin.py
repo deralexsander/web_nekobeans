@@ -38,3 +38,4 @@ class TrabajaConNosotrosAdmin(admin.ModelAdmin):
         return obj.usuario.username
 
     nombre_usuario.short_description = 'Usuario'
+

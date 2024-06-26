@@ -4,11 +4,13 @@ from .models import Producto, Plantilla, Contacto, TrabajaConNosotros
 from .forms import ContactoForm, PlantillaForm, TrabajaConNosotrosForm, ProductoForm, CustomUserCreationForm
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required, permission_required
 
 
 def inicio(request):
     return render(request, 'nekoBeansWeb/inicio.html')
     
+@login_required
 def crear(request):
     if request.method == 'POST':
         formulario = PlantillaForm(request.POST, request.FILES)
@@ -26,8 +28,7 @@ def crear(request):
 
     return render(request, 'nekoBeansWeb/crearplantilla/crear.html', data)
 
-
-
+@permission_required('nekoBeansWeb.view_plantilla')
 def listar_plantilla(request):
     plantillas = Plantilla.objects.all() 
     data = {
@@ -35,11 +36,11 @@ def listar_plantilla(request):
     }
     return render(request, 'nekoBeansWeb/crearplantilla/listar_crear.html', data)
 
-
-
+@login_required
 def carrito(request):
     return render(request, 'nekoBeansWeb/carrito.html')
 
+@login_required
 def comentarios(request):
     data = {
         'form': ContactoForm()
@@ -55,14 +56,18 @@ def comentarios(request):
 
     return render(request, 'nekoBeansWeb/comentarios/comentarios.html', data)
 
+
 def como_funciona(request):
     return render(request, 'nekoBeansWeb/como_funciona.html')
 
+@login_required
 def perfil(request):
     return render(request, 'nekoBeansWeb/perfil.html')
 
+
 def login(request):
     return render(request, 'registration/login.html')
+
 
 def problemas_pedido(request):
     return render(request, 'nekoBeansWeb/problemas_pedido.html')
@@ -78,6 +83,7 @@ def productos(request):
         'productos': productos
     }
     return render(request, 'nekoBeansWeb/productos.html', data)
+
 
 def registro(request):
     data = {
@@ -97,12 +103,10 @@ def registro(request):
     return render(request, 'registration/registro.html', data)
 
 
-
 def servicio_pedido(request):
     return render(request, 'nekoBeansWeb/servicio_pedido.html')
 
-
-
+@login_required
 def trabaja_con_nosotros(request):
     data = {
         'form': TrabajaConNosotrosForm()
@@ -120,10 +124,7 @@ def trabaja_con_nosotros(request):
 
     return render(request, 'nekoBeansWeb/trabajaconnosotros/trabaja_con_nosotros.html', data)
 
-from django.shortcuts import get_object_or_404, redirect, render
-from .forms import ProductoForm
-from .models import Plantilla
-
+@permission_required('nekoBeansWeb.add_producto')
 def crear_producto(request, plantilla_id=None):
     plantilla = None
     initial_data = {}
@@ -158,7 +159,7 @@ def crear_producto(request, plantilla_id=None):
 
     return render(request, 'nekoBeansWeb/producto/agregar.html', data)
 
-
+@permission_required('nekoBeansWeb.view_producto')
 def listar_productos(request):
     productos = Producto.objects.all() 
     data = {
@@ -166,8 +167,7 @@ def listar_productos(request):
     }
     return render(request, 'nekoBeansWeb/producto/listar.html', data)
 
-
-
+@permission_required('nekoBeansWeb.change_producto')
 def modificar_producto(request, id):
     producto = get_object_or_404(Producto, id=id)
 
@@ -186,17 +186,19 @@ def modificar_producto(request, id):
 
     return render(request, 'nekoBeansWeb/producto/modificar.html', data)
 
+@permission_required('nekoBeansWeb.delete_producto')
 def eliminar_producto(request, id):
     producto = get_object_or_404(Producto, id=id)
     producto.delete()
     return redirect('listar_productos')
 
+@permission_required('nekoBeansWeb.delete_plantilla')
 def eliminar_plantilla(request, id):
     plantilla = get_object_or_404(Plantilla, id=id)
     plantilla.delete()
     return redirect('listar_plantilla')
 
-
+@permission_required('nekoBeansWeb.view_comentarios')
 def lista_comentarios(request):
     contactos = Contacto.objects.all() 
     data = {
@@ -204,12 +206,13 @@ def lista_comentarios(request):
     }
     return render(request, 'nekoBeansWeb/comentarios/lista_contacto.html', data)
 
+@permission_required('nekoBeansWeb.delete_contacto')
 def eliminar_contacto(request, id):
     contacto = get_object_or_404(Contacto, id=id)
     contacto.delete()
     return redirect('lista_comentarios')
 
-
+@permission_required('nekoBeansWeb.view_trabajaconnosotros')
 def listar_peticiones(request):
     peticiones = TrabajaConNosotros.objects.all() 
     data = {
@@ -217,8 +220,9 @@ def listar_peticiones(request):
     }
     return render(request, 'nekoBeansWeb/trabajaconnosotros/lista_peticiones.html', data)
 
-
+@permission_required('nekoBeansWeb.delete_trabajaconnosotros')
 def eliminar_peticiones(request, id):
     peticion = get_object_or_404(TrabajaConNosotros, id=id)
     peticion.delete()
     return redirect('lista_peticiones')
+

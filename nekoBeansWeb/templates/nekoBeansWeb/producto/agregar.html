@@ -73,11 +73,7 @@
                             <!-- Creador -->
                             <div class="mb-3">
                                 <label for="id_creador" class="form-label">Creador</label>
-                                {% if form.creador.value %}
-                                    {{ form.creador|attr:"disabled:disabled" }}
-                                {% else %}
-                                    {{ form.creador }}
-                                {% endif %}
+                                {{ form.creador }}
                                 {% if form.creador.errors %}
                                     <div class="text-danger">{{ form.creador.errors }}</div>
                                 {% endif %}

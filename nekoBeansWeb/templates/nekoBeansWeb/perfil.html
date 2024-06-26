@@ -8,36 +8,46 @@
 {% block contenido %}
 <hr>
 <hr>
-
+{% if perms.nekoBeansWeb.view_producto %}
 <a class="nav-link me-4" href="{% url 'listar_productos'%}">
     <button class="btnlogin">listar producto</button>
 </a>
+{%endif%}
+
 <a class="nav-link me-4" href="{% url 'logout'%}">
     <button class="btnlogin">cerrar sesion</button>
 </a>
-<a class="nav-link me-4" href="{% url 'crear_producto'%}">
-    <button class="btnlogin">crear producto</button>
-</a>
+
+{% if perms.nekoBeansWeb.view_plantilla %}
 <a class="nav-link me-4" href="{% url 'listar_plantilla'%}">
     <button class="btnlogin">listar plantilla</button>
 </a>
+{%endif%}
 
+{% if perms.nekoBeansWeb.view_comentarios %}
 <a class="nav-link me-4" href="{% url 'lista_comentarios'%}">
     <button class="btnlogin">lista comentarios</button>
 </a>
+{%endif%}
+
+{% if perms.nekoBeansWeb.view_trabajaconnosotros %}
 <a class="nav-link me-4" href="{% url 'lista_peticiones' %}">
     <button class="btnlogin">Listar Peticiones</button>
 </a>
+{%endif%}
 
 
 {% if user.is_authenticated %}
     <p>Usuario autenticado: {{ user.username }}</p>
     {% if user.is_staff %}
         <p>Usuario es administrador</p>
-    {% else %}
+    {% else%}
         <p>Usuario no es administrador</p>
     {% endif %}
 {% else %}
     <p>Usuario no autenticado</p>
 {% endif %}
+
+
+
 {% endblock %}

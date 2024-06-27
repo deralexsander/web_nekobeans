@@ -65,8 +65,24 @@ def perfil(request):
     return render(request, 'nekoBeansWeb/perfil.html')
 
 
+
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+
 def login(request):
-    return render(request, 'registration/login.html')
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('inicio')  # Cambia 'home' por la URL a la que quieras redirigir después del inicio de sesión
+        else:
+            messages.warning(request, 'Usuario o contraseña incorrectos')
+    return render(request, 'nekoBeansWeb/login.html')
+
+
 
 
 def problemas_pedido(request):
@@ -95,7 +111,7 @@ def registro(request):
         if formulario.is_valid():
             formulario.save()
             user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
-            django_login(request, user)  # Utilizamos 'django_login' en lugar de 'login'
+            django_login(request, user) 
             messages.success(request, "te has registrado con exito!")
             return redirect(to="inicio")
         data["form"] = formulario

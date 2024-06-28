@@ -18,6 +18,7 @@ def crear(request):
             plantilla = formulario.save(commit=False)
             plantilla.creador = request.user  
             plantilla.save()
+            messages.success(request, "¡Has publicado tu creación con éxito!")
             return redirect('crear')  
     else:
         formulario = PlantillaForm()
@@ -50,7 +51,7 @@ def comentarios(request):
         formulario = ContactoForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-            data["mensaje"] = "Tu mensaje ha sido guardado con éxito"
+            messages.success(request, "Tu mensaje ha sido guardado con éxito")
         else:
             data["form"] = formulario
 
@@ -65,21 +66,16 @@ def perfil(request):
     return render(request, 'nekoBeansWeb/perfil.html')
 
 
-
-from django.contrib import messages
-from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
-
 def login(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST.get('username')
+        password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('inicio')  # Cambia 'home' por la URL a la que quieras redirigir después del inicio de sesión
+            return redirect('inicio')  # Redirige a la página de inicio después del inicio de sesión exitoso
         else:
-            messages.warning(request, 'Usuario o contraseña incorrectos')
+            messages.warning(request, 'Usuario o contraseña incorrectos')  # Muestra un mensaje de advertencia
     return render(request, 'nekoBeansWeb/login.html')
 
 
@@ -112,7 +108,7 @@ def registro(request):
             formulario.save()
             user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
             django_login(request, user) 
-            messages.success(request, "te has registrado con exito!")
+            messages.success(request, "¡Te has registrado con éxito!")
             return redirect(to="inicio")
         data["form"] = formulario
 
@@ -134,6 +130,7 @@ def trabaja_con_nosotros(request):
             trabaja_con_nosotros_instance = formulario.save(commit=False)
             trabaja_con_nosotros_instance.usuario = request.user
             trabaja_con_nosotros_instance.save()
+            messages.success(request, "¡Te has registrado con éxito!")
             return redirect('trabaja_con_nosotros')
         else:
             data['form'] = formulario
@@ -152,7 +149,7 @@ def crear_producto(request, plantilla_id=None):
             'tipo_modo_uso': plantilla.tipo_modo_uso,
             'categoria': plantilla.categoria,
             'creador': plantilla.creador,
-            'imagen': plantilla.imagen  # Asegúrate de que este campo está aquí
+            'imagen': plantilla.imagen
         }
 
     if request.method == 'POST':
@@ -161,6 +158,7 @@ def crear_producto(request, plantilla_id=None):
             producto = formulario.save(commit=False)
             producto.creador = request.user
             producto.save()
+            messages.success(request, "¡Agregado con éxito!")
             
             if plantilla:
                 plantilla.delete()
@@ -191,6 +189,7 @@ def modificar_producto(request, id):
         formulario = ProductoForm(data=request.POST, instance=producto, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "¡Modificaste el producto con éxito!")
             return redirect('listar_productos')
     else:
         formulario = ProductoForm(instance=producto)

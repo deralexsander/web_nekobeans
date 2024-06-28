@@ -12,7 +12,7 @@ class ContactoForm(forms.ModelForm):
             'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre'}),
             'apellidos': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Apellidos'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'ejemplo@gmail.com'}),
-            'telefono': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '911111111', 'onkeypress': 'return soloNumeros(event)'}),
+            'telefono': forms.TextInput(attrs={'class': 'form-control', 'pattern': '[0-9\-]*', 'placeholder': '911111111', 'onkeypress': 'return soloNumeros(event)'}),
             'tipo_solicitud': forms.Select(attrs={'class': 'form-select'}),
             'mensaje': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         }
@@ -26,7 +26,7 @@ class PlantillaForm(forms.ModelForm):
         widgets = {
             'nombrePlantilla': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre de tu plantilla'}),
             'imagen': forms.FileInput(attrs={'class': 'form-control'}),
-            'descripcion': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Descripción/detalle de la plantilla (opcional)'}),
+            'descripcion': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Descripción/detalle de la plantilla'}),
             'tipo_modo_uso': forms.Select(attrs={'class': 'form-select'}),
             'categoria': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Categoria'}),
         }
@@ -38,7 +38,7 @@ class TrabajaConNosotrosForm(forms.ModelForm):
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre'}),
             'apellidos': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Apellidos'}),
-            'rut': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'RUT'}),
+            'rut': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'RUT', 'pattern': '[0-9\-]*', 'title': 'Debe contener solo números'}),
             'region': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Región'}),
             'fecha_nacimiento': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'carnet': forms.ClearableFileInput(attrs={'class': 'form-control'}),

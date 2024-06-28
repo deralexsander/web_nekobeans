@@ -32,7 +32,7 @@
                     {{ form.imagen }}
                 </div>
                 <div class="mb-3">
-                    <label for="id_descripcion" class="form-label">Descripción/detalle de la plantilla (opcional)</label>
+                    <label for="id_descripcion" class="form-label">Descripción/detalle de la plantilla</label>
                     {{ form.descripcion }}
                     {% if form.descripcion.errors %}
                         <div class="text-danger">
@@ -61,4 +61,14 @@
         </div>
     </div>
 </div>
+{% if messages %}
+{% for message in messages %}
+<script>
+    Swal.fire({
+  text: "{{ message }}",
+  icon: "success"
+});
+</script>
+{% endfor %}
+{% endif %}
 {% endblock %}

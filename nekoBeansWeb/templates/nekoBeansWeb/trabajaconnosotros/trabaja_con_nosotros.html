@@ -2,73 +2,107 @@
 {% load static %}
 
 {% block nombrePag %}
-<title>chambear con nosotros</title>
+<title>Chambear con nosotros</title>
 {% endblock %}
 
 {% block contenido %}
   <!-- Contenido principal -->
-  <div class="container-fluid mt-4 ">
+  <div class="container-fluid mt-4">
     <div class="row">
-      <div class="col-md-6 col-sm-12 d-flex espacio-titulo-inicio-centro ">
-        <!-- Alinea al centro en todos los dispositivos -->
+      <div class="col-md-6 col-sm-12 d-flex espacio-titulo-inicio-centro">
         <div class="espacio-titulos-centro fw-bolder">
           <h2>Únete a nuestro equipo</h2>
           <div>
-            <h4 class="fw-bold">¿Quieres formar parte de nuestro equipo? Descubre cómo puedes trabajar con nosotros.
-            </h4>
+            <h4 class="fw-bold">¿Quieres formar parte de nuestro equipo? Descubre cómo puedes trabajar con nosotros.</h4>
           </div>
           <img class="tamanologos espacio-titulo-inicio deslizandocondegradado"
             src="{% static 'nekoBeansWeb/photos/imagenes_NekoBeans/icon_logo/logo_trabaja_nosotros.png'%}" alt="icon">
-          <!-- Modificado el texto -->
           <h5 style="color: red;">ADVERTENCIA!</h5>
           <h4>no te hagas pasar por otra persona ni uses datos ajenos! eso no esta nada cool.</h4>
         </div>
       </div>
 
       <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
-        <form class="w-75" onsubmit="return validarTrabajaConNosotros()" enctype="multipart/form-data" method="post">
-            {% csrf_token %}
-            <h4 class="espacio-titulos fw-bold">Ingrese sus datos aquí.</h4>
-            <!-- Nombre -->
-            <div class="mb-3">
-                <label for="nombre" class="form-label">Nombres</label>
-                {{ form.nombre }}
-                <div id="nombreError" class="text-danger"></div>
-            </div>
-            <!-- Apellidos -->
-            <div class="mb-3">
-                <label for="apellidos" class="form-label">Apellidos</label>
-                {{ form.apellidos }}
-                <div id="apellidosError" class="text-danger"></div>
-            </div>
-            <!-- Rut -->
-            <div class="mb-3">
-                <label for="rut" class="form-label">Rut</label>
-                {{ form.rut }}
-                <div id="rutError" class="text-danger"></div>
-            </div>
-            <!-- Región -->
-            <div class="mb-3">
-                <label for="categoriasSelect" class="form-label">Seleccione su región:</label>
-                {{ form.region }}
-                <div id="categoriasSelectError" class="text-danger"></div>
-            </div>
-            <!-- Fecha de Nacimiento -->
-            <div class="mb-3">
-                <label for="fecha" class="form-label">Seleccione su fecha de nacimiento:</label>
-                {{ form.fecha_nacimiento }}
-                <div id="fechaError" class="text-danger"></div>
-            </div>
-            <!-- Carnet -->
-            <div class="mb-3">
-                <label for="carnet" class="form-label">Adjuntar foto de carnet de identidad</label>
-                {{ form.carnet }}
-                <div id="carnetError" class="text-danger"></div>
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+        <form id="formularioTrabaja" class="w-75" onsubmit="return validarTrabajaConNosotros()" enctype="multipart/form-data" method="post">
+          {% csrf_token %}
+          <h4 class="espacio-titulos fw-bold">Ingrese sus datos aquí.</h4>
+          <!-- Nombre -->
+          <div class="mb-3">
+            <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombres</label>
+            {{ form.nombre }}
+            <div id="nombreError" class="text-danger"></div>
+          </div>
+          <!-- Apellidos -->
+          <div class="mb-3">
+            <label for="{{ form.apellidos.id_for_label }}" class="form-label">Apellidos</label>
+            {{ form.apellidos }}
+            <div id="apellidosError" class="text-danger"></div>
+          </div>
+          <!-- Rut -->
+          <div class="mb-3">
+            <label for="{{ form.rut.id_for_label }}" class="form-label">Rut</label>
+            {{ form.rut }}
+            <div id="rutError" class="text-danger"></div>
+          </div>
+          <!-- Región -->
+          <div class="mb-3">
+            <label for="{{ form.region.id_for_label }}" class="form-label">Seleccione su región:</label>
+            {{ form.region }}
+            <div id="regionError" class="text-danger"></div>
+          </div>
+          <!-- Fecha de Nacimiento -->
+          <div class="mb-3">
+            <label for="{{ form.fecha_nacimiento.id_for_label }}" class="form-label">Seleccione su fecha de nacimiento:</label>
+            {{ form.fecha_nacimiento }}
+            <div id="fechaError" class="text-danger"></div>
+          </div>
+          <!-- Carnet -->
+          <div class="mb-3">
+            <label for="{{ form.carnet.id_for_label }}" class="form-label">Adjuntar foto de carnet de identidad</label>
+            {{ form.carnet }}
+            <div id="carnetError" class="text-danger"></div>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
-    </div>
-
+      </div>
     </div>
   </div>
+
+  {% if messages %}
+{% for message in messages %}
+<script>
+    Swal.fire({
+  text: "{{ message }}",
+  icon: "success"
+});
+</script>
+{% endfor %}
+{% endif %}
+
+  <script>
+    function validarTrabajaConNosotros() {
+
+      var fecha = document.getElementById("{{ form.fecha_nacimiento.id_for_label }}").value.trim();
+
+      var fechaError = document.getElementById("fechaError");
+
+
+      var hayErrores = false;
+
+      if (fecha === "" || !/^\d{4}-\d{2}-\d{2}$/.test(fecha)) {
+        fechaError.textContent = "Por favor, ingrese una fecha válida en formato yyyy-mm-dd.";
+        hayErrores = true;
+      }
+
+      return !hayErrores; 
+    }
+
+    // Event listener para limpiar errores al escribir en los campos
+    var campos = ["{{ form.fecha_nacimiento.id_for_label }}"];
+    campos.forEach(function(campo) {
+      document.getElementById(campo).addEventListener("input", function() {
+        document.getElementById(campo + "Error").textContent = "";
+      });
+    });
+  </script>
 {% endblock %}

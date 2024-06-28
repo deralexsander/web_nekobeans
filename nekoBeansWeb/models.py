@@ -29,7 +29,6 @@ class Usuario(models.Model):
 tipo_uso = [
     (1, 'Broche'),
     (2, 'Colgante'),
-    (3, 'Ambos'),
 ]
 
 class Plantilla(models.Model):
@@ -90,7 +89,7 @@ class Contacto(models.Model):
 class TrabajaConNosotros(models.Model):
     nombre = models.CharField(max_length=100)
     apellidos = models.CharField(max_length=100)
-    rut = models.CharField(max_length=12)
+    rut = models.CharField(max_length=12, verbose_name='RUT')
     region = models.CharField(max_length=100)
     fecha_nacimiento = models.DateField()
     carnet = models.ImageField(upload_to='identi_carnet')

@@ -1,6 +1,7 @@
 {% extends 'nekoBeansWeb/narvar_footer.html' %}
 {% load static %}
 
+
 {% block nombrePag %}
 <title>Inicio Sesión</title>
 {% endblock %}
@@ -44,9 +45,8 @@
               </svg>
             </button>
           </div>
-          <div id="passwordError" class="form-text text-danger"></div>
+          <div id="passwordError" class="form-text text-danger"></div>      
         </div>
-
         <div class="d-grid gap-2 d-md-flex justify-content-md-between">
           <button type="submit" class="btn btn-primary me-md-2">Iniciar sesión</button>
           <a href="{% url 'registro' %}" class="btn btn-secondary">Registrarse</a>
@@ -55,4 +55,6 @@
     </div>
   </div>
 </div>
+
+
 {% endblock %}

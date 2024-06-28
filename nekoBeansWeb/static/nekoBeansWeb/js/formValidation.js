@@ -41,128 +41,66 @@ function togglePasswordVisibility() {
     }
 }
 
-
-    
 function validarTrabajaConNosotros() {
-    var nombre = document.getElementById("nombre").value;
-    var apellido1 = document.getElementById("apellido1").value;
-    var apellido2 = document.getElementById("apellido2").value;
-    var carnet = document.getElementById("carnet").value;
-    var fecha = document.getElementById("fecha").value;
-    var categoriasSelect = document.getElementById("categoriasSelect").value;
-  
-    var rutInput = document.getElementById("rut");
-    var nombreError = document.getElementById("nombreError");
-    var apellido1Error = document.getElementById("apellido1Error");
-    var apellido2Error = document.getElementById("apellido2Error");
-    var rutError = document.getElementById("rutError");
-    var carnetError = document.getElementById("carnetError");
-    var fechaError = document.getElementById("fechaError");
-    var categoriasSelectError = document.getElementById("categoriasSelectError");
+  var nombre = document.getElementById("{{ form.nombre.id_for_label }}").value.trim();
+  var apellido1 = document.getElementById("{{ form.apellidos.id_for_label }}").value.trim();
+  var rut = document.getElementById("{{ form.rut.id_for_label }}").value.trim();
+  var region = document.getElementById("{{ form.region.id_for_label }}").value.trim();
+  var fecha = document.getElementById("{{ form.fecha_nacimiento.id_for_label }}").value.trim();
+  var carnet = document.getElementById("{{ form.carnet.id_for_label }}").value.trim();
 
+  var nombreError = document.getElementById("nombreError");
+  var apellido1Error = document.getElementById("apellidosError");
+  var rutError = document.getElementById("rutError");
+  var regionError = document.getElementById("regionError");
+  var fechaError = document.getElementById("fechaError");
+  var carnetError = document.getElementById("carnetError");
 
+  var hayErrores = false;
 
-   
-        // Verificar si la fecha está en el formato dd-mm-yyyy
-    
-        /*
-        document.getElementById("passwordError"): 
-        Esta parte del código obtiene el elemento HTML que tiene el ID "passwordError". Este elemento probablemente es un mensaje de error asociado al 
-        campo de contraseña en un formulario.
-        .addEventListener("input", function(){ ... }): 
-        Esta línea agrega un event listener al elemento obtenido en el paso anterior. Este event listener está configurado para escuchar el evento "input",
-        que se activa cada vez que se ingresa texto en el campo asociado. Cuando se dispara este evento, se ejecuta la función anónima definida dentro de los corchetes.
-        function(){ document.getElementById("passwordError").textContent = ""; }: 
-        Esta es la función anónima que se ejecuta cuando se dispara el evento "input". Lo que hace esta función es seleccionar nuevamente el elemento con el ID "passwordError" 
-        y establecer su contenido de texto (textContent) en una cadena vacía. En otras palabras, borra el contenido de texto del elemento "passwordError".
+  if (nombre === "") {
+    nombreError.textContent = "Por favor, ingrese su nombre.";
+    hayErrores = true;
+  }
 
-        */
+  if (apellido1 === "") {
+    apellido1Error.textContent = "Por favor, ingrese su apellido paterno";
+    hayErrores = true;
+  }
 
-        document.getElementById("categoriasSelect").addEventListener("input", function() {
-            categoriasSelectError.textContent = "";
-        });
+  if (rut === "") {
+    rutError.textContent = "Por favor, ingrese su RUT.";
+    hayErrores = true;
+  } else if (rut.length < 10 || rut.length > 12) {
+    rutError.textContent = "El RUT debe tener entre 10 y 12 caracteres.";
+    hayErrores = true;
+  }
 
+  if (region === "") {
+    regionError.textContent = "Por favor, seleccione una región.";
+    hayErrores = true;
+  }
 
-    document.getElementById("nombre").addEventListener("input", function() {
-        nombreError.textContent = "";
-    });
+  if (fecha === "" || !/^\d{4}-\d{2}-\d{2}$/.test(fecha)) {
+    fechaError.textContent = "Por favor, ingrese una fecha válida en formato yyyy-mm-dd.";
+    hayErrores = true;
+  }
 
-    document.getElementById("carnet").addEventListener("input", function() {
-        carnetError.textContent = "";
-    });
+  if (carnet === "") {
+    carnetError.textContent = "Por favor, adjunte su foto de carnet.";
+    hayErrores = true;
+  }
 
-    document.getElementById("categoriasSelect").addEventListener("input", function() {
-        categoriasSelectError.textContent = "";
-    });
-
-    document.getElementById("fecha").addEventListener("input", function() {
-        fechaError.textContent = "";
-    });
-
-    document.getElementById("rut").addEventListener("input", function() {
-        rutError.textContent = "";
-        
-
-    // Validar longitud del RUT y mostrar mensaje de error si es necesario
-        
-    });
-
-    document.getElementById("apellido1").addEventListener("input", function() {
-        apellido1Error.textContent = "";
-    });
-
-    document.getElementById("apellido2").addEventListener("input", function() {
-        apellido2Error.textContent = "";
-    });
-
-    var hayErrores = false;
-
-    if (nombre.trim() === "") {
-        nombreError.textContent = "Por favor, ingrese su nombre.";
-        hayErrores = true;
-    }
-
-    if (apellido1.trim() === "") {
-        apellido1Error.textContent = "Por favor, ingrese su apellido paterno";
-        hayErrores = true;
-    }
-
-    if (apellido2.trim() === "") {
-        apellido2Error.textContent = "Por favor, ingrese su apellido materno";
-        hayErrores = true;
-    }
-
-    
-    var rut = rutInput.value.replace(/\D/g, '');
-    var rut = rutInput.value;
-    if (rutInput.value.trim() === "") {
-        rutError.textContent = "Por favor, ingrese su RUT.";
-        hayErrores = true;
-    } else if (rut.length < 10) {
-        rutError.textContent = "El RUT debe tener al menos 10 caracteres.";
-        hayErrores = true;
-    } else if (rut.length > 12) {
-        rutError.textContent = "El RUT no puede tener más de 12 caracteres.";
-        hayErrores = true;
-    }
-
-    if (carnet.trim() === "") {
-        carnetError.textContent = "Por favor, ingrese su foto de carnet.";
-        hayErrores = true;
-    }
-
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(fecha)) {
-        fechaError.textContent = "Por favor, ingrese su fecha de nacimiento";
-        hayErrores = true;
-    }
-
-    if (categoriasSelect.trim() === "") {
-        categoriasSelectError.textContent = "Por favor, seleccione una región.";
-        hayErrores = true;
-    }
-
-    return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un error
+  return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un error
 }
+
+// Event listener para limpiar errores al escribir en los campos
+var campos = ["{{ form.nombre.id_for_label }}", "{{ form.apellidos.id_for_label }}", "{{ form.rut.id_for_label }}", "{{ form.region.id_for_label }}", "{{ form.fecha_nacimiento.id_for_label }}", "{{ form.carnet.id_for_label }}"];
+campos.forEach(function(campo) {
+  document.getElementById(campo).addEventListener("input", function() {
+    document.getElementById(campo + "Error").textContent = "";
+  });
+});
 
 
 function validarRegistros(event) {
@@ -212,47 +150,6 @@ function validarRegistros(event) {
 
     return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un error
 }
-
-// Mostrar/Ocultar contraseñas
-document.getElementById("togglePassword1").addEventListener("click", function() {
-    var password1 = document.getElementById("password1");
-    if (password1.type === "password") {
-        password1.type = "text";
-    } else {
-        password1.type = "password";
-    }
-});
-
-document.getElementById("togglePassword2").addEventListener("click", function() {
-    var password2 = document.getElementById("password2");
-    if (password2.type === "password") {
-        password2.type = "text";
-    } else {
-        password2.type = "password";
-    }
-});
-
-
-
-// Mostrar/Ocultar contraseñas
-document.getElementById("togglePassword1").addEventListener("click", function() {
-    var password1 = document.getElementById("password1");
-    if (password1.type === "password") {
-        password1.type = "text";
-    } else {
-        password1.type = "password";
-    }
-});
-
-document.getElementById("togglePassword2").addEventListener("click", function() {
-    var password2 = document.getElementById("password2");
-    if (password2.type === "password") {
-        password2.type = "text";
-    } else {
-        password2.type = "password";
-    }
-});
-
 
 
 
@@ -321,25 +218,6 @@ return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un
 }
 
 
-
-
-function soloNumeros(event) {
-    // Obtiene el código de la tecla presionada
-    var codigoTecla = event.keyCode ? event.keyCode : event.which;
-
-    // Permite las teclas de control como "Enter" y "Backspace"
-    if (codigoTecla == 8 || codigoTecla == 13) {
-      return true;
-    }
-
-    // Verifica si el código de la tecla corresponde a un número o al guion ("-")
-    if ((codigoTecla < 48 || codigoTecla > 57) && codigoTecla !== 45) {
-      event.preventDefault(); // Detiene la acción predeterminada (ingresar el carácter)
-      return false;
-    }
-
-    return true;
-}
 
 
 function validarCantidad(input) {

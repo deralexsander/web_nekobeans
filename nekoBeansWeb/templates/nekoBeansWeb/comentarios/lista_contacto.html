@@ -14,32 +14,30 @@
                 <table class="table table-hover table-striped">
                     <thead class="thead-dark">
                         <tr>
+                            <th scope="col">#</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellidos</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Teléfono</th>
                             <th scope="col">Tipo de Solicitud</th>
-                            <th scope="col">Mensaje</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for contacto in contactos %}
                         <tr>
-                            <td>{{ contacto.nombre }}</td>
-                            <td>{{ contacto.apellidos }}</td>
-                            <td>{{ contacto.email }}</td>
-                            <td>{{ contacto.telefono }}</td>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ contacto.nombre | capfirst }}</td>
+                            <td>{{ contacto.apellidos | capfirst }}</td>
                             <td>{{ contacto.get_tipo_solicitud_display }}</td>
-                            <td class="mensaje-column">{{ contacto.mensaje|linebreaksbr }}</td>
                             <td>
-                                <a href="mailto:{{ contacto.email }}?subject=Respuesta%20a%20tu%20{{ contacto.get_tipo_solicitud_display }}" class="btn btn-sm btn-primary">Responder</a>
-                                <a href="{% url 'eliminar_contacto' contacto.id %}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este mensaje?')">Eliminar</a>
+                                <button type="button" class="btn btn-md btn-outline-warning abrir-modal"
+                                    data-bs-toggle="modal" data-bs-target="#modal-tarjeta-{{ contacto.id }}">
+                                    Ver más
+                                </button>
                             </td>
                         </tr>
                         {% empty %}
                         <tr>
-                            <td colspan="7" class="text-center">No hay contactos disponibles.</td>
+                            <td colspan="8" class="text-center">No hay contactos disponibles.</td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -48,4 +46,50 @@
         </div>
     </div>
 </div>
+
+{% for contacto in contactos %}
+<!-- Modal para detalles del contacto -->
+<div class="modal fade" id="modal-tarjeta-{{ contacto.id }}" tabindex="-1"
+    aria-labelledby="modal-tarjeta-{{ contacto.id }}" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 fw-bold" id="modal-tarjeta-{{ contacto.id }}">Descripción más detallada
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <h5 class="card-text fw-bold">Nombre y apellidos</h5>
+                            <div class="modal-body justify-content-center">
+                                <h3 class="card-text ">{{ contacto.nombre | capfirst }}</h3>
+                                <div class="justify-content">
+                                    <div class="row">
+                                        <h4 class="card-text">{{ contacto.apellidos | capfirst }}</h4>
+                                    </div>
+                                </div>
+                                <h5 class="espacio-textos fw-bold">Email</h5>
+                                <h4 class="card-text">{{ contacto.email }}</h4>
+                                <h5 class="espacio-textos fw-bold">Telefono</h5>
+                                <h4 class="card-text ">+(56) {{ contacto.telefono }}</h4>
+                                <h5 class="espacio-textos fw-bold">Tipo de Solicitud:</h5>
+                                <h4 class="card-text ">{{ contacto.get_tipo_solicitud_display }}</h4>
+                                <h5 class="espacio-textos fw-bold">Mensaje</h5>
+                                <h6 class="card-text">{{ contacto.mensaje|linebreaksbr }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="mailto:{{ contacto.email }}?subject=Respuesta%20a%20tu%20{{ contacto.get_tipo_solicitud_display }}" class="btn btn-sm btn-outline-success">Responder</a>
+                <a href="{% url 'eliminar_contacto' contacto.id %}"class="btn btn-sm btn-danger delete-btn">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
 {% endblock %}

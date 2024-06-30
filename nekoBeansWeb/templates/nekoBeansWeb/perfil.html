@@ -6,48 +6,48 @@
 {% endblock %}
 
 {% block contenido %}
-<hr>
-<hr>
-{% if perms.nekoBeansWeb.view_producto %}
-<a class="nav-link me-4" href="{% url 'listar_productos'%}">
-    <button class="btnlogin">listar producto</button>
-</a>
-{%endif%}
+<div class="container mt-5">
+    <div class=" p-4 rounded" style="background-image: linear-gradient(to right, #EEF9BF, #A7E9AF);">
+        <h2 class="mb-4">Perfil de Usuario</h2>
 
-<a class="nav-link me-4" href="{% url 'logout'%}">
-    <button class="btnlogin">cerrar sesion</button>
-</a>
+        {% if user.is_authenticated %}
+            <h5>Bienvenido, <strong>{{ user.username }}</strong></h5>
+            <p>
+                {% if user.is_staff %}
+                    <span class="badge" style="background-color: #A7E9AF;">Administrador</span>
+                {% endif %}
+            </p>
+        {% else %}
+            <p class="text-danger">Usuario no autenticado</p>
+        {% endif %}
 
-{% if perms.nekoBeansWeb.view_plantilla %}
-<a class="nav-link me-4" href="{% url 'listar_plantilla'%}">
-    <button class="btnlogin">listar plantilla</button>
-</a>
-{%endif%}
+        <hr>
 
-{% if perms.nekoBeansWeb.view_comentarios %}
-<a class="nav-link me-4" href="{% url 'lista_comentarios'%}">
-    <button class="btnlogin">lista comentarios</button>
-</a>
-{%endif%}
-
-{% if perms.nekoBeansWeb.view_trabajaconnosotros %}
-<a class="nav-link me-4" href="{% url 'lista_peticiones' %}">
-    <button class="btnlogin">Listar Peticiones</button>
-</a>
-{%endif%}
-
-
-{% if user.is_authenticated %}
-    <p>Usuario autenticado: {{ user.username }}</p>
-    {% if user.is_staff %}
-        <p>Usuario es administrador</p>
-    {% else%}
-        <p>Usuario no es administrador</p>
-    {% endif %}
-{% else %}
-    <p>Usuario no autenticado</p>
-{% endif %}
-
-
-
+        <div class="list-group">
+            {% if perms.nekoBeansWeb.view_producto %}
+                <a class="list-group-item list-group-item-action" href="{% url 'listar_productos' %}">
+                    Listar Productos
+                </a>
+            {% endif %}
+            {% if perms.nekoBeansWeb.view_plantilla %}
+                <a class="list-group-item list-group-item-action" href="{% url 'listar_plantilla' %}">
+                    Listar Plantillas
+                </a>
+            {% endif %}
+            {% if perms.nekoBeansWeb.view_comentarios %}
+                <a class="list-group-item list-group-item-action" href="{% url 'lista_comentarios' %}">
+                    Lista Comentarios
+                </a>
+            {% endif %}
+            {% if perms.nekoBeansWeb.view_trabajaconnosotros %}
+                <a class="list-group-item list-group-item-action" href="{% url 'lista_peticiones' %}">
+                    Listar Peticiones
+                </a>
+            {% endif %}
+            <a class="list-group-item list-group-item-action text-danger" href="{% url 'logout' %}">
+                Cerrar Sesión
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}

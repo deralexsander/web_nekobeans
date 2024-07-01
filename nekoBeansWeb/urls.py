@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (
-    inicio, carrito, comentarios, como_funciona, crear, login, 
+    inicio, comentarios, como_funciona, crear, login, 
     problemas_pedido, productos, registro, servicio_pedido, 
     trabaja_con_nosotros, crear_producto, listar_productos, 
     modificar_producto, eliminar_producto, perfil, listar_plantilla,
@@ -9,7 +9,6 @@ from .views import (
 
 urlpatterns = [
     path('inicio/', inicio, name="inicio"),
-    path('carrito/', carrito, name="carrito"),
     path('comentarios/', comentarios, name="comentarios"),
     path('lista-comentarios/', lista_comentarios, name="lista_comentarios"),
     path('como_funciona/', como_funciona, name="como_funciona"),

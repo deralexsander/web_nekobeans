@@ -37,9 +37,6 @@ def listar_plantilla(request):
     }
     return render(request, 'nekoBeansWeb/crearplantilla/listar_crear.html', data)
 
-@login_required
-def carrito(request):
-    return render(request, 'nekoBeansWeb/carrito.html')
 
 @login_required
 def comentarios(request):

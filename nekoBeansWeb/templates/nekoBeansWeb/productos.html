@@ -2,6 +2,7 @@
 {% extends 'nekoBeansWeb/narvar_footer.html' %}
 {% load static %}
 {% block nombrePag %}
+{% load humanize %}
 <title>productos</title>
 {% endblock %}
 
@@ -31,156 +32,173 @@
     </div>
   </div>
 
-  <!-- modal ---------------------------------------------------------------------------------------------------------------------------->
-  {% load humanize %} <!-- Asegúrate de cargar humanize al principio de la plantilla -->
-   <div class="container justify-content-center">
-      <div class="row">
+<!-- Carrito de Compras -->
+<div class="carrito" id="carrito">
+    <div class="header-carrito">
+        <h2>Tu Carrito</h2>
+    </div>
+    <div class="carrito-items">
+        <!-- Aquí se agregarán los items del carrito dinámicamente -->
+    </div>
+    <div class="carrito-total">
+        <div class="fila">
+            <strong>Tu Total</strong>
+            <span class="carrito-precio-total">$0.00</span>
+        </div>
+        <button class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i></button>
+    </div>
+</div>
+
+<!-- Modal de productos -->
+<div class="container justify-content-center">
+    <div class="row">
         {% for p in productos %}
         <!-- Tarjeta del producto -->
         <div class="col-xl-4 col-lg-4 col-md-6 mb-4 d-flex justify-content-center">
-          <div class="card" style="background-color: #A7E9AF;">
-            <img src="{{ p.imagen.url }}" class="imagen" alt="foto_producto"> 
-            <div class="card-body">
-              <h5 class="card-title espacio-textos">{{ p.titulo | capfirst }}</h5>
-              <button style="background-color: #EEF9BF;" class="btn btn-md float-end col"
-                data-bs-target="#modal-tarjeta-{{ p.id }}" data-bs-toggle="modal">Ver más</button>
-              <p class="card-text espacio-textos">${{ p.precio | intcomma }}</p>
+            <div class="card" style="background-color: #A7E9AF;">
+                <img src="{{ p.imagen.url }}" class="imagen" alt="foto_producto">
+                <div class="card-body">
+                    <h5 class="card-title espacio-textos">{{ p.titulo | capfirst }}</h5>
+                    <button style="background-color: #EEF9BF;" class="btn btn-md float-end col" data-bs-target="#modal-tarjeta-{{ p.id }}" data-bs-toggle="modal">Ver más</button>
+                    <p class="card-text espacio-textos">${{ p.precio | intcomma }}</p>
+                </div>
             </div>
-          </div>
         </div>
 
         <!-- Modal tarjeta del producto -->
         <div class="modal fade modal-xl" id="modal-tarjeta-{{ p.id }}" aria-hidden="true" aria-labelledby="modal-tarjeta-{{ p.id }}">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5 fw-bold" id="modal-tarjeta-{{ p.id }}">Descripción de Artículo</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="container justify-content-center">
-                <div class="row">
-                  <div class="col-lg-6 col-md-12">
-                    <div class="modal-body justify-content-center">
-                      <h3 class="card-title fw-bold">{{ p.titulo | capfirst }}</h3>
-                      <div class="justify-content">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 fw-bold" id="modal-tarjeta-{{ p.id }}">Descripción de Artículo</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="container justify-content-center">
                         <div class="row">
-                          <h4 class="espacio-textos">{{ p.descripcion | capfirst }}</h4>
+                            <div class="col-lg-6 col-md-12">
+                                <div class="modal-body justify-content-center">
+                                    <h3 class="card-title fw-bold">{{ p.titulo | capfirst }}</h3>
+                                    <div class="justify-content">
+                                        <div class="row">
+                                            <h4 class="espacio-textos">{{ p.descripcion | capfirst }}</h4>
+                                        </div>
+                                    </div>
+                                    <h4 class="card-title fw-bold">Colores</h4>
+                                    <div class="colores">
+                                        {% for color in p.obtener_colores %}
+                                        <div>
+                                            <input type="color" class="form-control form-control-color color" value="{{ color }}" title="Colores del producto" disabled>
+                                            <span class="color-numero">color {{ forloop.counter }}</span>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    <h5 class="card-title espacio-textos">Modo de Uso</h5>
+                                    <div class="btn-group mt-2" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check" name="btnradioModoUso-{{ p.id }}" id="btnradioBroche-{{ p.id }}" autocomplete="off" {% if p.tipo_modo_uso == 1 %} checked {% endif %} {% if p.tipo_modo_uso == 2 %} disabled {% endif %}>
+                                        <label class="btn btn-outline-primary" for="btnradioBroche-{{ p.id }}">Broche</label>
+                                        <input type="radio" class="btn-check" name="btnradioModoUso-{{ p.id }}" id="btnradioColgante-{{ p.id }}" autocomplete="off" {% if p.tipo_modo_uso == 2 %} checked {% endif %} {% if p.tipo_modo_uso == 1 %} disabled {% endif %}>
+                                        <label class="btn btn-outline-primary" for="btnradioColgante-{{ p.id }}">Colgante</label>
+                                    </div>
+                                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Este producto solo puede ser usado como {{ p.nombre_modo_uso }}." data-bs-dismiss="hola">
+                                        <button type="button" class="btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
+                                                <path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
+                                                <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
+                                            </svg>
+                                        </button>
+                                    </span>
+                                    <h4 class="card-title espacio-textos">Creador: {{ p.creador }}</h4>
+                                    <h4 class="card-title espacio-textos">Categoría: {{ p.categoria }}</h4>
+                                    <h4 class="card-title espacio-textos">Cantidad</h4>
+                                    <div class="d-flex mt-2">
+                                        <button type="button" class="btn" onclick="decrementarCantidad(this)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                <path d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5z" />
+                                            </svg>
+                                        </button>
+                                        <input class="form-control form-control-sm text-center cantidad-input" type="text" value="1" min="1" style="max-width: 3rem;">
+                                        <button type="button" class="btn" onclick="incrementarCantidad(this)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="btn-pagar" data-titulo="{{ p.titulo }}" data-precio="{{ p.precio }}">
+                                        Añadir al Carrito <i class="fa-solid fa-cart-shopping"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12">
+                                <div class="d-flex justify-content-center mt-3">
+                                    <img src="{{ p.imagen.url }}" class="img-fluid imagen-modal" alt="imagen_producto">
+                                </div>
+                            </div>
                         </div>
-                        
-                      </div>
-                      
-                      <h4 class="card-title fw-bold">Colores</h4>
-                      <div class="colores">
-                        {% for color in p.obtener_colores %}
-                        <div>
-                          <input type="color" class="form-control form-control-color color" value="{{ color }}" title="Colores del producto" disabled>
-                          <span class="color-numero">color {{ forloop.counter }}</span> <!-- Usa forloop.counter para mostrar el número de color -->
-                        </div>
-                        {% endfor %}
-                      </div>
-                      <h5 class="card-title espacio-textos">Modo de Uso</h5>
-
-                      <div class="btn-group mt-2" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check" name="btnradioModoUso-{{ p.id }}" id="btnradioBroche-{{ p.id }}" autocomplete="off" {% if p.tipo_modo_uso == 1 %} checked {% endif %} {% if p.tipo_modo_uso == 2 %} disabled {% endif %}>
-                        <label class="btn btn-outline-primary" for="btnradioBroche-{{ p.id }}">Broche</label>
-                        <input type="radio" class="btn-check" name="btnradioModoUso-{{ p.id }}" id="btnradioColgante-{{ p.id }}" autocomplete="off" {% if p.tipo_modo_uso == 2 %} checked {% endif %} {% if p.tipo_modo_uso == 1 %} disabled {% endif %}>
-                        <label class="btn btn-outline-primary" for="btnradioColgante-{{ p.id }}">Colgante</label>
                     </div>
-                    
-                    
-                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                        data-bs-content="Este producto solo puede ser usado como {{ p.nombre_modo_uso }}." data-bs-dismiss="hola">
-                        <button type="button" class="btn">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                            class="bi bi-question-octagon" viewBox="0.1 0 16 16">
-                            <path
-                              d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
-                            <path
-                              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
-                          </svg>
-                        </button>
-                      </span>
-                      <h4 class="card-title espacio-textos">Creador: {{ p.creador }}</h4>
-                      <h4 class="card-title espacio-textos">Categoría: {{ p.categoria }}</h4>
-                      <h4 class="card-title espacio-textos">Cantidad</h4>
-                      <div class="d-flex mt-2">
-                        <button type="button" class="btn" onclick="decrementarCantidad(this)"><svg
-                            xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                            class="bi bi-dash-square" viewBox="0 0 16 16">
-                            <path
-                              d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
-                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
-                          </svg></button>
-                        <input id="counter" class="form-control-plaintext form-control-lg text-center" type="text"
-                          pattern="[1-3]" maxlength="1" oninput="validarCantidad(this)" value="1" disabled>
-                        <button type="button" class="btn" onclick="incrementarCantidad(this)"><svg
-                            xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                            class="bi bi-plus-square" viewBox="0 0 16 16">
-                            <path
-                              d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
-                            <path
-                              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                          </svg></button>
-                        <!-- Aquí se encuentra el botón de ayuda -->
-                        <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                          data-bs-content="Solo puedes llevar 3 unidades maximo por producto.">
-                          <button type="button" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                              fill="currentColor" class="bi bi-question-octagon" viewBox="0.1 0 16 16">
-                              <path
-                                d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
-                              <path
-                                d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
-                            </svg></button>
-                        </span>
-                      </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     </div>
-                  </div>
-                  <div class="col-lg-6 col-md-12">
-                    <!-- carrusel -->
-                    <div id="{{ p.id }}" class="carousel slide justify-content-center" data-bs-ride="carousel">
-                      <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#{{ p.id }}" data-bs-slide-to="0" class="active"
-                          aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#{{ p.id }}" data-bs-slide-to="1"
-                          aria-label="Slide 2"></button>
-                      </div>
-                      <div class="carousel-inner">
-                        <div class="carousel-item active">
-                          <img src="{{ p.imagen.url }}" class="d-block" style="width: 100%; height: 90%;"
-                            alt="foto_catalogo">
-                        </div>
-                        <div class="carousel-item">
-                          <img src="{{ p.imagen.url }}" class="d-block" style="width: 100%; height: 90%;"
-                            alt="foto_crear">
-                        </div>
-                      </div>
-                      <button class="carousel-control-prev" type="button" data-bs-target="#{{ p.id }}"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                      </button>
-                      <button class="carousel-control-next" type="button" data-bs-target="#{{ p.id }}"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                      </button>
-                    </div>
-                  </div>
                 </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-lg">agregar carrito</button>
-              </div>
             </div>
-          </div>
         </div>
-
-   
-      {% endfor %}
+        {% endfor %}
     </div>
-  </div>
-  <script>
-    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
-  </script>
+</div>
+
+<script>
+
+// Obtener elementos del carrito
+const carrito = document.getElementById('carrito');
+const carritoItems = document.querySelector('.carrito-items');
+const carritoTotal = document.querySelector('.carrito-precio-total');
+const botonesAgregar = document.querySelectorAll('.btn-pagar');
+
+// Función para agregar productos al carrito
+function agregarAlCarrito(titulo, precio) {
+    const itemCarrito = document.createElement('div');
+    itemCarrito.classList.add('carrito-item');
+    itemCarrito.innerHTML = `
+        <div class="carrito-item-titulo">${titulo}</div>
+        <div class="carrito-item-precio">${precio}</div>
+        <input class="carrito-item-cantidad" type="number" value="1" min="1">
+        <button class="btn-eliminar">Eliminar</button>
+    `;
+    carritoItems.appendChild(itemCarrito);
+    actualizarTotal();
+    itemCarrito.querySelector('.btn-eliminar').addEventListener('click', eliminarItemCarrito);
+    itemCarrito.querySelector('.carrito-item-cantidad').addEventListener('change', actualizarTotal);
+}
+
+// Función para eliminar productos del carrito
+function eliminarItemCarrito(event) {
+    const botonEliminar = event.target;
+    botonEliminar.parentElement.remove();
+    actualizarTotal();
+}
+
+// Función para actualizar el total del carrito
+function actualizarTotal() {
+    let total = 0;
+    const itemsCarrito = document.querySelectorAll('.carrito-item');
+    itemsCarrito.forEach(item => {
+        const precioItem = parseFloat(item.querySelector('.carrito-item-precio').innerText.replace('$', ''));
+        const cantidadItem = parseInt(item.querySelector('.carrito-item-cantidad').value);
+        total += precioItem * cantidadItem;
+    });
+    carritoTotal.innerText = `$${total.toFixed(2)}`;
+}
+
+// Event listeners para los botones de agregar al carrito
+botonesAgregar.forEach(boton => {
+    boton.addEventListener('click', () => {
+        const titulo = boton.getAttribute('data-titulo');
+        const precio = boton.getAttribute('data-precio');
+        agregarAlCarrito(titulo, precio);
+    });
+});
+
+</script>
+
 {% endblock %}

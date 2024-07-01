@@ -20,41 +20,33 @@
             </div>
         </div>
         <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" onsubmit="return validacionCrear()">
                 {% csrf_token %}
                 <h4 class="espacio-titulo fw-bold">Ingrese sus datos aquí.</h4>
                 <div class="mb-3">
-                    <label for="id_nombrePlantilla" class="form-label">Nombre de tu plantilla</label>
+                    <label for="nombrePlantilla" class="form-label">Nombre de tu plantilla</label>
                     {{ form.nombrePlantilla }}
+                    <div id="nombrePlantillaError" class="text-danger"></div>
                 </div>
                 <div class="mb-3">
-                    <label for="id_imagen" class="form-label">Adjuntar foto de plantilla</label>
+                    <label for="foto" class="form-label">Adjuntar foto de plantilla</label>
                     {{ form.imagen }}
+                    <div id="fotoError" class="text-danger"></div>
                 </div>
                 <div class="mb-3">
-                    <label for="id_descripcion" class="form-label">Descripción/detalle de la plantilla</label>
+                    <label for="descripcion" class="form-label">Descripción/detalle de la plantilla</label>
                     {{ form.descripcion }}
-                    {% if form.descripcion.errors %}
-                        <div class="text-danger">
-                            {{ form.descripcion.errors }}
-                        </div>
-                    {% endif %}
+                    <div id="descripcionError" class="text-danger"></div>
                 </div>
                 <div class="mb-3">
-                    <label for="id_tipo_modo_uso" class="form-label">Modo de Uso</label>
+                    <label for="tipo_modo_uso" class="form-label">Modo de Uso</label>
                     {{ form.tipo_modo_uso }}
-                    {% if form.tipo_modo_uso.errors %}
-                        <div class="text-danger">{{ form.tipo_modo_uso.errors }}</div>
-                    {% endif %}
+                    <div id="tipoModoUsoError" class="text-danger"></div>
                 </div>
                 <div class="mb-3">
-                    <label for="id_categoria" class="form-label">Categoría de la plantilla</label>
+                    <label for="categoria" class="form-label">Categoría de la plantilla</label>
                     {{ form.categoria }}
-                    {% if form.categoria.errors %}
-                        <div class="text-danger">
-                            {{ form.categoria.errors }}
-                        </div>
-                    {% endif %}
+                    <div id="categoriaError" class="text-danger"></div>
                 </div>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
@@ -65,9 +57,9 @@
 {% for message in messages %}
 <script>
     Swal.fire({
-  text: "{{ message }}",
-  icon: "success"
-});
+        text: "{{ message }}",
+        icon: "success"
+    });
 </script>
 {% endfor %}
 {% endif %}

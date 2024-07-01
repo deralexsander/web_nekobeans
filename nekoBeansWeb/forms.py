@@ -9,12 +9,12 @@ class ContactoForm(forms.ModelForm):
         model = Contacto
         fields = '__all__'
         widgets = {
-            'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre'}),
-            'apellidos': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Apellidos'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'ejemplo@gmail.com'}),
-            'telefono': forms.TextInput(attrs={'class': 'form-control', 'pattern': '[0-9\-]*', 'placeholder': '911111111', 'onkeypress': 'return soloNumeros(event)'}),
-            'tipo_solicitud': forms.Select(attrs={'class': 'form-select'}),
-            'mensaje': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre', 'id': 'id_nombre'}),
+            'apellidos': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Apellidos', 'id': 'id_apellidos'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'ejemplo@gmail.com', 'id': 'id_email'}),
+            'telefono': forms.TextInput(attrs={'class': 'form-control', 'pattern': '[0-9]*', 'placeholder': '911111111', 'onkeypress': 'return soloNumeros(event)', 'id': 'id_telefono'}),
+            'tipo_solicitud': forms.Select(attrs={'class': 'form-select', 'id': 'id_tipo_solicitud'}),
+            'mensaje': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'id': 'id_mensaje'}),
         }
 
 
@@ -24,11 +24,11 @@ class PlantillaForm(forms.ModelForm):
         model = Plantilla
         fields = ['nombrePlantilla', 'imagen', 'descripcion', 'tipo_modo_uso', 'categoria']
         widgets = {
-            'nombrePlantilla': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre de tu plantilla'}),
-            'imagen': forms.FileInput(attrs={'class': 'form-control'}),
-            'descripcion': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Descripción/detalle de la plantilla'}),
-            'tipo_modo_uso': forms.Select(attrs={'class': 'form-select'}),
-            'categoria': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Categoria'}),
+            'nombrePlantilla': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre de tu plantilla', 'id': 'nombrePlantilla'}),
+            'imagen': forms.FileInput(attrs={'class': 'form-control', 'id': 'foto'}),
+            'descripcion': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Descripción/detalle de la plantilla', 'id': 'descripcion'}),
+            'tipo_modo_uso': forms.Select(attrs={'class': 'form-select', 'id': 'tipo_modo_uso'}),
+            'categoria': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Categoría', 'id': 'categoria'}),
         }
 
 class TrabajaConNosotrosForm(forms.ModelForm):

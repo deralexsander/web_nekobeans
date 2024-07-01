@@ -41,6 +41,7 @@ function togglePasswordVisibility() {
     }
 }
 
+
 function validarTrabajaConNosotros() {
   var nombre = document.getElementById("{{ form.nombre.id_for_label }}").value.trim();
   var apellido1 = document.getElementById("{{ form.apellidos.id_for_label }}").value.trim();
@@ -103,6 +104,15 @@ campos.forEach(function(campo) {
 });
 
 
+// Event listener para limpiar errores al escribir en los campos
+var campos = ["{{ form.nombre.id_for_label }}", "{{ form.apellidos.id_for_label }}", "{{ form.rut.id_for_label }}", "{{ form.region.id_for_label }}", "{{ form.fecha_nacimiento.id_for_label }}", "{{ form.carnet.id_for_label }}"];
+campos.forEach(function(campo) {
+  document.getElementById(campo).addEventListener("input", function() {
+    document.getElementById(campo + "Error").textContent = "";
+  });
+});
+
+
 function validarRegistros(event) {
     var username = document.getElementById("username").value;
     var password1 = document.getElementById("password1").value;
@@ -153,68 +163,50 @@ function validarRegistros(event) {
 
 
 
-function validacionCrear () {
-
+function validacionCrear() {
     var nombrePlantilla = document.getElementById("nombrePlantilla").value;
     var foto = document.getElementById("foto").value;
-    var coloresPlantillas = document.getElementById("coloresPlantillas").value;
-    
-
+    var descripcion = document.getElementById("descripcion").value;
+    var tipoModoUso = document.getElementById("tipo_modo_uso").value;
+    var categoria = document.getElementById("categoria").value;
 
     var nombrePlantillaError = document.getElementById("nombrePlantillaError");
     var fotoError = document.getElementById("fotoError");
-    var coloresPlantillasError = document.getElementById("coloresPlantillasError");
-    
+    var descripcionError = document.getElementById("descripcionError");
+    var tipoModoUsoError = document.getElementById("tipoModoUsoError");
+    var categoriaError = document.getElementById("categoriaError");
 
-    document.getElementById("nombrePlantilla").addEventListener("input", 
-    function() {
-        document.getElementById("nombrePlantillaError").textContent = "";
-    });
-    document.getElementById("foto").addEventListener("input", 
-    function() {
-        document.getElementById("fotoError").textContent = "";
-    });
-    document.getElementById("coloresPlantillas").addEventListener("input", 
-    function() {
-        document.getElementById("coloresPlantillasError").textContent = "";
-    });
+    // Limpiar errores previos
+    nombrePlantillaError.textContent = "";
+    fotoError.textContent = "";
+    descripcionError.textContent = "";
+    tipoModoUsoError.textContent = "";
+    categoriaError.textContent = "";
 
-    
-var hayErrores =false;
-
-
-    var btnRadioSeleccionado = document.querySelector('input[name="btnradio2"]:checked');
-    if (!btnRadioSeleccionado) {
-        seleccionError.textContent = "Por favor, seleccione una opción para cómo se puede usar la plantilla.";
-    } else {
-        seleccionError.textContent = "";
-    }
+    var hayErrores = false;
 
     if (nombrePlantilla.trim() === "") {
         nombrePlantillaError.textContent = "Por favor, ingrese el nombre de la plantilla.";
         hayErrores = true;
-    } else {
-        nombrePlantillaError.textContent = "";
     }
-
     if (foto.trim() === "") {
         fotoError.textContent = "Por favor, ingrese su archivo.";
         hayErrores = true;
-    } else {
-        fotoError.textContent = "";
     }
-
-    if (coloresPlantillas.trim() === "") {
-        coloresPlantillasError.textContent = "Por favor, ingrese su categoria.";
+    if (descripcion.trim() === "") {
+        descripcionError.textContent = "Por favor, ingrese la descripción.";
         hayErrores = true;
-    } else {
-        coloresPlantillasError.textContent = "";
     }
-    
-    
+    if (tipoModoUso === "") {
+        tipoModoUsoError.textContent = "Por favor, seleccione el modo de uso.";
+        hayErrores = true;
+    }
+    if (categoria.trim() === "") {
+        categoriaError.textContent = "Por favor, ingrese la categoría.";
+        hayErrores = true;
+    }
 
-
-return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un error
+    return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un error
 }
 
 
@@ -246,5 +238,88 @@ function incrementarCantidad(elemento) {
     }
 }
 
+function validateForm(event) {
+    var nombre = document.getElementById("id_nombre").value;
+    var apellidos = document.getElementById("id_apellidos").value;
+    var email = document.getElementById("id_email").value;
+    var telefono = document.getElementById("id_telefono").value;
+    var tipoSolicitud = document.getElementById("id_tipo_solicitud").value;
+    var mensaje = document.getElementById("id_mensaje").value;
+    
+    var nombreError = document.getElementById("nombreError");
+    var apellidosError = document.getElementById("apellidosError");
+    var emailError = document.getElementById("emailError");
+    var telefonoError = document.getElementById("telefonoError");
+    var tipoSolicitudError = document.getElementById("tipoSolicitudError");
+    var mensajeError = document.getElementById("mensajeError");
 
+    // Clear previous error messages
+    nombreError.textContent = '';
+    apellidosError.textContent = '';
+    emailError.textContent = '';
+    telefonoError.textContent = '';
+    tipoSolicitudError.textContent = '';
+    mensajeError.textContent = '';
 
+    var isValid = true;
+
+    // Validate nombre
+    if (nombre === '') {
+        nombreError.textContent = 'El nombre es obligatorio.';
+        isValid = false;
+    }
+
+    // Validate apellidos
+    if (apellidos === '') {
+        apellidosError.textContent = 'Los apellidos son obligatorios.';
+        isValid = false;
+    }
+
+    // Validate email
+    if (email === '') {
+        emailError.textContent = 'El email es obligatorio.';
+        isValid = false;
+    } else if (!validateEmail(email)) {
+        emailError.textContent = 'El email no es válido.';
+        isValid = false;
+    }
+
+    // Validate telefono
+    if (telefono === '') {
+        telefonoError.textContent = 'El teléfono es obligatorio.';
+        isValid = false;
+    } else if (telefono.length !== 9 || isNaN(telefono)) {
+        telefonoError.textContent = 'El número de teléfono debe tener exactamente 9 dígitos.';
+        isValid = false;
+    }
+
+    // Validate tipoSolicitud
+    if (tipoSolicitud === '') {
+        tipoSolicitudError.textContent = 'El tipo de solicitud es obligatorio.';
+        isValid = false;
+    }
+
+    // Validate mensaje
+    if (mensaje === '') {
+        mensajeError.textContent = 'El mensaje es obligatorio.';
+        isValid = false;
+    }
+
+    if (!isValid) {
+        event.preventDefault();
+    }
+
+    return isValid;
+}
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.[^<>()[\]\\.,;:\s@"]{2,}))$/i;
+    return re.test(String(email).toLowerCase());
+}
+
+function soloNumeros(event) {
+    var key = window.event ? event.keyCode : event.which;
+    if (key < 48 || key > 57) {
+        event.preventDefault();
+    }
+}

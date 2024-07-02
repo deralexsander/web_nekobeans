@@ -25,6 +25,9 @@ SECRET_KEY = 'django-insecure-tp4@(ph=&8d2u$zb1fhp$6$w7f-&cs8efg$3z$#sf*$g)n2hi3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+USE_L10N = True
+USE_THOUSAND_SEPARATOR = True
+
 ALLOWED_HOSTS = []
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
@@ -114,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'es'
+LANGUAGE_CODE = 'es-ES'
 
 TIME_ZONE = 'UTC'
 

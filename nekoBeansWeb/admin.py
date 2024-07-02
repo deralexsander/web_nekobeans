@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Genero, Usuario, Producto, Contacto, Plantilla, TrabajaConNosotros
+from .models import Genero, Usuario, Producto, Contacto, Plantilla, TrabajaConNosotros, Carrito, ItemCarrito
 
 
 # Register your models here.
@@ -38,4 +38,28 @@ class TrabajaConNosotrosAdmin(admin.ModelAdmin):
         return obj.usuario.username
 
     nombre_usuario.short_description = 'Usuario'
+
+
+
+@admin.register(Carrito)
+class CarritoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'creado', 'subtotal')
+    readonly_fields = ('creado', 'subtotal')
+
+    def subtotal(self, obj):
+        return obj.get_subtotal()
+
+@admin.register(ItemCarrito)
+class ItemCarritoAdmin(admin.ModelAdmin):
+    list_display = ('carrito', 'nombre_producto', 'cantidad', 'total_precio')
+    readonly_fields = ('carrito', 'producto', 'cantidad')
+
+    def nombre_producto(self, obj):
+        return obj.producto.titulo
+
+    def total_precio(self, obj):
+        return obj.get_total_precio()
+
+    nombre_producto.short_description = 'Producto'  # Cambia el nombre de la columna en el admin
+    total_precio.short_description = 'Total Precio'
 

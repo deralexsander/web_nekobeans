@@ -37,7 +37,7 @@ function togglePasswordVisibility() {
         passwordToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16"><path d="M13.359 11.238a7.012 7.012 0 0 1-10.718 0 .5.5 0 1 1 .74-.672A6.012 6.012 0 0 0 13.86 11.61a.5.5 0 1 1 .74.672 7.012 7.012 0 0 1-1.24 0z"/><path d="M4.533 6.086a5.978 5.978 0 0 1 6.92 0 .5.5 0 0 1-.664.746A4.978 4.978 0 0 0 5.2 6.832a.5.5 0 1 1-.667-.746z"/><path d="M1.577 2.883a.5.5 0 0 1 .69-.143A7.012 7.012 0 0 1 14.24 11.15a.5.5 0 1 1-.74.672 6.012 6.012 0 0 0-10.128-7.327.5.5 0 0 1-.795-.612z"/></svg>';
     } else {
         passwordField.type = "password";
-        passwordToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/></svg>';
+        passwordToggle.innerHTML = '              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/></svg>';
     }
 }
 
@@ -209,34 +209,6 @@ function validacionCrear() {
     return !hayErrores; // Devuelve true si no hay errores, false si hay al menos un error
 }
 
-
-
-
-function validarCantidad(input) {
-    var valor = input.value;
-    var patron = /^[1-3]$/;
-
-    if (!patron.test(valor)) {
-        input.value = valor.replace(/[^1-3]/g, "");
-    }
-}
-
-
-function decrementarCantidad(elemento) {
-    var inputCantidad = elemento.parentNode.querySelector('input[type="text"]');
-    var cantidadActual = parseInt(inputCantidad.value);
-    if (cantidadActual > 1) {
-        inputCantidad.value = cantidadActual - 1;
-    }
-}
-
-function incrementarCantidad(elemento) {
-    var inputCantidad = elemento.parentNode.querySelector('input[type="text"]');
-    var cantidadActual = parseInt(inputCantidad.value);
-    if (cantidadActual < 3) {
-        inputCantidad.value = cantidadActual + 1;
-    }
-}
 
 function validateForm(event) {
     var nombre = document.getElementById("id_nombre").value;

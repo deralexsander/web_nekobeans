@@ -31,24 +31,7 @@
 
     </div>
   </div>
-
-<!-- Carrito de Compras -->
-<div class="carrito" id="carrito">
-    <div class="header-carrito">
-        <h2>Tu Carrito</h2>
-    </div>
-    <div class="carrito-items">
-        <!-- Aquí se agregarán los items del carrito dinámicamente -->
-    </div>
-    <div class="carrito-total">
-        <div class="fila">
-            <strong>Tu Total</strong>
-            <span class="carrito-precio-total">$0.00</span>
-        </div>
-        <button class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i></button>
-    </div>
-</div>
-
+  
 <!-- Modal de productos -->
 <div class="container justify-content-center">
     <div class="row">
@@ -60,7 +43,7 @@
                 <div class="card-body">
                     <h5 class="card-title espacio-textos">{{ p.titulo | capfirst }}</h5>
                     <button style="background-color: #EEF9BF;" class="btn btn-md float-end col" data-bs-target="#modal-tarjeta-{{ p.id }}" data-bs-toggle="modal">Ver más</button>
-                    <p class="card-text espacio-textos">${{ p.precio | intcomma }}</p>
+                    <p class="card-text espacio-textos">${{ p.precio }} CLP</p>
                 </div>
             </div>
         </div>
@@ -68,12 +51,12 @@
         <!-- Modal tarjeta del producto -->
         <div class="modal fade modal-xl" id="modal-tarjeta-{{ p.id }}" aria-hidden="true" aria-labelledby="modal-tarjeta-{{ p.id }}">
             <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
+                <div class="modal-content " style="background-color: #ffffff;">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5 fw-bold" id="modal-tarjeta-{{ p.id }}">Descripción de Artículo</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="container justify-content-center">
+                    <div class="container justify-content-center ">
                         <div class="row">
                             <div class="col-lg-6 col-md-12">
                                 <div class="modal-body justify-content-center">
@@ -109,25 +92,7 @@
                                     </span>
                                     <h4 class="card-title espacio-textos">Creador: {{ p.creador }}</h4>
                                     <h4 class="card-title espacio-textos">Categoría: {{ p.categoria }}</h4>
-                                    <h4 class="card-title espacio-textos">Cantidad</h4>
-                                    <div class="d-flex mt-2">
-                                        <button type="button" class="btn" onclick="decrementarCantidad(this)">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
-                                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                                <path d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5z" />
-                                            </svg>
-                                        </button>
-                                        <input class="form-control form-control-sm text-center cantidad-input" type="text" value="1" min="1" style="max-width: 3rem;">
-                                        <button type="button" class="btn" onclick="incrementarCantidad(this)">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-                                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <button class="btn-pagar" data-titulo="{{ p.titulo }}" data-precio="{{ p.precio }}">
-                                        Añadir al Carrito <i class="fa-solid fa-cart-shopping"></i>
-                                    </button>
+                                    
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12">
@@ -138,7 +103,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <a
+                        href="{% url 'agregar_al_carrito' p.id %}" class="btn btn-primary">Añadir al Carrito
+                        </a>
                     </div>
                 </div>
             </div>
@@ -147,58 +114,16 @@
     </div>
 </div>
 
+{% if messages %}
+{% for message in messages %}
 <script>
-
-// Obtener elementos del carrito
-const carrito = document.getElementById('carrito');
-const carritoItems = document.querySelector('.carrito-items');
-const carritoTotal = document.querySelector('.carrito-precio-total');
-const botonesAgregar = document.querySelectorAll('.btn-pagar');
-
-// Función para agregar productos al carrito
-function agregarAlCarrito(titulo, precio) {
-    const itemCarrito = document.createElement('div');
-    itemCarrito.classList.add('carrito-item');
-    itemCarrito.innerHTML = `
-        <div class="carrito-item-titulo">${titulo}</div>
-        <div class="carrito-item-precio">${precio}</div>
-        <input class="carrito-item-cantidad" type="number" value="1" min="1">
-        <button class="btn-eliminar">Eliminar</button>
-    `;
-    carritoItems.appendChild(itemCarrito);
-    actualizarTotal();
-    itemCarrito.querySelector('.btn-eliminar').addEventListener('click', eliminarItemCarrito);
-    itemCarrito.querySelector('.carrito-item-cantidad').addEventListener('change', actualizarTotal);
-}
-
-// Función para eliminar productos del carrito
-function eliminarItemCarrito(event) {
-    const botonEliminar = event.target;
-    botonEliminar.parentElement.remove();
-    actualizarTotal();
-}
-
-// Función para actualizar el total del carrito
-function actualizarTotal() {
-    let total = 0;
-    const itemsCarrito = document.querySelectorAll('.carrito-item');
-    itemsCarrito.forEach(item => {
-        const precioItem = parseFloat(item.querySelector('.carrito-item-precio').innerText.replace('$', ''));
-        const cantidadItem = parseInt(item.querySelector('.carrito-item-cantidad').value);
-        total += precioItem * cantidadItem;
-    });
-    carritoTotal.innerText = `$${total.toFixed(2)}`;
-}
-
-// Event listeners para los botones de agregar al carrito
-botonesAgregar.forEach(boton => {
-    boton.addEventListener('click', () => {
-        const titulo = boton.getAttribute('data-titulo');
-        const precio = boton.getAttribute('data-precio');
-        agregarAlCarrito(titulo, precio);
-    });
+    Swal.fire({
+  text: "{{ message }}",
 });
-
 </script>
+{% endfor %}
+{% endif %}
+
 
 {% endblock %}
+

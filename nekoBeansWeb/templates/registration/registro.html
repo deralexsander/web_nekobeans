@@ -41,10 +41,22 @@
           <div id="password2Error" class="form-text text-danger"></div>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-between">
-          <button type="submit" class="btn btn-primary">registrar</button>
+          <button type="submit" class="btn colortextnarvar">registrar</button>
         </div>
       </form>
     </div>
   </div>
 </div>
+
+{% if messages %}
+{% for message in messages %}
+<script>
+    Swal.fire({
+  text: "{{ message }}",
+  icon: "success"
+});
+</script>
+{% endfor %}
+{% endif %}
+
 {% endblock %}

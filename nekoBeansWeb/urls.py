@@ -4,7 +4,8 @@ from .views import (
     problemas_pedido, productos, registro, servicio_pedido, 
     trabaja_con_nosotros, crear_producto, listar_productos, 
     modificar_producto, eliminar_producto, perfil, listar_plantilla,
-    eliminar_plantilla, lista_comentarios, eliminar_contacto, listar_peticiones, eliminar_peticiones
+    eliminar_plantilla, lista_comentarios, eliminar_contacto, listar_peticiones, eliminar_peticiones,
+    agregar_al_carrito, ver_carrito, eliminar_del_carrito, vaciar_carrito
 )
 
 urlpatterns = [
@@ -30,5 +31,8 @@ urlpatterns = [
     path('eliminar-contacto/<int:id>/', eliminar_contacto, name='eliminar_contacto'),
     path('lista-peticiones/', listar_peticiones, name='lista_peticiones'),
     path('eliminar-peticiones/<int:id>/', eliminar_peticiones, name='eliminar_peticiones'),
-
+    path('agregar/<int:producto_id>/', agregar_al_carrito, name='agregar_al_carrito'),
+    path('ver_carrito/', ver_carrito, name='ver_carrito'),
+    path('eliminar_del_carrito/<int:item_id>/', eliminar_del_carrito, name='eliminar_del_carrito'),
+    path('vaciar_carrito/', vaciar_carrito, name='vaciar_carrito'),
 ]

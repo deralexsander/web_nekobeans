@@ -45,7 +45,7 @@ class Plantilla(models.Model):
 class Producto(models.Model):
     titulo = models.CharField(max_length=20)
     descripcion = models.CharField(max_length=100)
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    precio = models.IntegerField()
     tipo_modo_uso = models.IntegerField(choices=tipo_uso, default=1)
     colores = models.CharField(max_length=200)
     creador = models.CharField(max_length=20)
@@ -98,3 +98,26 @@ class TrabajaConNosotros(models.Model):
     def __str__(self):
         return f'{self.nombre} {self.apellidos}'
 
+
+
+
+class Carrito(models.Model):
+    creado = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Carrito {self.id}'
+
+    def get_subtotal(self):
+        return sum(item.get_total_precio() for item in self.items.all())
+
+class ItemCarrito(models.Model):
+    carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE, related_name='items')
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f'{self.cantidad} x {self.producto.titulo}' 
+
+    def get_total_precio(self):
+        return self.cantidad * self.producto.precio
+        

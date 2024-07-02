@@ -1,0 +1,58 @@
+{% extends 'nekoBeansWeb/narvar_footer.html' %}
+{% load static %}
+
+{% block nombrePag %}
+<title>Carrito de Compras</title>
+{% endblock %}
+
+{% block contenido %}
+<div class="container espacio-titulo-inicio-centro" >
+    <h1 class="my-4">Carrito de Compras</h1>
+    {% if carrito and items %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Total</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.producto.titulo }}</td>
+                <td>{{ item.cantidad }}</td>
+                <td>{{ item.producto.precio }} CLP</td>
+                <td>{{ item.get_total_precio }} CLP</td>
+                <td>
+                    <a href="{% url 'eliminar_del_carrito' item.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="3" class="text-right"><strong>Subtotal</strong></td>
+                <td colspan="2">{{ carrito.get_subtotal }} CLP</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{% url 'vaciar_carrito' %}" class="btn btn-danger">Vaciar Carrito</a>
+    <a href="{% url 'productos' %}" class="btn btn-primary">Seguir Comprando</a>
+    {% else %}
+    <h3>- Tu carrito está vacío. -</h3>
+    <img src="{% static 'nekoBeansWeb/photos/imagenes_NekoBeans/producto_no_encontrado/producto_no_encontrado_gif.gif' %}" alt="gif_logo" style="max-width: 50%;">
+    {% endif %}
+</div>
+
+{% if messages %}
+{% for message in messages %}
+<script>
+    Swal.fire({
+  text: "{{ message }}",
+  icon: "success"
+});
+</script>
+{% endfor %}
+{% endif %}
+{% endblock %}

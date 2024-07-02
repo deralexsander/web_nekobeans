@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.defaultfilters import floatformat
-from .models import Producto, Plantilla, Contacto, TrabajaConNosotros
+from .models import Producto, Plantilla, Contacto, TrabajaConNosotros, Carrito, ItemCarrito
 from .forms import ContactoForm, PlantillaForm, TrabajaConNosotrosForm, ProductoForm, CustomUserCreationForm
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib import messages
@@ -86,7 +86,7 @@ def productos(request):
     productos = Producto.objects.all()
 
     for producto in productos:
-        producto.precio_formateado = floatformat(producto.precio, -2)  # Formatea el precio con dos decimales y separadores de miles si es necesario
+        producto.precio_formateado = floatformat(producto.precio) 
 
     data = {
         'productos': productos
@@ -127,7 +127,7 @@ def trabaja_con_nosotros(request):
             trabaja_con_nosotros_instance = formulario.save(commit=False)
             trabaja_con_nosotros_instance.usuario = request.user
             trabaja_con_nosotros_instance.save()
-            messages.success(request, "¡Te has registrado con éxito!")
+            messages.success(request, "¡Te has registrado con éxito en la postulación!")
             return redirect('trabaja_con_nosotros')
         else:
             data['form'] = formulario
@@ -155,7 +155,7 @@ def crear_producto(request, plantilla_id=None):
             producto = formulario.save(commit=False)
             producto.creador = request.user
             producto.save()
-            messages.success(request, "¡Agregado con éxito!")
+            messages.success(request, "¡Producto creado con éxito!")
             
             if plantilla:
                 plantilla.delete()
@@ -238,3 +238,92 @@ def eliminar_peticiones(request, id):
     peticion.delete()
     return redirect('lista_peticiones')
 
+@login_required
+def agregar_al_carrito(request, producto_id):
+    carrito_id = request.session.get('carrito_id')
+    if carrito_id:
+        try:
+            carrito = Carrito.objects.get(id=carrito_id)
+        except Carrito.DoesNotExist:
+            carrito = Carrito.objects.create()
+            request.session['carrito_id'] = carrito.id
+    else:
+        carrito = Carrito.objects.create()
+        request.session['carrito_id'] = carrito.id
+
+    producto = get_object_or_404(Producto, id=producto_id)
+
+    # Agregar el producto al carrito
+    item_carrito, created = ItemCarrito.objects.get_or_create(carrito=carrito, producto=producto)
+    if not created:
+        item_carrito.cantidad += 1
+        item_carrito.save()
+        messages.success(request, "¡Producto agregado al carrito!")
+
+    return redirect('productos')
+
+
+
+
+@login_required
+def obtener_carrito(request):
+    carrito_id = request.session.get('carrito_id')
+    if carrito_id:
+        try:
+            return Carrito.objects.get(id=carrito_id)
+        except Carrito.DoesNotExist:
+            return None
+    else:
+        return None
+
+@login_required
+def vaciar_carrito(request):
+    carrito_id = request.session.get('carrito_id')
+    if carrito_id:
+        try:
+            carrito = Carrito.objects.get(id=carrito_id)
+            carrito.items.all().delete()  # Eliminar todos los items del carrito
+            carrito.delete()  # Eliminar el carrito
+            messages.success(request, "¡Productos eliminados de tu carrito!")
+            request.session['carrito_id'] = None
+        except Carrito.DoesNotExist:
+            pass
+
+    return redirect('ver_carrito')
+
+
+
+@login_required
+def ver_carrito(request):
+    carrito_id = request.session.get('carrito_id')
+    if carrito_id:
+        try:
+            carrito = Carrito.objects.get(id=carrito_id)
+            items = carrito.items.all()
+        except Carrito.DoesNotExist:
+            carrito = None
+            items = []
+    else:
+        carrito = None
+        items = []
+
+    return render(request, 'nekoBeansWeb/ver_carrito.html', {'carrito': carrito, 'items': items})
+
+
+
+
+@login_required
+def eliminar_del_carrito(request, item_id):
+    
+    #eliminar producto del carrito
+    item = get_object_or_404(ItemCarrito, id=item_id)
+    carrito = item.carrito
+    item.delete()
+
+    #eliminar el carro en caso de no quedar productos
+    if not carrito.items.exists():
+        carrito.delete()
+        messages.success(request, "¡Producto eliminado de tu carrito!")
+        request.session['carrito_id'] = None
+
+    return redirect('ver_carrito')

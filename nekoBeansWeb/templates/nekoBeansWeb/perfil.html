@@ -44,6 +44,12 @@
                     Listar Peticiones
                 </a>
             {% endif %}
+            <a class="list-group-item list-group-item-action" href="{% url 'lista_pedidos' %}">
+                pedidos
+            </a>
+            <a class="list-group-item list-group-item-action" href="{% url 'lista_peticiones' %}">
+                tus pedidos
+            </a>
             <form method="POST" action="{% url 'logout' %}">
                 {% csrf_token %}
                 <button type="submit" class="list-group-item list-group-item-action text-danger">

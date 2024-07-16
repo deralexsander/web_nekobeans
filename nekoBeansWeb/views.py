@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.defaultfilters import floatformat
-from .models import Producto, Plantilla, Contacto, TrabajaConNosotros, Carrito, ItemCarrito
-from .forms import ContactoForm, PlantillaForm, TrabajaConNosotrosForm, ProductoForm, CustomUserCreationForm
+from .models import Producto, Plantilla, Contacto, TrabajaConNosotros, Carrito, ItemCarrito, envio
+from .forms import ContactoForm, PlantillaForm, TrabajaConNosotrosForm, ProductoForm, CustomUserCreationForm, EnvioForm
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
@@ -336,12 +336,20 @@ from django.contrib.auth.decorators import login_required
 def checkout(request):
     carrito = obtener_carrito(request)
     items = carrito.items.all() if carrito else []
-    
+
     if request.method == "POST":
+        envio_form = EnvioForm(request.POST)
+        if envio_form.is_valid():
+            envio_form.save()
+            messages.success(request, "¡Compra realizada con éxito!")
+            # Limpiar el carrito después de la compra
+            vaciar_carrito(request)
+            return redirect('productos')  # Redirigir a la página de productos
+    else:
+        envio_form = EnvioForm()
 
-        messages.success(request, "¡Compra realizada con éxito!")
-        # Limpiar el carrito después de la compra
-        vaciar_carrito(request)
-        return redirect('productos')  # Redirigir a la página de productos
+    return render(request, 'nekoBeansWeb/checkout.html', {'carrito': carrito, 'items': items, 'envio_form': envio_form})
 
-    return render(request, 'nekoBeansWeb/checkout.html', {'carrito': carrito, 'items': items})
+@login_required
+def lista_pedidos(request):
+    return render(request, 'nekoBeansWeb/pedidos.html')

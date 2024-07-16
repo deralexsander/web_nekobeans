@@ -122,6 +122,7 @@ class ItemCarrito(models.Model):
         return self.cantidad * self.producto.precio
         
 class envio(models.Model):
+    carrito = models.OneToOneField(Carrito, on_delete=models.CASCADE, null=True)  # Permitir que el carrito sea nulo
     nickname = models.CharField(max_length=15)
     nombre = models.CharField(max_length=20)
     apellido_paterno = models.CharField(max_length=20)
@@ -132,3 +133,5 @@ class envio(models.Model):
 
     def __str__(self):
         return f"{self.nombre} {self.apellido_paterno}"
+    
+

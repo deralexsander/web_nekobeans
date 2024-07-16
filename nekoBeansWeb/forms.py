@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contacto, Plantilla, TrabajaConNosotros, Producto
+from .models import Contacto, Plantilla, TrabajaConNosotros, Producto, envio
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -62,3 +62,16 @@ class ProductoForm(forms.ModelForm):
 class CustomUserCreationForm(UserCreationForm):
     pass
 
+class EnvioForm(forms.ModelForm):
+    class Meta:
+        model = envio
+        fields = '__all__'
+        widgets = {
+            'nickname': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nickname'}),
+            'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre'}),
+            'apellido_paterno': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Apellido Paterno'}),
+            'apellido_materno': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Apellido Materno'}),
+            'telefono': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Teléfono'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Correo Electrónico'}),
+            'direccion': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Dirección'}),
+        }

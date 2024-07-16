@@ -282,3 +282,11 @@
   cursor: pointer;
   border-radius: 5px;
 }
+
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.btn-submit {
+  margin-top: 1rem;
+}

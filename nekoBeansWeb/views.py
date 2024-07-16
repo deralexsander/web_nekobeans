@@ -310,8 +310,6 @@ def ver_carrito(request):
     return render(request, 'nekoBeansWeb/ver_carrito.html', {'carrito': carrito, 'items': items})
 
 
-
-
 @login_required
 def eliminar_del_carrito(request, item_id):
     
@@ -367,6 +365,10 @@ def checkout(request):
         envio_form = EnvioForm(initial=initial_data)
 
     return render(request, 'nekoBeansWeb/checkout.html', {'carrito': carrito, 'items': items, 'envio_form': envio_form})
+
+
+
+
 
 
 

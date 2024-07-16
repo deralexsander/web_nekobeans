@@ -62,16 +62,19 @@ class ProductoForm(forms.ModelForm):
 class CustomUserCreationForm(UserCreationForm):
     pass
 
+
 class EnvioForm(forms.ModelForm):
     class Meta:
         model = envio
-        fields = '__all__'
+        exclude = ['productos', 'estado_pedido', 'estado_pago']
         widgets = {
-            'nickname': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nickname'}),
+            'nickname': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre', 'readonly': 'readonly'}),
             'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre'}),
             'apellido_paterno': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Apellido Paterno'}),
             'apellido_materno': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Apellido Materno'}),
             'telefono': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Teléfono'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Correo Electrónico'}),
-            'direccion': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Dirección'}),
+            'direccion': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Dirección', 'rows': 3}),
+            'forma_pago': forms.Select(attrs={'class': 'form-select'}),
         }
+

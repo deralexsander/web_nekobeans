@@ -63,11 +63,9 @@ class ItemCarritoAdmin(admin.ModelAdmin):
     nombre_producto.short_description = 'Producto'  # Cambia el nombre de la columna en el admin
     total_precio.short_description = 'Total Precio'
 
-from django.contrib import admin
-from .models import envio, Carrito, ItemCarrito
 
 @admin.register(envio)
 class EnvioAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nombre', 'apellido_paterno', 'telefono', 'email', 'direccion', 'productos')
+    list_display = ('id', 'nombre', 'apellido_paterno', 'telefono', 'email', 'direccion', 'productos', 'estado_pago')
     search_fields = ('nombre', 'apellido_paterno', 'telefono', 'email')
 

@@ -120,7 +120,24 @@ class ItemCarrito(models.Model):
 
     def get_total_precio(self):
         return self.cantidad * self.producto.precio
-        
+
+estado_pedido = [
+    (1, 'En espera'),
+    (2, 'En construccion'),
+    (3, 'Listo!'),
+]
+
+forma_pago = [
+    (1, 'Efectivo'),
+    (2, 'trasferencia'),
+    (3, 'tarjeta'),
+]
+
+estado_pago = [
+    (1, 'Por pagar'),
+    (2, 'Pagado'),
+
+]
 
 class envio(models.Model):
     nickname = models.CharField(max_length=100)
@@ -131,6 +148,9 @@ class envio(models.Model):
     email = models.EmailField()
     direccion = models.TextField()
     productos = models.TextField(default='No hay productos')  # Valor por defecto
+    estado_pedido = models.IntegerField(choices=estado_pedido, default=1)
+    forma_pago = models.IntegerField(choices=forma_pago, default=1)
+    estado_pago = models.IntegerField(choices=estado_pago, default=1)
 
     def __str__(self):
         return f"{self.nombre} {self.apellido_paterno} {self.apellido_materno}"

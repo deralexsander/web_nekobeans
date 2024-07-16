@@ -16,13 +16,16 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">nickname</th>
+                            <th scope="col">Nickname</th>
                             <th scope="col">Apellido Paterno</th>
                             <th scope="col">Apellido Materno</th>
                             <th scope="col">Teléfono</th>
                             <th scope="col">Email</th>
                             <th scope="col">Dirección</th>
-                            <th scope="col">pedido</th>
+                            <th scope="col">Productos</th>
+                            <th scope="col">Estado pedido</th>
+                            <th scope="col">Pago</th>
+                            <th scope="col">estado Pago</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,10 +40,13 @@
                                 <td>{{ pedido.email }}</td>
                                 <td>{{ pedido.direccion }}</td>
                                 <td>{{ pedido.productos }}</td>
+                                <td>{{ pedido.get_estado_pedido_display }}</td>
+                                <td>{{ pedido.get_forma_pago_display }}</td>
+                                <td>{{ pedido.get_estado_pago_display }}</td>
                             </tr>
                         {% empty %}
                             <tr>
-                                <td colspan="8" class="text-center">No hay pedidos disponibles.</td>
+                                <td colspan="12" class="text-center">No hay pedidos disponibles.</td>
                             </tr>
                         {% endfor %}
                     </tbody>

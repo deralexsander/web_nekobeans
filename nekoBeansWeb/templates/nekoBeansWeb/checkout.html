@@ -11,10 +11,42 @@
         <div class="col-md-6 col-sm-12 d-flex flex-column align-items-center espacio-titulo-inicio-centro">
             <h1>Agregar datos de Envío</h1>
             <form method="post">
-              {% csrf_token %}
-              {{ envio_form.as_p }}
-              <button type="submit" class="btn btn-primary">Enviar</button>
-            </form>
+                {% csrf_token %}
+                <p>
+                  <label for="id_nombre">usuario:</label>
+                  {{ envio_form.nickname }}
+                </p>
+                <p>
+                  <label for="id_nombre">Nombre:</label>
+                  {{ envio_form.nombre }}
+                </p>
+                <p>
+                  <label for="id_apellido_paterno">Apellido Paterno:</label>
+                  {{ envio_form.apellido_paterno }}
+                </p>
+                <p>
+                  <label for="id_apellido_materno">Apellido Materno:</label>
+                  {{ envio_form.apellido_materno }}
+                </p>
+                <p>
+                  <label for="id_telefono">Teléfono:</label>
+                  {{ envio_form.telefono }}
+                </p>
+                <p>
+                  <label for="id_email">Correo Electrónico:</label>
+                  {{ envio_form.email }}
+                </p>
+                <p>
+                  <label for="id_direccion">Dirección:</label>
+                  {{ envio_form.direccion }}
+                </p>
+                <p>
+                  <label for="id_forma_pago">Forma de Pago:</label>
+                  {{ envio_form.forma_pago }}
+                </p>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+              </form>
+              
         </div>
         
         <div class="col-md-6 col-sm-12 d-flex flex-column align-items-center espacio-titulo-inicio-centro">
@@ -32,4 +64,14 @@
         </div>
     </div>
 </div>
+{% if messages %}
+{% for message in messages %}
+<script>
+    Swal.fire({
+  text: "{{ message }}",
+});
+</script>
+{% endfor %}
+{% endif %}
+
 {% endblock %}

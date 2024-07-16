@@ -44,9 +44,11 @@
                     Listar Peticiones
                 </a>
             {% endif %}
+            {% if perms.nekoBeansWeb.view_pedido %}
             <a class="list-group-item list-group-item-action" href="{% url 'lista_pedidos' %}">
-                pedidos
+                pedidos generales
             </a>
+            {% endif %}
             <a class="list-group-item list-group-item-action" href="{% url 'tus_pedidos' %}">
                 tus pedidos
             </a>

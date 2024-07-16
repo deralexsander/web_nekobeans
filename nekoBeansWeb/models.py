@@ -121,17 +121,21 @@ class ItemCarrito(models.Model):
     def get_total_precio(self):
         return self.cantidad * self.producto.precio
         
+
 class envio(models.Model):
-    carrito = models.OneToOneField(Carrito, on_delete=models.CASCADE, null=True)  # Permitir que el carrito sea nulo
-    nickname = models.CharField(max_length=15)
-    nombre = models.CharField(max_length=20)
-    apellido_paterno = models.CharField(max_length=20)
-    apellido_materno = models.CharField(max_length=20)
-    telefono = models.CharField(max_length=45)
-    email = models.EmailField(unique=True, max_length=100, blank=True, null=True)
-    direccion = models.CharField(max_length=50, blank=True, null=True)
+    nickname = models.CharField(max_length=100)
+    nombre = models.CharField(max_length=100)
+    apellido_paterno = models.CharField(max_length=100)
+    apellido_materno = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=20)
+    email = models.EmailField()
+    direccion = models.TextField()
+    productos = models.TextField(default='No hay productos')  # Valor por defecto
 
     def __str__(self):
-        return f"{self.nombre} {self.apellido_paterno}"
+        return f"{self.nombre} {self.apellido_paterno} {self.apellido_materno}"
+
+
+
     
 

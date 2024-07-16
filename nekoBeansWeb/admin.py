@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Genero, Usuario, Producto, Contacto, Plantilla, TrabajaConNosotros, Carrito, ItemCarrito
+from .models import Genero, Usuario, Producto, Contacto, Plantilla, TrabajaConNosotros, Carrito, ItemCarrito, envio
 
 
 # Register your models here.
@@ -68,16 +68,6 @@ from .models import envio, Carrito, ItemCarrito
 
 @admin.register(envio)
 class EnvioAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nombre', 'apellido_paterno', 'telefono', 'email', 'direccion', 'productos_en_carrito')
+    list_display = ('id', 'nombre', 'apellido_paterno', 'telefono', 'email', 'direccion', 'productos')
     search_fields = ('nombre', 'apellido_paterno', 'telefono', 'email')
-
-    def productos_en_carrito(self, obj):
-        carrito = obj.carrito
-        if carrito:
-            items = ItemCarrito.objects.filter(carrito=carrito)
-            productos = [f'{item.cantidad} x {item.producto.titulo}' for item in items]
-            return ', '.join(productos)
-        return '-'
-
-    productos_en_carrito.short_description = 'Productos en Carrito'
 

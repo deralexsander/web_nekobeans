@@ -328,9 +328,13 @@ def eliminar_del_carrito(request, item_id):
 
     return redirect('ver_carrito')
 
+
+
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from .models import Carrito, envio, ItemCarrito
+from .forms import EnvioForm
 
 @login_required
 def checkout(request):
@@ -340,16 +344,38 @@ def checkout(request):
     if request.method == "POST":
         envio_form = EnvioForm(request.POST)
         if envio_form.is_valid():
-            envio_form.save()
+            envio = envio_form.save(commit=False)
+            productos = "\n".join([f'{item.cantidad} x {item.producto.titulo} - {item.producto.precio} CLP' for item in items])
+            envio.productos = productos
+            envio.save()
+
+            # Vaciar el carrito
+            for item in items:
+                item.delete()
+            if carrito:
+                carrito.delete()
+
             messages.success(request, "¡Compra realizada con éxito!")
-            # Limpiar el carrito después de la compra
-            vaciar_carrito(request)
             return redirect('productos')  # Redirigir a la página de productos
     else:
-        envio_form = EnvioForm()
+        initial_data = {
+            'nickname': request.user.username,
+            'nombre': request.user.first_name,
+            'apellido_paterno': request.user.last_name,
+            'email': request.user.email,
+        }
+        envio_form = EnvioForm(initial=initial_data)
 
     return render(request, 'nekoBeansWeb/checkout.html', {'carrito': carrito, 'items': items, 'envio_form': envio_form})
 
+
+
 @login_required
 def lista_pedidos(request):
-    return render(request, 'nekoBeansWeb/pedidos.html')
+    pedidos = envio.objects.all()  # Obtener todos los envíos
+    return render(request, 'nekoBeansWeb/pedidos.html', {'pedidos': pedidos})
+
+@login_required
+def tus_pedidos(request):
+    pedidos = envio.objects.all()  # Obtener todos los envíos
+    return render(request, 'nekoBeansWeb/tus_pedidos.html', {'pedidos': pedidos})

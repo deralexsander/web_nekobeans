@@ -327,3 +327,21 @@ def eliminar_del_carrito(request, item_id):
         request.session['carrito_id'] = None
 
     return redirect('ver_carrito')
+
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def checkout(request):
+    carrito = obtener_carrito(request)
+    items = carrito.items.all() if carrito else []
+    
+    if request.method == "POST":
+
+        messages.success(request, "¡Compra realizada con éxito!")
+        # Limpiar el carrito después de la compra
+        vaciar_carrito(request)
+        return redirect('productos')  # Redirigir a la página de productos
+
+    return render(request, 'nekoBeansWeb/checkout.html', {'carrito': carrito, 'items': items})

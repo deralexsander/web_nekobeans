@@ -61,3 +61,4 @@ class ProductoForm(forms.ModelForm):
 
 class CustomUserCreationForm(UserCreationForm):
     pass
+

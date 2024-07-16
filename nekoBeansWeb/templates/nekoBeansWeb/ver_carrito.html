@@ -39,6 +39,7 @@
     </table>
     <a href="{% url 'vaciar_carrito' %}" class="btn btn-danger">Vaciar Carrito</a>
     <a href="{% url 'productos' %}" class="btn btn-primary">Seguir Comprando</a>
+    <a href="{% url 'checkout' %}" class="btn btn-primary">Pagar</a>
     {% else %}
     <h3>- Tu carrito está vacío. -</h3>
     <img src="{% static 'nekoBeansWeb/photos/imagenes_NekoBeans/producto_no_encontrado/producto_no_encontrado_gif.gif' %}" alt="gif_logo" style="max-width: 50%;">

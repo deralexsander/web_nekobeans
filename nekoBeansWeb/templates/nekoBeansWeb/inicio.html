@@ -173,5 +173,13 @@
     </div>
   </div>
   
-
+  {% if messages %}
+  {% for message in messages %}
+  <script>
+      Swal.fire({
+    text: "{{ message }}",
+  });
+  </script>
+  {% endfor %}
+  {% endif %}
   {% endblock %}

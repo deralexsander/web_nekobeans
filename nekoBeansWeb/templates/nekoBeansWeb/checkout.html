@@ -1,0 +1,28 @@
+{% extends 'nekoBeansWeb/narvar_footer.html' %}
+{% load static %}
+
+{% block nombrePag %}
+<title>Checkout</title>
+{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 d-flex flex-column align-items-center espacio-titulo-inicio-centro">
+            <h1>Agregar datos de Envío</h1>
+        </div>
+        
+        <div class="col-md-6 col-sm-12 d-flex flex-column align-items-center espacio-titulo-inicio-centro">
+            <h3>Productos en tu Carrito:</h3>
+            {% if items %}
+            <ul class="list-group mb-4">
+                {% for item in items %}
+                <li class="list-group-item">{{ item.producto.titulo }} - {{ item.cantidad }} x {{ item.producto.precio }} CLP</li>
+                {% endfor %}
+            </ul>
+            <h4>Subtotal: {{ carrito.get_subtotal }} CLP</h4>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

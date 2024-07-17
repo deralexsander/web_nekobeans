@@ -41,7 +41,7 @@
 
 .espacio-titulos-centro {
   max-width: 940px;
-  padding: 40px 10px 0px;
+  padding: 40px 50px 0px;
   text-align: center;
 }
 
@@ -290,3 +290,4 @@
 .btn-submit {
   margin-top: 1rem;
 }
+

@@ -328,12 +328,6 @@ def eliminar_del_carrito(request, item_id):
 
 
 
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .models import Carrito, envio, ItemCarrito
-from .forms import EnvioForm
-
 @login_required
 def checkout(request):
     carrito = obtener_carrito(request)
@@ -353,8 +347,7 @@ def checkout(request):
             if carrito:
                 carrito.delete()
 
-            messages.success(request, "¡Compra realizada con éxito!")
-            return redirect('productos')  # Redirigir a la página de productos
+            return redirect('pedido_confirmado')  # Redirigir a la página de productos
     else:
         initial_data = {
             'nickname': request.user.username,
@@ -375,9 +368,13 @@ def checkout(request):
 @login_required
 def lista_pedidos(request):
     pedidos = envio.objects.all()  # Obtener todos los envíos
-    return render(request, 'nekoBeansWeb/pedidos.html', {'pedidos': pedidos})
+    return render(request, 'nekoBeansWeb/pedidos/pedidos.html', {'pedidos': pedidos})
 
 @login_required
 def tus_pedidos(request):
     pedidos = envio.objects.all()  # Obtener todos los envíos
-    return render(request, 'nekoBeansWeb/tus_pedidos.html', {'pedidos': pedidos})
+    return render(request, 'nekoBeansWeb/pedidos/tus_pedidos.html', {'pedidos': pedidos})
+
+@login_required
+def pedido_confirmado(request):
+    return render(request, 'nekoBeansWeb/confirmacion.html')

@@ -72,7 +72,7 @@ class EnvioForm(forms.ModelForm):
             'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre'}),
             'apellido_paterno': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Apellido Paterno'}),
             'apellido_materno': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Apellido Materno'}),
-            'telefono': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Teléfono'}),
+            'telefono': forms.TextInput(attrs={'class': 'form-control', 'pattern': '[0-9]*', 'placeholder': '911111111', 'onkeypress': 'return soloNumeros(event)', 'id': 'id_telefono'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Correo Electrónico'}),
             'direccion': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Dirección', 'rows': 3}),
             'forma_pago': forms.Select(attrs={'class': 'form-select'}),

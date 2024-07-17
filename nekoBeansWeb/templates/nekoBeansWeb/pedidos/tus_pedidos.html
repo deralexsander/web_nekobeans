@@ -17,11 +17,6 @@
                             <th scope="col">#</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Nickname</th>
-                            <th scope="col">Apellido Paterno</th>
-                            <th scope="col">Apellido Materno</th>
-                            <th scope="col">Teléfono</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Dirección</th>
                             <th scope="col">Productos</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Pago</th>
@@ -35,11 +30,6 @@
                                     <td>{{ forloop.counter }}</td>
                                     <td>{{ pedido.nombre }}</td>
                                     <td>{{ pedido.nickname }}</td>
-                                    <td>{{ pedido.apellido_paterno }}</td>
-                                    <td>{{ pedido.apellido_materno }}</td>
-                                    <td>{{ pedido.telefono }}</td>
-                                    <td>{{ pedido.email }}</td>
-                                    <td>{{ pedido.direccion }}</td>
                                     <td>{{ pedido.productos }}</td>
                                     <td>{{ pedido.get_estado_pedido_display }}</td>
                                     <td>{{ pedido.get_forma_pago_display }}</td>

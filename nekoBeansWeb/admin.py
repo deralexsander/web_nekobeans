@@ -66,6 +66,6 @@ class ItemCarritoAdmin(admin.ModelAdmin):
 
 @admin.register(envio)
 class EnvioAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nombre', 'apellido_paterno', 'telefono', 'email', 'direccion', 'productos', 'estado_pago')
+    list_display = ('id', 'nombre', 'apellido_paterno', 'telefono', 'email', 'direccion', 'productos', 'estado_pago', 'forma_pago', 'estado_pedido', 'entrega')
     search_fields = ('nombre', 'apellido_paterno', 'telefono', 'email')
 

@@ -30,7 +30,7 @@ USE_THOUSAND_SEPARATOR = True
 
 ALLOWED_HOSTS = []
 
-MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 
 

@@ -63,6 +63,7 @@ def perfil(request):
     return render(request, 'nekoBeansWeb/perfil.html')
 
 
+
 def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -72,8 +73,12 @@ def login(request):
             login(request, user)
             return redirect('inicio')  # Redirige a la página de inicio después del inicio de sesión exitoso
         else:
+            # El usuario no fue autenticado correctamente
             messages.warning(request, 'Usuario o contraseña incorrectos')  # Muestra un mensaje de advertencia
-    return render(request, 'nekoBeansWeb/login.html')
+            return render(request, 'nekoBeansWeb/login.html')
+    else:
+        # Si el método no es POST, muestra el formulario de inicio de sesión
+        return render(request, 'nekoBeansWeb/login.html')
 
 
 
@@ -337,7 +342,7 @@ def checkout(request):
         envio_form = EnvioForm(request.POST)
         if envio_form.is_valid():
             envio = envio_form.save(commit=False)
-            productos = "\n".join([f'{item.cantidad} x {item.producto.titulo} - {item.producto.precio} CLP' for item in items])
+            productos = "\n".join([f'{item.cantidad} x {item.producto.titulo} - ' for item in items])
             envio.productos = productos
             envio.save()
 

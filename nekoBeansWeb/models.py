@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 
 class Genero(models.Model):
     id_genero = models.AutoField(db_column='idGenero', primary_key=True)
@@ -121,12 +123,6 @@ class ItemCarrito(models.Model):
     def get_total_precio(self):
         return self.cantidad * self.producto.precio
 
-estado_pedido = [
-    (1, 'En espera'),
-    (2, 'En construccion'),
-    (3, 'Listo!'),
-]
-
 forma_pago = [
     (1, 'Efectivo'),
     (2, 'trasferencia'),
@@ -136,7 +132,17 @@ forma_pago = [
 estado_pago = [
     (1, 'Por pagar'),
     (2, 'Pagado'),
+]
 
+estado_pedido = [
+    (1, 'En espera'),
+    (2, 'En construccion'),
+    (3, 'Listo!'),
+]
+
+entrega = [
+    (1, 'Pendiente'),
+    (2, 'Entregado!'),
 ]
 
 class envio(models.Model):
@@ -151,11 +157,14 @@ class envio(models.Model):
     estado_pedido = models.IntegerField(choices=estado_pedido, default=1)
     forma_pago = models.IntegerField(choices=forma_pago, default=1)
     estado_pago = models.IntegerField(choices=estado_pago, default=1)
+    entrega = models.IntegerField(choices=entrega, default=1)
 
     def __str__(self):
         return f"{self.nombre} {self.apellido_paterno} {self.apellido_materno}"
 
-
-
-    
-
+@receiver(pre_save, sender=envio)
+def actualizar_estado_pago(sender, instance, **kwargs):
+    if instance.forma_pago in [2, 3]: 
+        instance.estado_pago = 2  
+    else:
+        instance.estado_pago = 1  

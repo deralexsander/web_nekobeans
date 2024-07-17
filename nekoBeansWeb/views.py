@@ -367,13 +367,29 @@ def checkout(request):
 
 @permission_required('nekoBeansWeb.view_pedido')
 def lista_pedidos(request):
-    pedidos = envio.objects.all()  # Obtener todos los envíos
-    return render(request, 'nekoBeansWeb/pedidos/pedidos.html', {'pedidos': pedidos})
+    pedidos_pendientes = envio.objects.filter(estado_pedido__lt=3)  # Filtra pedidos pendientes
+    pedidos_listos = envio.objects.filter(estado_pedido=3, entrega=2)  # Filtra pedidos listos
+    return render(request, 'nekoBeansWeb/pedidos/pedidos.html', {
+        'pedidos_pendientes': pedidos_pendientes,
+        'pedidos_listos': pedidos_listos
+    })
+
 
 @login_required
 def tus_pedidos(request):
-    pedidos = envio.objects.all()  # Obtener todos los envíos
-    return render(request, 'nekoBeansWeb/pedidos/tus_pedidos.html', {'pedidos': pedidos})
+    # Obtener todos los pedidos del usuario
+    user_pedidos = envio.objects.filter(nickname=request.user.username)
+    
+    # Filtrar pedidos pendientes y listos
+    pedidos_pendientes = user_pedidos.exclude(estado_pedido=3, entrega=2)
+    pedidos_listos = user_pedidos.filter(estado_pedido=3, entrega=2)
+    
+    context = {
+        'pedidos_pendientes': pedidos_pendientes,
+        'pedidos_listos': pedidos_listos,
+    }
+    return render(request, 'nekoBeansWeb/pedidos/tus_pedidos.html', context)
+
 
 @login_required
 def pedido_confirmado(request):

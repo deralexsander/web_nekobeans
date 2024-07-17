@@ -166,5 +166,3 @@ class envio(models.Model):
 def actualizar_estado_pago(sender, instance, **kwargs):
     if instance.forma_pago in [2, 3]: 
         instance.estado_pago = 2  
-    else:
-        instance.estado_pago = 1  

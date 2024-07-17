@@ -6,7 +6,7 @@ from .views import (
     modificar_producto, eliminar_producto, perfil, listar_plantilla,
     eliminar_plantilla, lista_comentarios, eliminar_contacto, listar_peticiones, eliminar_peticiones,
     agregar_al_carrito, ver_carrito, eliminar_del_carrito, vaciar_carrito, checkout, lista_pedidos, tus_pedidos, 
-    pedido_confirmado
+    pedido_confirmado, eliminar_pedido, modificar_pedido
 )
 
 urlpatterns = [
@@ -40,4 +40,6 @@ urlpatterns = [
     path('pedidos/', lista_pedidos, name='lista_pedidos'),
     path('tus-pedidos/', tus_pedidos, name='tus_pedidos'),
     path('pedido-confirmado/', pedido_confirmado, name='pedido_confirmado'),
+    path('eliminar-pedido/<int:id>/', eliminar_pedido, name='eliminar_pedido'),
+    path('modificar-pedido/<int:id>/', modificar_pedido, name='modificar_pedido'),
 ]

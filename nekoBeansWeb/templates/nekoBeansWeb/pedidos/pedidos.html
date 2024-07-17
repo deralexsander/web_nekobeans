@@ -93,8 +93,9 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <a href="{% url 'modificar_pedido' pedido.id %}" class="btn btn-sm btn-outline-warning">Actualizar datos</a>
                 <a href="mailto:{{ pedido.email }} ?subject=Hola @{{ pedido.nickname }}! Tienes un mensaje de nekoBeans &body=Estimado/a {{ pedido.nombre | capfirst }} " class="btn btn-sm btn-outline-success">comunicación</a>
-                <a href="" class="btn btn-sm btn-danger delete-btn">Cancelar pedido</a>
+                <a href="{% url 'eliminar_pedido' pedido.id %}" class="btn btn-sm btn-outline-danger delete-btn">Cancelar pedido</a>
             </div>            
         </div>
     </div>

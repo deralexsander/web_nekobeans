@@ -1,0 +1,21 @@
+{% extends 'nekoBeansWeb/narvar_footer.html' %}
+{% load static %}
+
+{% block nombrePag %}
+<title>Actualizar Pedido</title>
+{% endblock %}
+
+{% block contenido %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="espacio-titulos">Actualizar Pedido</h4>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Guardar cambios</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

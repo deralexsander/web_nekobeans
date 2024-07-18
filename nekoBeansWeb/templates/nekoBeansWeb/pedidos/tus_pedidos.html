@@ -19,7 +19,7 @@
                             <th scope="col">Nombre</th>
                             <th scope="col">Nickname</th>
                             <th scope="col">Productos</th>
-                            <th scope="col">Estado pedido</th>
+                            <th scope="col">Estado pedido/Envio</th>
                             <th scope="col">Estado Pago</th>
                             <th scope="col">Acciones</th>
                         </tr>
@@ -59,7 +59,6 @@
                             <th scope="col">Productos</th>
                             <th scope="col">Estado pedido</th>
                             <th scope="col">Estado Pago</th>
-                            <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,7 +71,6 @@
                                 <td>{{ pedido.productos }}</td>
                                 <td>{{ pedido.get_estado_pedido_display }} - {{ pedido.get_entrega_display }}</td>
                                 <td>{{ pedido.get_estado_pago_display }}</td>
-                                <td><a href="{% url 'eliminar_pedido' pedido.id %}" class="btn btn-sm btn-danger delete-btn">Cancelar pedido</a></td>
                             </tr>
                         {% empty %}
                             <tr>
@@ -96,4 +94,10 @@
 </script>
 {% endfor %}
 {% endif %}
+
+
+
+
+
+
 {% endblock %}

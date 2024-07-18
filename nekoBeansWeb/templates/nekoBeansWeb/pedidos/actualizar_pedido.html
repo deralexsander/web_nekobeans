@@ -7,12 +7,52 @@
 
 {% block contenido %}
 <div class="container mt-4">
-    <div class="row">
-        <div class="col-md-12">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
             <h4 class="espacio-titulos">Actualizar Pedido</h4>
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.as_p }}
+                
+                <div class="mb-3">
+                    <label for="{{ form.nickname.id_for_label }}">Nickname</label>
+                    {{ form.nickname }}
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.productos.id_for_label }}">Productos</label>
+                    {{ form.productos }}
+                </div>
+                
+                <h4 class="espacio-textos">Pagos</h4>
+                <div class="mb-3">
+                    <label for="{{ form.forma_pago.id_for_label }}">Forma de Pago</label>
+                    {{ form.forma_pago }}
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.estado_pago.id_for_label }}">Estado del Pago</label>
+                    {{ form.estado_pago }}
+                </div>
+
+                <h4 class="espacio-textos">Estado de pedido</h4>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="mb-3">
+                            <label for="{{ form.estado_pedido.id_for_label }}">Estado del Pedido</label>
+                            {{ form.estado_pedido }}
+                        </div>
+                    </div>
+                    <div class="col-md-2 d-flex align-items-center justify-content-center">
+                        <div class="mb-3">
+                            <h1>_</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="mb-3">
+                            <label for="{{ form.entrega.id_for_label }}">Entrega</label>
+                            {{ form.entrega }}
+                        </div>
+                    </div>
+                </div>
+
                 <button type="submit" class="btn btn-success">Guardar cambios</button>
             </form>
         </div>

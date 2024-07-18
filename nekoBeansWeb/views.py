@@ -364,15 +364,28 @@ def checkout(request):
 
     return render(request, 'nekoBeansWeb/checkout.html', {'carrito': carrito, 'items': items, 'envio_form': envio_form})
 
-
-@permission_required('nekoBeansWeb.view_pedido')
-def lista_pedidos(request):
-    pedidos_pendientes = envio.objects.filter(estado_pedido__lt=3)  # Filtra pedidos pendientes
-    pedidos_listos = envio.objects.filter(estado_pedido=3, entrega=2)  # Filtra pedidos listos
-    return render(request, 'nekoBeansWeb/pedidos/pedidos.html', {
+@login_required
+def lista_pedidosasasd(request):
+    pedidos_pendientes = envio.objects.filter(estado_pedido__lt=3, entrega=2)  # Filtra pedidos pendientes (estado < 3 y entrega 1)
+    pedidos_listos = envio.objects.filter(estado_pedido=3, entrega=1)  # Filtra pedidos listos (estado 3 y entrega 2)
+    context = {
         'pedidos_pendientes': pedidos_pendientes,
-        'pedidos_listos': pedidos_listos
-    })
+        'pedidos_listos': pedidos_listos,
+    }
+    return render(request, 'nekoBeansWeb/pedidos/pedidos.html', context)
+
+
+@login_required
+def lista_pedidos(request):
+    pedidos_pendientes = envio.objects.exclude(estado_pedido=3, entrega=2)  # Filtra pedidos pendientes (estado < 3 y entrega 1)
+    pedidos_listos = envio.objects.filter(estado_pedido=3, entrega=2)  # Filtra pedidos listos (estado 3 y entrega 2)
+    context = {
+        'pedidos_pendientes': pedidos_pendientes,
+        'pedidos_listos': pedidos_listos,
+    }
+    return render(request, 'nekoBeansWeb/pedidos/pedidos.html', context)
+
+
 
 
 @login_required

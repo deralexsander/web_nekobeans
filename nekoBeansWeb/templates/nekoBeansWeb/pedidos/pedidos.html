@@ -18,7 +18,7 @@
                             <th scope="col">Nickname</th>
                             <th scope="col">Dirección</th>
                             <th scope="col">Productos</th>
-                            <th scope="col">Estado pedido</th>
+                            <th scope="col">Estado pedido/Envio</th>
                             <th scope="col">Estado Pago</th>
                             <th scope="col">Acciones</th>
                         </tr>
@@ -34,7 +34,7 @@
                                 <td>{{ pedido.get_estado_pago_display }}</td>
                                 <td>
                                     <button type="button" class="btn btn-md btn-outline-warning abrir-modal"
-                                        data-bs-toggle="modal" data-bs-target="#modal-tarjeta-{{ pedido.id }}">
+                                        data-bs-toggle="modal" data-bs-target="#modal-tarjeta-pendiente-{{ pedido.id }}">
                                         Ver más
                                     </button>
                                 </td>
@@ -75,7 +75,7 @@
                                 <td>{{ pedido.get_estado_pago_display }}</td>
                                 <td>
                                     <button type="button" class="btn btn-md btn-outline-warning abrir-modal"
-                                        data-bs-toggle="modal" data-bs-target="#modal-tarjeta-{{ pedido.id }}">
+                                        data-bs-toggle="modal" data-bs-target="#modal-tarjeta-listo-{{ pedido.id }}">
                                         Ver más
                                     </button>
                                 </td>
@@ -92,14 +92,14 @@
     </div>
 </div>
 
-{% for pedido in pedidos %}
+{% for pedido in pedidos_pendientes %}
 <!-- Modal para detalles del contacto -->
-<div class="modal fade" id="modal-tarjeta-{{ pedido.id }}" tabindex="-1"
-    aria-labelledby="modal-tarjeta-{{ pedido.id }}" aria-hidden="true">
+<div class="modal fade" id="modal-tarjeta-pendiente-{{ pedido.id }}" tabindex="-1"
+    aria-labelledby="modal-tarjeta-pendiente-{{ pedido.id }}" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5 fw-bold" id="modal-tarjeta-{{ pedido.id }}">Descripción más detallada
+                <h1 class="modal-title fs-5 fw-bold" id="modal-tarjeta-pendiente-{{ pedido.id }}">Descripción más detallada
                 </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -144,6 +144,58 @@
 </div>
 {% endfor %}
 
+{% for pedido in pedidos_listos %}
+<!-- Modal para detalles del contacto -->
+<div class="modal fade" id="modal-tarjeta-listo-{{ pedido.id }}" tabindex="-1"
+    aria-labelledby="modal-tarjeta-listo-{{ pedido.id }}" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 fw-bold" id="modal-tarjeta-listo-{{ pedido.id }}">Descripción más detallada
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <h5 class="card-text fw-bold">Nombre y apellidos</h5>
+                            <div class="modal-body justify-content-center">
+                                <h4 class="card-text ">{{ pedido.nombre | capfirst }}</h4>
+                                <div class="justify-content">
+                                    <div class="row">
+                                        <h4 class="card-text">{{ pedido.apellido_paterno | capfirst }} {{ pedido.apellido_materno | capfirst }}</h4>
+                                    </div>
+                                </div>
+                                <h5 class="espacio-textos fw-bold">Email</h5>
+                                <h4 class="card-text">{{ pedido.email }}</h4>
+                                <h5 class="espacio-textos fw-bold">ID pedido</h5>
+                                <h4 class="card-text">{{ pedido.id }}</h4>
+                                <h5 class="espacio-textos fw-bold">Telefono</h5>
+                                <h4 class="card-text ">+(56) {{ pedido.telefono }}</h5>
+                                <h5 class="espacio-textos fw-bold">Dirección</h5>
+                                <h4 class="card-text ">{{ pedido.direccion }}</h4>
+                                <h5 class="espacio-textos fw-bold">Estado pedido</h5>
+                                <h4 class="card-text ">{{ pedido.get_estado_pedido_display }} - {{ pedido.get_entrega_display }}</h4>
+                                <h5 class="espacio-textos fw-bold">Forma de pago</h5>
+                                <h4 class="card-text">{{ pedido.get_forma_pago_display }}</h4>
+                                <h5 class="espacio-textos fw-bold">Estado Pago</h5>
+                                <h4 class="card-text">{{ pedido.get_estado_pago_display }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'modificar_pedido' pedido.id %}" class="btn btn-sm btn-outline-warning">Actualizar datos</a>
+                <a href="mailto:{{ pedido.email }} ?subject=Hola @{{ pedido.nickname }}! Tienes un mensaje de nekoBeans &body=Estimado/a {{ pedido.nombre | capfirst }} " class="btn btn-sm btn-outline-success">comunicación</a>
+                <a href="{% url 'eliminar_pedido' pedido.id %}" class="btn btn-sm btn-outline-danger delete-btn">Cancelar pedido</a>
+            </div>            
+        </div>
+    </div>
+</div>
+{% endfor %}
+
 {% if messages %}
 {% for message in messages %}
 <script>
@@ -154,4 +206,6 @@
 </script>
 {% endfor %}
 {% endif %}
+
+
 {% endblock %}

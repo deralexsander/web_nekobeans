@@ -408,7 +408,7 @@ def tus_pedidos(request):
 def pedido_confirmado(request):
     return render(request, 'nekoBeansWeb/confirmacion.html')
 
-@permission_required('nekoBeansWeb.delete_pedido')
+
 def eliminar_pedido(request, id):
     pedido = get_object_or_404(envio, id=id)
     pedido.delete()

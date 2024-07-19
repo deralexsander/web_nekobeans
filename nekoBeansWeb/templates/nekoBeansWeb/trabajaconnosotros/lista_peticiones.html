@@ -19,10 +19,10 @@
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellidos</th>
                             <th scope="col">RUT</th>
-                            <th scope="col">Región</th>
                             <th scope="col">Usuario</th>
+                            <th scope="col">Región</th>
                             <th scope="col">Fecha de Nacimiento</th>
-                            <th scope="col">Currículum</th>
+                            <th scope="col">Imagen</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,7 +37,7 @@
                             <td>{{ peticion.region }}</td>
                             <td>{{ peticion.fecha_nacimiento }}</td>
                             <td><a href="{{ peticion.carnet.url }}" class="btn btn-sm btn-outline-primary mt-2">Ver imagen</a></td>
-                            <td><a href="" class="btn btn-sm btn-outline-warning mt-2">Dar permiso de vendedor</a></td>
+                            <td><a href="mailto:{{ pedido.email }} ?subject=Hola @{{ pedido.nickname }}! Tienes un mensaje de nekoBeans &body=Estimado/a {{ pedido.nombre | capfirst }} " class="btn btn-sm btn-outline-success">comunicación</a></td>
                             <td><a href="{% url 'eliminar_peticiones' peticion.id %}" class="btn btn-sm btn-outline-danger mt-2 delete-btn">rechazar</a></td>
                             
                         </tr>

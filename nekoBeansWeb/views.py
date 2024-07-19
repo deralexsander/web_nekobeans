@@ -364,18 +364,9 @@ def checkout(request):
 
     return render(request, 'nekoBeansWeb/checkout.html', {'carrito': carrito, 'items': items, 'envio_form': envio_form})
 
-@login_required
-def lista_pedidosasasd(request):
-    pedidos_pendientes = envio.objects.filter(estado_pedido__lt=3, entrega=2)  # Filtra pedidos pendientes (estado < 3 y entrega 1)
-    pedidos_listos = envio.objects.filter(estado_pedido=3, entrega=1)  # Filtra pedidos listos (estado 3 y entrega 2)
-    context = {
-        'pedidos_pendientes': pedidos_pendientes,
-        'pedidos_listos': pedidos_listos,
-    }
-    return render(request, 'nekoBeansWeb/pedidos/pedidos.html', context)
 
 
-@login_required
+@permission_required('nekoBeansWeb.view_envio')
 def lista_pedidos(request):
     pedidos_pendientes = envio.objects.exclude(estado_pedido=3, entrega=2)  # Filtra pedidos pendientes (estado < 3 y entrega 1)
     pedidos_listos = envio.objects.filter(estado_pedido=3, entrega=2)  # Filtra pedidos listos (estado 3 y entrega 2)
@@ -408,14 +399,14 @@ def tus_pedidos(request):
 def pedido_confirmado(request):
     return render(request, 'nekoBeansWeb/confirmacion.html')
 
-
+@permission_required('nekoBeansWeb.delete_envio')
 def eliminar_pedido(request, id):
     pedido = get_object_or_404(envio, id=id)
     pedido.delete()
     return redirect('tus_pedidos')
 
 
-
+@permission_required('nekoBeansWeb.change_envio')
 def modificar_pedido(request, id):
     pedido = get_object_or_404(envio, id=id)  # Retrieve the Envio object with the given id
     
